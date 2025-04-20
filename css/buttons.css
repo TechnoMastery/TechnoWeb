@@ -1,0 +1,53 @@
+.buttons {
+    background-color: #04AA6D; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+
+  .button-red {
+    background-color: white; 
+    color: black; 
+    border: 2px solid red;
+  }
+  .button-red:hover {
+    background-color: red;
+    color: white;
+  }
+
+  .button-green {
+    background-color: white; 
+    color: black; 
+    border: 2px solid green;
+  }
+  .button-green:hover {
+    background-color: green;
+    color: white;
+  }
+
+  .button-darkblue {
+    background-color: white; 
+    color: black; 
+    border: 2px solid darkblue;
+  }
+  .button-darkblue:hover {
+    background-color: darkblue;
+    color: white;
+  }
+
+  .button-purple {
+    background-color: white; 
+    color: black; 
+    border: 2px solid purple;
+  }
+  .button-purple:hover {
+    background-color: purple;
+    color: white;
+  }
