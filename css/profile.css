@@ -8,7 +8,7 @@
     font-size: 20px;
     padding: 10px;
 }
-.member {
+.members {
     color: purple;
     font-size: 20px;
     padding: 10px;
@@ -18,3 +18,56 @@
     font-size: 20px;
     padding: 10px;
 }
+.buttons {
+    background-color: #04AA6D; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+
+  .button-creator {
+    background-color: white; 
+    color: black; 
+    border: 2px solid red;
+  }
+  .button-creator:hover {
+    background-color: red;
+    color: white;
+  }
+
+  .button-friend {
+    background-color: white; 
+    color: black; 
+    border: 2px solid green;
+  }
+  .button-friend:hover {
+    background-color: green;
+    color: white;
+  }
+
+  .button-admin {
+    background-color: white; 
+    color: black; 
+    border: 2px solid darkblue;
+  }
+  .button-admin:hover {
+    background-color: darkblue;
+    color: white;
+  }
+
+  .button-members {
+    background-color: white; 
+    color: black; 
+    border: 2px solid purple;
+  }
+  .button-members:hover {
+    background-color: purple;
+    color: white;
+  }
