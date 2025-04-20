@@ -2,7 +2,7 @@ const valeurs = ['apple','banana','strawberry','mure','melon','lemon','ananas','
 let cartes = [...valeurs, ...valeurs]; // 10 paires
 cartes = cartes.sort(() => 0.5 - Math.random()); // mélange
 
-const grille = document.getElementById('grille');
+const grille = document.getElementById('grid');
 let premiere = null;
 let bloque = false;
 let pairesTrouvees = 0;
