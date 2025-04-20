@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../css/buttons.css">
+    <link rel="stylesheet" href="../../../css/games.css">
+    <link rel="stylesheet" href="../../../css/global.css">
+    <title>TechnoMastery - Games - Memory</title>
+</head>
+<body>
+    <header>
+        <h1>Memory game</h1>
+        <p>Test your memory with this fun game! Try to find all the pairs of cards in the shortest time possible.</p>
+        <nav>
+            <a href="../../gameHub/"><button class="buttons button-blue">Back</button></a>
+        </nav>
+    </header>
+    <main>
+        <h2>The memory</h2>
+        <section class="rules">
+            <h3>Rules</h3>
+            <p>The rules are simple : you have to find the 10 pairs in the shortest time possible.<br>
+            Click on a card to start. The timer begin when you turn the first card.</p>
+            <p>When you find a pair, the cards will stay turned. If you don't find a pair, the cards will turn back after 1 second.</p>
+            <p>When you find all the pairs, the game is over and you can see your time.</p>
+            <p>Good luck!</p>
+            <h3>Scoreboard :</h3>
+            <p>The scoreboard can't be displayed yet, because we can't save the scores in the server.<br>
+            We will try to make that possible, but for the moment we can't. You'll still be able to see you score, and your best one as long as you don't refresh or quite the game.</p>
+        </section>
+        <section id="memory-game", class="game-memory">
+            <h3>Play the game</h3>
+            <div class="memory-grid">
+                <div class="card" id="card1"></div>
+                <div class="card" id="card2"></div>
+                <div class="card" id="card3"></div>
+                <div class="card" id="card4"></div>
+                <div class="card" id="card5"></div>
+                <div class="card" id="card6"></div>
+                <div class="card" id="card7"></div>
+                <div class="card" id="card8"></div>
+                <div class="card" id="card9"></div>
+                <div class="card" id="card10"></div>
+                <div class="card" id="card11"></div>
+                <div class="card" id="card12"></div>
+                <div class="card" id="card13"></div>
+                <div class="card" id="card14"></div>
+                <div class="card" id="card15"></div>
+                <div class="card" id="card16"></div>
+                <div class="card" id="card17"></div>
+                <div class="card" id="card18"></div>
+                <div class="card" id="card19"></div>
+                <div class="card" id="card20"></div>
+            </div>
+            <button id="start-button">Start Game</button>
+            <div id="timer">Time: 0s</div>
+        </section>
+    </main>
+    <footer>
+        <p>TechnoMastery - Minecraft modding community</p>
+    </footer>
+    <script src="../../../scripts/games/memory.js"></script>
+</body>
+</html>

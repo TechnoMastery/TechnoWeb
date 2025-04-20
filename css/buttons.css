@@ -61,3 +61,13 @@
     background-color: blue;
     color: white;
   }
+
+  .button-orange {
+    background-color: white; 
+    color: black; 
+    border: 2px solid orange;
+  }
+  .button-orange:hover {
+    background-color: orange;
+    color: white;
+  }
