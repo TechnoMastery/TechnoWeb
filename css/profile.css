@@ -1,0 +1,20 @@
+.creator {
+    font-size: 18px;
+    font-weight: bold;
+    color: #b80707; /* red */
+    text-align: left;
+}
+
+.friend {
+    font-size: 16px;
+    font-style: italic;
+    color: #2196F3; /* Blue */
+    text-align: left;
+}
+
+.guy {
+    font-size: 14px;
+    font-style: underline;
+    color: #FF5722; /* Orange */
+    text-align: left;
+}
