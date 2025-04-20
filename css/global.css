@@ -8,9 +8,9 @@ footer {
     border-radius: 0;
 }
 footer p {
-    margin: 0;
+    margin: 10px;
     padding: 0;
-    font-size: 20px;
+    font-size: 200px;
     color: #333;
     line-height: 1.5;
 }
