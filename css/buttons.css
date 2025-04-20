@@ -51,3 +51,13 @@
     background-color: purple;
     color: white;
   }
+
+  .button-blue {
+    background-color: white; 
+    color: black; 
+    border: 2px solid blue;
+  }
+  .button-blue:hover {
+    background-color: blue;
+    color: white;
+  }
