@@ -1,20 +1,30 @@
 .creator {
-    font-size: 18px;
-    font-weight: bold;
-    color: #b80707; /* red */
-    text-align: left;
+    color: red;
+    font-size: 20px;
+    padding: 10px;
 }
-
+.creator:hover {
+    color: darkred;
+    font-size: 25px;
+    padding: 20px;
+}
 .friend {
-    font-size: 16px;
-    font-style: italic;
-    color: #2196F3; /* Blue */
-    text-align: left;
+    color: green;
+    font-size: 20px;
+    padding: 10px;
 }
-
+.friend:hover {
+    color: darkgreen;
+    font-size: 25px;
+    padding: 20px;
+}
 .guy {
-    font-size: 14px;
-    font-style: underline;
-    color: #FF5722; /* Orange */
-    text-align: left;
+    color: blue;
+    font-size: 20px;
+    padding: 10px;
+}
+.guy:hover {
+    color: darkblue;
+    font-size: 25px;
+    padding: 20px;
 }
