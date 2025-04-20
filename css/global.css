@@ -6,7 +6,13 @@ footer {
     margin: 0;
     padding: 0;
     border-radius: 0;
-    font-size: 14px;
+}
+footer p {
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    color: #333;
+    line-height: 1.5;
 }
 footer p {
     margin: 0;
