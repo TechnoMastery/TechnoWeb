@@ -28,3 +28,13 @@
     font-size: 25px;
     padding: 20px;
 }
+.admin {
+    color: purple;
+    font-size: 20px;
+    padding: 10px;
+}
+.admin:hover {
+    color: darkpurple;
+    font-size: 25px;
+    padding: 20px;
+}
