@@ -1,10 +1,5 @@
 /* remember to create the stylesheet for this one day...
 will be usefull in games (yea the name explains all) */
-.rules {
-    color: rgb(109, 77, 16);
-    background-color:rgba(8, 127, 255, 0.555);
-}
-
 .game-memory {
     display: flex;
     justify-content: center;
