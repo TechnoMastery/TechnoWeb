@@ -1,9 +1,10 @@
 let playerNames = [];
 let gameName;
 let playerCount;
+document.getElementById('creatingStatus').textContent = "Game Status : Waiting for game info being subited...";
 
 function switchPage() {
-    window.location.replace('/TechnoMastery/pages/gameHub/navalBattle/settings')
+    window.location.replace('/TechnoMastery/pages/gameHub/navalBattle/game-settings')
 }
 
 function createGame() {
@@ -22,7 +23,7 @@ function createGame() {
 
     localStorage.setItem('gameInfos', JSON.stringify(gameData));
 
-    alert("Game created and saved ! You will be trasfered to the settings page soon...");
+    alert("Game created and saved ! Your game is being processed, you can close this alert and wait for being trasfered.");
     console.log("Game saved as 'gameData' JSON : " + gameData);
     setTimeout(switchPage(), 2)
 }
