@@ -1,4 +1,4 @@
-const valeurs = ['🍎','🍌','🍓','🪻','🍈','🍋','🍍','🥝','🥑','🫐'];
+const valeurs = ['apple','banana','strawberry','blockberry','melon','lemon','sweetberry','orange','berry','cake'];
 let cartes = [...valeurs, ...valeurs]; // 10 paires
 cartes = cartes.sort(() => 0.5 - Math.random()); // mélange
 

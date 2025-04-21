@@ -1,47 +1,4 @@
-body {
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #fff;
-    text-align: center;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.container {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    max-width: 700px;
-    margin: 50px auto;
-    padding: 40px;
-    border-radius: 25px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-    width: 90%;
-}
-
-h1 {
-    font-size: 3em;
-    margin-bottom: 20px;
-    background: linear-gradient(to right, #ff8a00, #e52e71);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    /* text-fill-color reste pour compatibilité future */
-    /* -webkit-text-fill-color: transparent; */
-}
-
-p {
-    font-size: 1.2em;
-    margin: 10px 0;
-}
-
-/* ... [le reste du CSS reste inchangé] ... */
-
-  button {
+  .container button {
     padding: 15px 25px;
     font-size: 18px;
     margin: 15px 5px;
@@ -96,14 +53,14 @@ p {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
 
-  ul {
+  .container ul {
     list-style: none;
     padding: 0;
     max-height: 200px;
     overflow-y: auto;
   }
 
-  li {
+  .container li {
     background: rgba(255, 255, 255, 0.1);
     margin: 5px 0;
     padding: 10px;
@@ -111,7 +68,7 @@ p {
     transition: all 0.3s ease;
   }
 
-  li:hover {
+  .container li:hover {
     background: rgba(255, 255, 255, 0.2);
   }
 

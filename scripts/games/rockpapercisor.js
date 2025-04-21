@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fonction pour déterminer le gagnant
     function getResult(player, computer) {
-        if (player === computer) return 'égalité';
+        if (player === computer) return 'tie';
 
         const winConditions = {
             rock: 'scissors',
@@ -45,10 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (winConditions[player] === computer) {
             score.player++;
-            return 'gagné';
+            return 'won';
         } else {
             score.computer++;
-            return 'perdu';
+            return 'lost';
         }
     }
 
@@ -68,9 +68,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Message de résultat
         let message = '';
-        if (result === 'gagné') {
+        if (result === 'won') {
             message = `You won ! ${frenchMap[playerChoice]} kill ${frenchMap[computerChoice]}`;
-        } else if (result === 'perdu') {
+        } else if (result === 'lost') {
             message = `You lost ! ${frenchMap[computerChoice]} kill ${frenchMap[playerChoice]}`;
         } else {
             message = `Tie ! You both chose ${frenchMap[playerChoice]}`;
