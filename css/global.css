@@ -10,7 +10,7 @@ footer {
 header h1 {
     font-size: 3em;
     margin-bottom: 20px;
-    background: linear-gradient(to right, #ff8a00, #e52e71);
+    color: linear-gradient(to right, #ff8a00, #e52e71) !important;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;

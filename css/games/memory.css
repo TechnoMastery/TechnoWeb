@@ -16,6 +16,8 @@
     grid-template-columns: repeat(5, 100px); /* 5 colonnes */
     grid-template-rows: repeat(4, 100px);    /* 4 lignes */
     gap: 1cm; /* Espace de 1 cm entre les cartes */
+    align-items: center;
+    justify-items: center;
 }
 .card {
     background-color: #4caf50;
