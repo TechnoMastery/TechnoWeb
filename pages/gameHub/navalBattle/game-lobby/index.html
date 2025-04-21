@@ -21,14 +21,15 @@
         <p>Here you can create a game.</p>
         <p>To create a game, please enter the game name and press the button.</p>
         <label for="gameName">Game name :</label>
-        <input type="text" required minlength="3" maxlength="10" size="12" name="gameName" id="gameName" placeholder="Enter game name" />
+        <input type="text" required minlength="3" maxlength="10" size="12" name="gameName" id="gameName" placeholder="Enter game name" /><br>
         <label for="playerCount">Player count :</label>
-        <input type="number" readonly min="2" max="4" name="playerCount" id="playerCount" placeholder="Player count" />
+        <input type="number" readonly min="2" max="4" name="playerCount" id="playerCount" placeholder="Player count" /><br><br> 
         <button class="buttons button-blue" onclick="createGame()">Create Game</button>
         <p id="gameStatus"></p>
     </main>
     <footer>
         <p>TechnoMastery - Minecraft modding community</p>
     </footer>
+    <script src="../../../../scripts/games/navalBattle.js"></script>
 </body>
 </html>
