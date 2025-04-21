@@ -6,7 +6,7 @@ function switchPage() {
     document.location.href('/TechnoMastery/pages/gameHub/navalBattle/settings')
 }
 
-function startGame() {
+function createGame() {
     gameName = document.getElementById("gameName").value.trim();
     playerCount = parseInt(document.getElementById('playerCount').value);
 
