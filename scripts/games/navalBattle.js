@@ -3,7 +3,7 @@ let gameName;
 let playerCount;
 
 function switchPage() {
-    document.location.href('/TechnoMastery/pages/gameHub/navalBattle/settings')
+    window.location.replace('/TechnoMastery/pages/gameHub/navalBattle/settings')
 }
 
 function createGame() {
