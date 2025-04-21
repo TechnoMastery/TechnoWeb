@@ -2,6 +2,10 @@ let playerNames = [];
 let gameName;
 let playerCount;
 
+function switchPage() {
+    document.location.href('/TechnoMastery/pages/gameHub/navalBattle/settings')
+}
+
 function startGame() {
     gameName = document.getElementById("gameName").value.trim();
     playerCount = parseInt(document.getElementById('playerCount').value);
@@ -19,5 +23,6 @@ function startGame() {
     localStorage.setItem('gameInfos', JSON.stringify(gameData));
 
     alert("Game created and saved ! You will be trasfered to the settings page soon...");
-    console.log('Game saved in gameData JSON : ' + gameData);
+    console.log("Game saved as 'gameData' JSON : " + gameData);
+    setTimeout(switchPage(), 2)
 }
