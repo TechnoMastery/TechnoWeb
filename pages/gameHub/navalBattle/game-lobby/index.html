@@ -18,18 +18,22 @@
     </header>
     <main>
         <h2>Welcome to the Naval Battle Lobby!</h2>
-        <p>Here you can create a game.</p>
+        <p>Here you can create or load a game.</p>
+        <h3>Create a game</h3>
         <p>To create a game, please enter the game name and press the button.</p>
         <label for="gameName">Game name :</label>
         <input type="text" required minlength="3" maxlength="10" size="12" name="gameName" id="gameName" placeholder="Enter game name" /><br>
         <label for="playerCount">Player count :</label>
         <input type="number" required min="2" max="4" name="playerCount" id="playerCount" placeholder="Player count" size="12"/><br><br> 
         <button class="buttons button-blue" onclick="createGame()">Create Game</button><br><br>
-        <h3 id="creatingStatus"></h3>
+        <h4 id="creatingStatus"></h4>
+        <h3>Load a game</h3>
+        <p>Here is your game list :</p>
+        <div id="games-list"></div>
     </main>
     <footer>
         <p>TechnoMastery - Minecraft modding community</p>
     </footer>
-    <script src="../../../../scripts/games/navalBattle.js"></script>
+    <script src="../../../../scripts/games/navalBattle/navalBattleLobby.js"></script>
 </body>
 </html>
