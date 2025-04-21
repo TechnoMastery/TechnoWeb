@@ -1,14 +1,14 @@
-<!-- ========================== PARTIE HTML ========================== -->
 <!DOCTYPE html>
 <html lang="fr">
+
+<!-- ===== Partie HTML (Structure de la page) ===== -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RockPaperScissors</title>
+    <title>Jeu Pierre Feuille Ciseaux</title>
 
-    <!-- ========================== PARTIE CSS ========================== -->
+    <!-- ===== Partie CSS (Mise en forme et style) ===== -->
     <style>
-        /* === STYLE GLOBAL === */
         * {
             margin: 0;
             padding: 0;
@@ -17,7 +17,7 @@
         }
 
         body {
-            background-color: #f0f0f0;
+            background-color: #eef1f5;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -25,13 +25,12 @@
             padding: 20px;
         }
 
-        /* === CONTAINER DU JEU === */
         .game-container {
             background-color: white;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 30px;
-            max-width: 500px;
+            max-width: 600px;
             width: 100%;
             text-align: center;
             margin-top: 20px;
@@ -42,29 +41,26 @@
             margin-bottom: 20px;
         }
 
-        /* === SCORES === */
         .score-board {
             display: flex;
             justify-content: space-around;
             margin: 20px 0;
             padding: 15px;
-            background-color: #f8f8f8;
+            background-color: #f0f0f0;
             border-radius: 8px;
         }
 
         .score {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
         }
 
-        /* === MESSAGE DE RÉSULTAT === */
         .result {
             font-size: 18px;
             margin: 20px 0;
             height: 24px;
         }
 
-        /* === BOUTONS PIERRE / FEUILLE / CISEAUX === */
         .choices {
             display: flex;
             justify-content: space-around;
@@ -88,7 +84,7 @@
 
         .choice:hover {
             transform: scale(1.2);
-            background-color: #e8e8e8;
+            background-color: #e0e0e0;
         }
 
         .choice:focus {
@@ -101,7 +97,6 @@
             color: #555;
         }
 
-        /* === HISTORIQUE DES PARTIES === */
         .game-history {
             margin-top: 20px;
             max-height: 150px;
@@ -117,7 +112,6 @@
             border-bottom: 1px solid #ddd;
         }
 
-        /* === BOUTON DE RÉINITIALISATION === */
         .reset-button {
             background-color: #4CAF50;
             color: white;
@@ -134,7 +128,6 @@
             background-color: #45a049;
         }
 
-        /* === RESPONSIVE MOBILE === */
         @media (max-width: 480px) {
             .choices {
                 flex-direction: column;
@@ -148,12 +141,13 @@
         }
     </style>
 </head>
-<body>
-    <!-- CONTENU HTML PRINCIPAL -->
-    <div class="game-container">
-        <h1>RockPaperScissors</h1>
 
-        <!-- SCORES -->
+<body>
+    <div class="game-container">
+        <!-- Titre du jeu -->
+        <h1>Pierre Feuille Ciseaux</h1>
+
+        <!-- Tableau de scores -->
         <div class="score-board">
             <div>
                 <p>Joueur</p>
@@ -165,33 +159,33 @@
             </div>
         </div>
 
-        <!-- MESSAGE DE RÉSULTAT -->
+        <!-- Affichage du résultat du round -->
         <div class="result" id="result">Faites votre choix !</div>
 
-        <!-- BOUTONS CHOIX -->
+        <!-- Boutons de choix (émoticônes) -->
         <div class="choices">
-            <button class="choice" id="rock">🪨</button>
-            <button class="choice" id="paper">🍂</button>
-            <button class="choice" id="scissors">✂️</button>
+            <button class="choice" id="rock" title="Pierre">🪨</button>
+            <button class="choice" id="paper" title="Feuille">🍂</button>
+            <button class="choice" id="scissors" title="Ciseaux">✂️</button>
         </div>
 
-        <p class="action-message">Faites votre choix pour jouer</p>
+        <!-- Message supplémentaire -->
+        <p class="action-message">Cliquez sur une icône pour jouer</p>
 
-        <!-- HISTORIQUE DES PARTIES -->
+        <!-- Historique des parties -->
         <div class="game-history">
             <h3>Historique des parties</h3>
             <div id="history-list"></div>
         </div>
 
-        <!-- BOUTON RESET -->
+        <!-- Bouton pour réinitialiser le score -->
         <button class="reset-button" id="reset">Réinitialiser le score</button>
     </div>
 
-    <!-- ========================== PARTIE JAVASCRIPT ========================== -->
+    <!-- ===== Partie JavaScript (Logique du jeu) ===== -->
     <script>
-        // On attend que toute la page soit chargée
         document.addEventListener('DOMContentLoaded', () => {
-            // Sélections des éléments HTML
+            // Sélection des éléments du DOM
             const choices = document.querySelectorAll('.choice');
             const playerScore = document.getElementById('player-score');
             const computerScore = document.getElementById('computer-score');
@@ -199,40 +193,43 @@
             const historyList = document.getElementById('history-list');
             const resetButton = document.getElementById('reset');
 
-            // Score de départ
+            // Initialisation des scores
             let score = {
                 player: 0,
                 computer: 0
             };
 
-            // Quand on clique sur une option (pierre/papier/ciseaux)
+            // Ajout des événements aux boutons de choix
             choices.forEach(choice => {
-                choice.addEventListener('click', function () {
+                choice.addEventListener('click', function() {
                     const playerChoice = this.id;
                     playRound(playerChoice);
                 });
             });
 
-            // Réinitialisation au clic
+            // Bouton de réinitialisation du jeu
             resetButton.addEventListener('click', resetGame);
 
-            // Fonction qui lance une manche
+            // Fonction pour jouer un tour
             function playRound(playerChoice) {
                 const options = ['rock', 'paper', 'scissors'];
-                const computerChoice = options[Math.floor(Math.random() * 3)];
+                const computerChoice = options[Math.floor(Math.random() * options.length)];
+
                 const result = getResult(playerChoice, computerChoice);
                 updateUI(playerChoice, computerChoice, result);
             }
 
-            // Fonction pour calculer le gagnant
+            // Fonction pour déterminer le gagnant
             function getResult(player, computer) {
                 if (player === computer) return 'égalité';
 
-                if (
-                    (player === 'rock' && computer === 'scissors') ||
-                    (player === 'paper' && computer === 'rock') ||
-                    (player === 'scissors' && computer === 'paper')
-                ) {
+                const winConditions = {
+                    rock: 'scissors',
+                    paper: 'rock',
+                    scissors: 'paper'
+                };
+
+                if (winConditions[player] === computer) {
                     score.player++;
                     return 'gagné';
                 } else {
@@ -241,47 +238,53 @@
                 }
             }
 
-            // Met à jour les scores + résultat + historique
+            // Mise à jour de l'interface utilisateur
             function updateUI(playerChoice, computerChoice, result) {
                 const emojiMap = {
                     rock: '🪨',
                     paper: '🍂',
                     scissors: '✂️'
                 };
-                const frenchChoice = {
+
+                const frenchMap = {
                     rock: 'Pierre',
-                    paper: 'Papier',
+                    paper: 'Feuille',
                     scissors: 'Ciseaux'
                 };
 
+                // Message de résultat
                 let message = '';
                 if (result === 'gagné') {
-                    message = `Vous avez gagné! ${frenchChoice[playerChoice]} bat ${frenchChoice[computerChoice]}`;
+                    message = `Vous avez gagné ! ${frenchMap[playerChoice]} bat ${frenchMap[computerChoice]}`;
                 } else if (result === 'perdu') {
-                    message = `Vous avez perdu! ${frenchChoice[computerChoice]} bat ${frenchChoice[playerChoice]}`;
+                    message = `Vous avez perdu ! ${frenchMap[computerChoice]} bat ${frenchMap[playerChoice]}`;
                 } else {
-                    message = `Égalité! Vous avez tous les deux choisi ${frenchChoice[playerChoice]}`;
+                    message = `Égalité ! Vous avez tous les deux choisi ${frenchMap[playerChoice]}`;
                 }
 
                 resultDisplay.textContent = message;
+
+                // Mise à jour des scores
                 playerScore.textContent = score.player;
                 computerScore.textContent = score.computer;
 
+                // Mise à jour de l'historique
                 const historyItem = document.createElement('div');
                 historyItem.classList.add('history-item');
                 historyItem.innerHTML = `
                     <span>Vous: ${emojiMap[playerChoice]}</span> vs 
                     <span>Ordinateur: ${emojiMap[computerChoice]}</span> - 
-                    <span>${result.charAt(0).toUpperCase() + result.slice(1)}</span>
+                    <strong>${result.charAt(0).toUpperCase() + result.slice(1)}</strong>
                 `;
                 historyList.prepend(historyItem);
 
+                // Limiter l'historique à 10 éléments maximum
                 if (historyList.children.length > 10) {
                     historyList.removeChild(historyList.lastChild);
                 }
             }
 
-            // Remet tout à zéro
+            // Fonction pour réinitialiser le jeu
             function resetGame() {
                 score.player = 0;
                 score.computer = 0;
