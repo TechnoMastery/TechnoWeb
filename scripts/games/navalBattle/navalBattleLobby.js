@@ -1,7 +1,9 @@
 let playerNames = [];
 let gameName;
 const gamesList = document.getElementById('games-list');
-const gamesListJson = JSON.parse(localStorage.getItem('gamesList')) || {gameCount = 0};
+const gamesListJson = JSON.parse(localStorage.getItem('gamesList')) || {
+    gameCount = 0
+};
 let playerCount;
 document.getElementById('creatingStatus').textContent = "Game Status : Waiting for game info being subited...";
 
@@ -49,7 +51,9 @@ function createGame() {
     };
     localStorage.setItem('gameInfos', JSON.stringify(gameData));
 
-    let newGamesListJson = JSON.parse(localStorage.getItem('gamesList')) || {gameCount=0};
+    let newGamesListJson = JSON.parse(localStorage.getItem('gamesList')) || {
+        gameCount = 0
+    };
     newGamesListJson.gameCount = newGamesListJson.gameCount +1;
     const newGameId = newGamesListJson.gameCount;
     newGamesListJson[newGameId] = {
