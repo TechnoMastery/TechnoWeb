@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechnoMastery - Games - Naval battle lobby</title>
+    <link rel="stylesheet" href="../../../../css/buttons.css">
+    <link rel="stylesheet" href="../../../../css/global.css">
+</head>
+<body>
+    <header>
+        <h1>Naval Battle Lobby</h1>
+        <nav>
+            <a href="../../navalBattle/"><button class="buttons button-blue">Back to Naval battle home page</button></a><br>
+            <a href="../../../gameHub/"><button class="buttons button-blue">Back to GameHub</button></a><br>
+            <a href="../../../../../TechnoWeb/"><button class="buttons button-blue">Home</button></a>
+        </nav>
+    </header>
+    <main>
+        <h2>Welcome to the Naval Battle Lobby!</h2>
+        <p>Here you can create a game.</p>
+        <p>To create a game, please enter the game name and press the button.</p>
+        <label for="gameName">Game name :</label>
+        <input type="text" required minlength="3" maxlength="10" size="12" name="gameName" id="gameName" placeholder="Enter game name" />
+        <label for="playerCount">Player count :</label>
+        <input type="number" readonly min="2" max="4" name="playerCount" id="playerCount" placeholder="Player count" />
+        <button class="buttons button-blue" onclick="createGame()">Create Game</button>
+        <p id="gameStatus"></p>
+    </main>
+    <footer>
+        <p>TechnoMastery - Minecraft modding community</p>
+    </footer>
+</body>
+</html>
