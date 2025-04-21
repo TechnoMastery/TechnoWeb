@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RockPaperScissors</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .game-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .score-board {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f8f8f8;
+            border-radius: 8px;
+        }
+        
+        .score {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .result {
+            font-size: 18px;
+            margin: 20px 0;
+            height: 24px;
+        }
+        
+        .choices {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+        }
+        
+        .choice {
+            background: none;
+            border: none;
+            font-size: 50px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            background-color: #f8f8f8;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .choice:hover {
+            transform: scale(1.2);
+            background-color: #e8e8e8;
+        }
+        
+        .choice:focus {
+            outline: none;
+        }
+        
+        .action-message {
+            font-size: 18px;
+            margin-top: 20px;
+            color: #555;
+        }
+        
+        .game-history {
+            margin-top: 20px;
+            max-height: 150px;
+            overflow-y: auto;
+            background-color: #f8f8f8;
+            border-radius: 8px;
+            padding: 10px;
+        }
+        
+        .history-item {
+            margin: 5px 0;
+            padding: 5px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .reset-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .reset-button:hover {
+            background-color: #45a049;
+        }
+        
+        @media (max-width: 480px) {
+            .choices {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            
+            .game-container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>RockPaperScissors</h1>
+        
+        <div class="score-board">
+            <div>
+                <p>Joueur</p>
+                <p class="score" id="player-score">0</p>
+            </div>
+            <div>
+                <p>Ordinateur</p>
+                <p class="score" id="computer-score">0</p>
+            </div>
+        </div>
+        
+        <div class="result" id="result">Faites votre choix !</div>
+        
+        <div class="choices">
+            <button class="choice" id="rock">👊</button>
+            <button class="choice" id="paper">✋</button>
+            <button class="choice" id="scissors">✌️</button>
+        </div>
+        
+        <p class="action-message">Faites votre choix pour jouer</p>
+        
+        <div class="game-history">
+            <h3>Historique des parties</h3>
+            <div id="history-list"></div>
+        </div>
+        
+        <button class="reset-button" id="reset">Réinitialiser le score</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Sélection des éléments
+            const choices = document.querySelectorAll('.choice');
+            const playerScore = document.getElementById('player-score');
+            const computerScore = document.getElementById('computer-score');
+            const resultDisplay = document.getElementById('result');
+            const historyList = document.getElementById('history-list');
+            const resetButton = document.getElementById('reset');
+            
+            // Variables pour les scores
+            let score = {
+                player: 0,
+                computer: 0
+            };
+            
+            // Événements des boutons
+            choices.forEach(choice => {
+                choice.addEventListener('click', function() {
+                    const playerChoice = this.id;
+                    playRound(playerChoice);
+                });
+            });
+            
+            // Réinitialiser le score
+            resetButton.addEventListener('click', resetGame);
+            
+            // Jouer un tour
+            function playRound(playerChoice) {
+                const choices = ['rock', 'paper', 'scissors'];
+                const computerChoice = choices[Math.floor(Math.random() * 3)];
+                
+                const result = getResult(playerChoice, computerChoice);
+                updateUI(playerChoice, computerChoice, result);
+            }
+            
+            // Déterminer le résultat
+            function getResult(player, computer) {
+                if (player === computer) {
+                    return 'égalité';
+                }
+                
+                if (
+                    (player === 'rock' && computer === 'scissors') ||
+                    (player === 'paper' && computer === 'rock') ||
+                    (player === 'scissors' && computer === 'paper')
+                ) {
+                    score.player++;
+                    return 'gagné';
+                } else {
+                    score.computer++;
+                    return 'perdu';
+                }
+            }
+            
+            // Mettre à jour l'interface
+            function updateUI(playerChoice, computerChoice, result) {
+                // Convertir les choix en émojis
+                const emojiMap = {
+                    'rock': '👊',
+                    'paper': '✋',
+                    'scissors': '✌️'
+                };
+                
+                // Convertir les choix en français
+                const frenchChoice = {
+                    'rock': 'Pierre',
+                    'paper': 'Papier',
+                    'scissors': 'Ciseaux'
+                };
+                
+                // Afficher le résultat
+                let resultMessage = '';
+                let resultClass = '';
+                
+                if (result === 'gagné') {
+                    resultMessage = `Vous avez gagné! ${frenchChoice[playerChoice]} bat ${frenchChoice[computerChoice]}`;
+                    resultClass = 'win';
+                } else if (result === 'perdu') {
+                    resultMessage = `Vous avez perdu! ${frenchChoice[computerChoice]} bat ${frenchChoice[playerChoice]}`;
+                    resultClass = 'lose';
+                } else {
+                    resultMessage = `Égalité! Vous avez tous les deux choisi ${frenchChoice[playerChoice]}`;
+                    resultClass = 'draw';
+                }
+                
+                resultDisplay.textContent = resultMessage;
+                
+                // Mettre à jour les scores
+                playerScore.textContent = score.player;
+                computerScore.textContent = score.computer;
+                
+                // Ajouter à l'historique
+                const historyItem = document.createElement('div');
+                historyItem.classList.add('history-item');
+                historyItem.innerHTML = `
+                    <span>Vous: ${emojiMap[playerChoice]}</span> vs 
+                    <span>Ordinateur: ${emojiMap[computerChoice]}</span> - 
+                    <span>${result.charAt(0).toUpperCase() + result.slice(1)}</span>
+                `;
+                historyList.prepend(historyItem);
+                
+                // Limiter l'historique à 10 entrées
+                if (historyList.children.length > 10) {
+                    historyList.removeChild(historyList.lastChild);
+                }
+            }
+            
+            // Réinitialiser le jeu
+            function resetGame() {
+                score.player = 0;
+                score.computer = 0;
+                playerScore.textContent = '0';
+                computerScore.textContent = '0';
+                resultDisplay.textContent = 'Faites votre choix !';
+                historyList.innerHTML = '';
+            }
+        });
+    </script>
+</body>
+</html>
