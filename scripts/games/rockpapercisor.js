@@ -61,19 +61,19 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const frenchMap = {
-            rock: 'Pierre',
-            paper: 'Feuille',
-            scissors: 'Ciseaux'
+            rock: 'Rock',
+            paper: 'Paper',
+            scissors: 'Scissors'
         };
 
         // Message de résultat
         let message = '';
         if (result === 'gagné') {
-            message = `Vous avez gagné ! ${frenchMap[playerChoice]} bat ${frenchMap[computerChoice]}`;
+            message = `You won ! ${frenchMap[playerChoice]} kill ${frenchMap[computerChoice]}`;
         } else if (result === 'perdu') {
-            message = `Vous avez perdu ! ${frenchMap[computerChoice]} bat ${frenchMap[playerChoice]}`;
+            message = `You lost ! ${frenchMap[computerChoice]} kill ${frenchMap[playerChoice]}`;
         } else {
-            message = `Égalité ! Vous avez tous les deux choisi ${frenchMap[playerChoice]}`;
+            message = `Tie ! You both chose ${frenchMap[playerChoice]}`;
         }
 
         resultDisplay.textContent = message;
@@ -86,8 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const historyItem = document.createElement('div');
         historyItem.classList.add('history-item');
         historyItem.innerHTML = `
-            <span>Vous: ${emojiMap[playerChoice]}</span> vs 
-            <span>Ordinateur: ${emojiMap[computerChoice]}</span> - 
+            <span>You: ${emojiMap[playerChoice]}</span> vs 
+            <span>Computer: ${emojiMap[computerChoice]}</span> - 
             <strong>${result.charAt(0).toUpperCase() + result.slice(1)}</strong>
         `;
         historyList.prepend(historyItem);
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         score.computer = 0;
         playerScore.textContent = '0';
         computerScore.textContent = '0';
-        resultDisplay.textContent = 'Faites votre choix !';
+        resultDisplay.textContent = 'Make a choice !';
         historyList.innerHTML = '';
     }
 });

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechnoMastery - Games - Clicker Game</title>
+  <link rel="stylesheet" href="../../../css/games/clickerGame.css">
+  <link rel="stylesheet" href="../../../css/global.css">
+  <link rel="stylesheet" href="../../../css/buttons.css">
+</head>
+<body>
+  <header>
+    <h1>Clicker Game</h1>
+    <nav>
+      <a href="../../gameHub/"><button class="buttons button-blue">Back</button></a><br>
+      <a href="../../../TechnoWeb/"><button class="buttons button-blue">Home</button></a>
+    </nav>
+  </header>
+  <main>
+    <h2>Welcome to the Click game !</h2>
+    <p>In this game, you'll have to push the button to get "clicks". Use your clicks to buy upgrades and get more clokcs.</p>
+    <p>Try to get 50 achievement ! (when it will be added...)</p>
+    <div class="container">
+      <h3>Production :</h3>
+      <p id="clicks">Clicks: 0</p>
+      <p id="cps">Clicks per sec: 0</p>
+      <h3>CLICK !</h3>
+      <button class="click-button" onclick="handleClick()">CLICK</button>
+      <h3>Upgrade store</h3>
+      <div id="upgrades"></div>
+      <h3>Achievements (<span id="achCount">0</span>/50)</h3>
+      <ul id="achievements"></ul>
+      <button onclick="resetGame()" class="reset-btn">Reset all</button>
+    </div>
+  </main>
+  <footer>
+    <p>TechnoMastery - Minecraft modding comunity</p>
+  </footer>
+  <script src="../../../scripts/games/clickerGame.js"></script>
+</body>
+</html>

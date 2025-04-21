@@ -1,0 +1,156 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    width: 90%;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, #ff8a00, #e52e71);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* text-fill-color reste pour compatibilité future */
+    /* -webkit-text-fill-color: transparent; */
+}
+
+p {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+/* ... [le reste du CSS reste inchangé] ... */
+
+  button {
+    padding: 15px 25px;
+    font-size: 18px;
+    margin: 15px 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+  }
+
+  .click-button {
+    background: linear-gradient(to right, #8e2de2, #4a00e0);
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  .click-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .reset-btn {
+    background: #ff4b2b;
+    color: white;
+    margin-top: 30px;
+  }
+
+  .reset-btn:hover {
+    background: #ff3a1a;
+  }
+
+  .upgrade-btn {
+    display: block;
+    margin: 10px auto;
+    padding: 15px;
+    border-radius: 12px;
+    width: 90%;
+    font-size: 16px;
+    background-color: #555;
+    color: #ccc;
+    text-align: center;
+    transition: all 0.2s ease;
+  }
+
+  .upgrade-btn.enabled {
+    background-color: #00c9ff;
+    color: #000;
+    font-weight: bold;
+  }
+
+  .upgrade-btn.enabled:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  li {
+    background: rgba(255, 255, 255, 0.1);
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+  }
+
+  li:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .floating {
+    position: absolute;
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+    animation: floatUp 1s ease-out forwards;
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  @keyframes floatUp {
+    0% { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+    100% { 
+      opacity: 0; 
+      transform: translateY(-60px); 
+    }
+  }
+
+  /* Barre de défilement */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }

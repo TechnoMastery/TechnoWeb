@@ -3,49 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeu Pierre Feuille Ciseaux</title>
-    <link rel="stylesheet" href="rockpapercisor.css">
+    <title>TechnoMastery - Games - Rock Paper Scissors</title>
+    <link rel="stylesheet" href="../../../css/games/rockpapercisor.css">
+    <link rel="stylesheet" href="../../../css/global.css">
+    <link rel="stylesheet" href="../../../css/buttons.css">
 </head>
 <body>
-    <div class="game-container">
-        <!-- Titre du jeu -->
-        <h1>Pierre Feuille Ciseaux</h1>
-
-        <!-- Tableau de scores -->
-        <div class="score-board">
-            <div>
-                <p>Joueur</p>
-                <p class="score" id="player-score">0</p>
+    <header>
+        <h1>Jeu Pierre Feuille Ciseaux</h1>
+        <nav>
+            <h1>Rock paper scissors</h1>
+            <a href="../../gameHub/">Back</a><br>
+            <a href="../../../../TechnoWeb/">Home</a>
+        </nav>
+    </header>
+    <main>
+        <h2>Rock Paper Scissors</h2>
+        <p>Rock Paper Scissors is a hand game usually played between two people, in which each player simultaneously forms one of three shapes with an outstretched hand. The possible shapes are rock (a fist), paper (an open hand), and scissors (a fist with the index and middle fingers extended, forming a V).</p>
+        <p>The game has three possible outcomes other than a tie: rock crushes scissors (rock wins), scissors cuts paper (scissors win), and paper covers rock (paper wins).</p>
+        <div class="game-container">
+            <div class="score-board">
+                <div>
+                    <p>Player</p>
+                    <p class="score" id="player-score">0</p>
+                </div>
+                <div>
+                    <p>Computer</p>
+                    <p class="score" id="computer-score">0</p>
+                </div>
             </div>
-            <div>
-                <p>Ordinateur</p>
-                <p class="score" id="computer-score">0</p>
+            <div class="result" id="result">Make a choice !</div>
+            <div class="choices">
+                <button class="choice" id="rock" title="Pierre">🪨</button>
+                <button class="choice" id="paper" title="Feuille">🍂</button>
+                <button class="choice" id="scissors" title="Ciseaux">✂️</button>
             </div>
+            <p class="action-message">Click on an icon to play</p>
+            <div class="game-history">
+                <h3>Games history</h3>
+                <div id="history-list"></div>
+            </div>
+            <button class="reset-button" id="reset">Reset score</button>
         </div>
-
-        <!-- Affichage du résultat du round -->
-        <div class="result" id="result">Faites votre choix !</div>
-
-        <!-- Boutons de choix (émoticônes) -->
-        <div class="choices">
-            <button class="choice" id="rock" title="Pierre">🪨</button>
-            <button class="choice" id="paper" title="Feuille">🍂</button>
-            <button class="choice" id="scissors" title="Ciseaux">✂️</button>
-        </div>
-
-        <!-- Message supplémentaire -->
-        <p class="action-message">Cliquez sur une icône pour jouer</p>
-
-        <!-- Historique des parties -->
-        <div class="game-history">
-            <h3>Historique des parties</h3>
-            <div id="history-list"></div>
-        </div>
-
-        <!-- Bouton pour réinitialiser le score -->
-        <button class="reset-button" id="reset">Réinitialiser le score</button>
-    </div>
-
-    <script src="rockpapercisor.js"></script>
+    </main>
+    <footer>
+        <p>TechnoMastery - Minecraft modding compmunity</p>
+    </footer>
+    <script src="../../../scripts/games/rockpapercisor.js"></script>
 </body>
 </html>
