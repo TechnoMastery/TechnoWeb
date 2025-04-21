@@ -1,65 +1,159 @@
-.rules {
-    color: rgb(109, 77, 16);
-    background-color:rgba(8, 127, 255, 0.555);
+body {
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  background-color: #f0f8ff;
+  margin: 0;
+  padding: 20px;
 }
 
-.game-memory {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background: #f0f0f0;
+h1 {
+  color: #FF6B6B;
+  font-size: 3em;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient 3s ease infinite;
+  background-size: 200% 200%;
 }
-.memory-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 100px); /* 5 colonnes */
-    grid-template-rows: repeat(4, 100px);    /* 4 lignes */
-    gap: 1cm; /* Espace de 1 cm entre les cartes */
-    align-items: center;
-    justify-items: center;
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
+
+/* Style des boutons */
+.btn {
+  padding: 15px 40px;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  margin: 10px;
+}
+
+#startBtn {
+  background: linear-gradient(45deg, #4ECDC4, #FF6B6B);
+}
+
+#startBtn:hover {
+  background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+  transform: translateY(-5px);
+  box-shadow: 0 7px 20px rgba(0,0,0,0.3);
+}
+
+.difficulty-btn {
+  background: #3498db;
+  width: 200px;
+}
+
+.difficulty-btn:hover {
+  background: #2980b9;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.return-btn {
+  background: #e74c3c;
+  margin-top: 20px;
+}
+
+.return-btn:hover {
+  background: #c0392b;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.play-again-btn {
+  background: #2ecc71;
+}
+
+.play-again-btn:hover {
+  background: #27ae60;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+}
+
+#startScreen {
+  background-color: rgba(255,255,255,0.9);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Cache les autres écrans initialement */
+#difficultyScreen, #gameScreen, #endScreen {
+  display: none;
+  background-color: rgba(255,255,255,0.9);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Styles pour le plateau de jeu */
+.game-grid {
+  display: grid;
+  gap: 10px;
+  margin: 20px auto;
+}
+
 .card {
-    background-color: #4caf50;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    cursor: pointer;
-    transition: transform 0.3s;
+  width: 80px;
+  height: 80px;
+  background-color: #6c5ce7;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
+
 .card:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
 }
-.carte {
-    width: 100px;
-    height: 100px;
-    perspective: 1000px;
-  }
-  
-  .face {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    backface-visibility: hidden;
-    border-radius: 8px;
-  }
-  
-  .recto {
-    background: #4caf50;
-    transform: rotateY(180deg);
-  }
-  
-  .verso {
-    background: #ccc;
-  }
-  
-  .inner {
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.5s;
-    position: relative;
-  }
-  
-  .carte.reveal .inner {
-    transform: rotateY(180deg);
-  }
+
+.card.flipped {
+  transform: rotateY(180deg);
+  background-color: #fff;
+  color: #333;
+}
+
+.card.matched {
+  background-color: #2ecc71;
+  transform: rotateY(180deg);
+  pointer-events: none;
+}
+
+.game-info {
+  margin-bottom: 20px;
+  font-size: 1.2em;
+}
+
+.timer, .moves {
+  display: inline-block;
+  margin: 0 15px;
+  padding: 8px 15px;
+  background-color: #f1c40f;
+  border-radius: 20px;
+  color: #333;
+  font-weight: bold;
+}
