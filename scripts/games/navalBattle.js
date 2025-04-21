@@ -7,7 +7,7 @@ function writeStatus(content) {
     document.getElementById('creatingStatus').textContent = "Game Status : " + content;
 }
 function switchPage() {
-    window.location.replace('/TechnoMastery/pages/gameHub/navalBattle/game-settings')
+    window.location.replace('/TechnoWeb/pages/gameHub/navalBattle/game-settings')
 }
 function status2() {
     writeStatus("Starting game info saving")
