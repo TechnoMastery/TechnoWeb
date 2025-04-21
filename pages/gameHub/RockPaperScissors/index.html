@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu Pierre Feuille Ciseaux</title>
+    <link rel="stylesheet" href="rockpapercisor.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Titre du jeu -->
+        <h1>Pierre Feuille Ciseaux</h1>
+
+        <!-- Tableau de scores -->
+        <div class="score-board">
+            <div>
+                <p>Joueur</p>
+                <p class="score" id="player-score">0</p>
+            </div>
+            <div>
+                <p>Ordinateur</p>
+                <p class="score" id="computer-score">0</p>
+            </div>
+        </div>
+
+        <!-- Affichage du résultat du round -->
+        <div class="result" id="result">Faites votre choix !</div>
+
+        <!-- Boutons de choix (émoticônes) -->
+        <div class="choices">
+            <button class="choice" id="rock" title="Pierre">🪨</button>
+            <button class="choice" id="paper" title="Feuille">🍂</button>
+            <button class="choice" id="scissors" title="Ciseaux">✂️</button>
+        </div>
+
+        <!-- Message supplémentaire -->
+        <p class="action-message">Cliquez sur une icône pour jouer</p>
+
+        <!-- Historique des parties -->
+        <div class="game-history">
+            <h3>Historique des parties</h3>
+            <div id="history-list"></div>
+        </div>
+
+        <!-- Bouton pour réinitialiser le score -->
+        <button class="reset-button" id="reset">Réinitialiser le score</button>
+    </div>
+
+    <script src="rockpapercisor.js"></script>
+</body>
+</html>

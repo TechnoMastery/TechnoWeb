@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #eef1f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.game-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.score-board {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+}
+
+.score {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.result {
+    font-size: 18px;
+    margin: 20px 0;
+    height: 24px;
+}
+
+.choices {
+    display: flex;
+    justify-content: space-around;
+    margin: 30px 0;
+}
+
+.choice {
+    background: none;
+    border: none;
+    font-size: 50px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    background-color: #f8f8f8;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.choice:hover {
+    transform: scale(1.2);
+    background-color: #e0e0e0;
+}
+
+.choice:focus {
+    outline: none;
+}
+
+.action-message {
+    font-size: 18px;
+    margin-top: 20px;
+    color: #555;
+}
+
+.game-history {
+    margin-top: 20px;
+    max-height: 150px;
+    overflow-y: auto;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.history-item {
+    margin: 5px 0;
+    padding: 5px;
+    border-bottom: 1px solid #ddd;
+}
+
+.reset-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.reset-button:hover {
+    background-color: #45a049;
+}
+
+@media (max-width: 480px) {
+    .choices {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .game-container {
+        padding: 15px;
+    }
+}
