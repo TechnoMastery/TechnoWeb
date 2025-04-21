@@ -9,6 +9,19 @@
     <div id="startScreen" class="screen">
         <h1>Memory</h1>
         <button id="startBtn" class="btn">Jouer</button>
+        
+        <div class="rules-container">
+            <h3>Rules</h3>
+            <p>The rules are simple : you have to find the pairs in the shortest time possible.<br>
+            Click on a card to start. The timer begins when you turn the first card.</p>
+            <p>When you find a pair, the cards will stay turned. If you don't find a pair, the cards will turn back after 1 second.</p>
+            <p>When you find all the pairs, the game is over and you can see your time.</p>
+            <p>Good luck!</p>
+            
+            <h3>Scoreboard :</h3>
+            <p>The scoreboard can't be displayed yet, because we can't save the scores in the server.<br>
+            We will try to make that possible, but for the moment we can't. You'll still be able to see your score, and your best one as long as you don't refresh or quit the game.</p>
+        </div>
     </div>
 
     <!-- Écran de difficulté -->
@@ -25,6 +38,7 @@
         <div class="game-info">
             <div class="timer">Temps: <span id="time">0</span>s</div>
             <div class="moves">Coups: <span id="moves">0</span></div>
+            <div class="best-score">Meilleur: <span id="bestScore">-</span></div>
         </div>
         <div id="gameGrid" class="game-grid"></div>
         <button class="btn return-btn" id="returnFromGame">Abandonner</button>

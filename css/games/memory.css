@@ -24,7 +24,6 @@ h1 {
   100% { background-position: 0% 50%; }
 }
 
-/* Style des boutons */
 .btn {
   padding: 15px 40px;
   color: white;
@@ -94,7 +93,6 @@ h1 {
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-/* Cache les autres écrans initialement */
 #difficultyScreen, #gameScreen, #endScreen {
   display: none;
   background-color: rgba(255,255,255,0.9);
@@ -103,7 +101,6 @@ h1 {
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-/* Styles pour le plateau de jeu */
 .game-grid {
   display: grid;
   gap: 10px;
@@ -155,5 +152,37 @@ h1 {
   background-color: #f1c40f;
   border-radius: 20px;
   color: #333;
+  font-weight: bold;
+}
+
+.rules-container {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.rules-container h3 {
+  color: #6c5ce7;
+  margin-top: 20px;
+  border-bottom: 2px solid #6c5ce7;
+  padding-bottom: 5px;
+}
+
+.rules-container p {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+.best-score {
+  display: inline-block;
+  margin: 0 15px;
+  padding: 8px 15px;
+  background-color: #6c5ce7;
+  border-radius: 20px;
+  color: white;
   font-weight: bold;
 }
