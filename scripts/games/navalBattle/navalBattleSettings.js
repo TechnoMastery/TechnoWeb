@@ -56,7 +56,8 @@ function changeColor(playerNb) {
             alert("This isn't a valid color !");
             return;
         };
-        playersColor[newColorIndex] = playersColor[playerNb];
+        const changeColor = playersColor[playerNb];
+        playersColor[newColorIndex] = changeColor;
         playersColor[playerNb] = newColor;
         console.log("Change successfull !");
         alert("Your color has been succefully changed with the player " + newColorIndex);
