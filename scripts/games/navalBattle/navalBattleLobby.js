@@ -1,5 +1,6 @@
 let playerNames = [];
 let gameName;
+let gameInfos = JSON.parse(localStorage.getItem("gameInfos"));
 const gamesList = document.getElementById('games-list');
 let gamesListJson = JSON.parse(localStorage.getItem('gamesList'));
 let playerCount;
@@ -100,5 +101,22 @@ function deleteGame(gameNb) {
     location.reload();
 }
 function resetALL() {
-    
+    const deleteVerif = prompt("Are you sure you want to delete all ?", "Enter NavalBattle to continue");
+    if(deleteVerif !== "NavalBattle") {
+        alert("Reset of the game canceled.");
+        return;
+    }
+    if(gamesListJson) {
+        for(let i = 1; i <= gamesListJson.gameCount; i++) {
+            const j = i-1;
+            const gameID = gamesListJson.activeGameCount[j];
+            const fullGameID = "nb_game_" + gameID;
+            localStorage.removeItem(fullGameID);
+        };
+        localStorage.removeItem('gamesList');
+    };
+    if(gameInfos) {
+        localStorage.removeItem('gameInfo');
+    }
+    alert("All naval battle data has been deleted. No data about this game is now stored in your browser.");
 }
