@@ -27,12 +27,10 @@ function quiteGame() {
         name: gameName,
         playerCount: playerCount,
         gameID: gameID,
-        playerColor: {
             player1: playersColor[1],
             player2: playersColor[2],
             player3: playersColor[3],
-            player4: playersColor[4]
-        },
+            player4: playersColor[4],
         gameStatus: "saved"
     };
     localStorage.setItem(fullGameID, JSON.stringify(savingData));
