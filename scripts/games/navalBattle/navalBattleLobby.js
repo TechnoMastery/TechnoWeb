@@ -7,6 +7,7 @@ let playerCount;
 document.getElementById('creatingStatus').textContent = "Game Status : Waiting for game info being submited...";
 
 if(!gamesListJson) {
+    console.log("gamesList file not existing. Creating one...")
     const writeGameLists = {
         gameCount: 0,
         totalGameCount: 0,
@@ -25,7 +26,7 @@ function fillGamesList() {
             const gameData = JSON.parse(localStorage.getItem(getGameId));
             const gameItem = document.createElement('div');
             gameItem.innerHTML = `
-                <span>Game ${getGameNb} : ${gameData.name} with ${gameData.playerCount} players. <button class="buttons button-red" onclick="deleteGame(${getGameNb})">Delete game (permanent)</button></span>
+                <span>Game ${getGameNb} : ${gameData.name} with ${gameData.playerCount} players. <button class="buttons button-green" onclick="loadGame(${getGameNb})">Load game (permanent)</button> <button class="buttons button-red" onclick="deleteGame(${getGameNb})">Delete game (permanent)</button></span>
             `;
             gamesList.prepend(gameItem);
         }
@@ -53,6 +54,7 @@ function createGame() {
     playerCount = parseInt(document.getElementById('playerCount').value);
 
     if(!gameName || isNaN(playerCount)) {
+        console.error("Game infos hasn't been completed corectrly.")
         alert('Please complete the 2 inputs corectely');
         return;
     };
@@ -73,11 +75,34 @@ function createGame() {
     const newGameId = "nb_game_" + newGameNb;
     localStorage.setItem("gamesList", JSON.stringify(newGamesCount));
     localStorage.setItem(newGameId, JSON.stringify(gameData));
+    localStorage.setItem("gameInfo", JSON.stringify(gameData));
 
     console.log("Game saved as 'gameData' JSON : " + gameData);
     document.getElementById('creatingStatus').textContent = "Game Status : Waiting popup from being close...";
+    console.log("Sucefully created game with ID " + newGameId +".");
     alert("Game created and saved ! Your game is being processed, you can close this alert and wait for being trasfered.");
     setTimeout(status2(), 2000);
+}
+
+function loadGame(gameNB) {
+    const gameID = "nb_game_" + gameNB;
+    const gameInfosExtr = JSON.parse(localStorage.getItem(gameID));
+    if(!gameInfosExtr) {
+        console.error("Loading game with id " + gameID + " went wrong.");
+        alert("Something went wrong, this game look to have no data files... We can't load it.");
+        return;
+    };
+    const gameName = gameInfosExtr.name;
+    const gamePlayerCount = gameInfosExtr.playerCount;
+    const gameInfos = {
+        name: gameName,
+        gameID: gameID,
+        playerCount : gamePlayerCount
+    };
+    localStorage.setItem("gameInfo", JSON.stringify(gameInfos));
+    console.log("Succefully loaded game with ID " + gameID + ".");
+    alert("Game loaded. You will be transfered when you close this popup.");
+    switchPage();
 }
 
 function deleteGame(gameNb) {
@@ -88,6 +113,7 @@ function deleteGame(gameNb) {
     let newActiveGameCount = gamesListJson.activeGameCount;
     const deleteGameIndex = newActiveGameCount.indexOf(gameNb);
     if(deleteGameIndex == -1) {
+        console.error("Deleting game with ID " + deleteGameId + " went wrong.");
         alert("ERROR : game not found. Try F5 or ctrl + F5, and retry.");
         return;
     };
@@ -103,6 +129,7 @@ function deleteGame(gameNb) {
 function resetALL() {
     const deleteVerif = prompt("Are you sure you want to delete all ?", "Enter NavalBattle to continue");
     if(deleteVerif !== "NavalBattle") {
+        console.log("Canceled delection.")
         alert("Reset of the game canceled.");
         return;
     }
@@ -117,7 +144,8 @@ function resetALL() {
     };
     if(gameInfos) {
         localStorage.removeItem('gameInfo');
-    }
+    };
+    console.log("ALL NAVAL BATTLE DATA DELETED")
     alert("All naval battle data has been deleted. No data about this game is now stored in your browser.");
     location.reload();
 }
