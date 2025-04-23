@@ -54,16 +54,16 @@ function createGame() {
     gameName = document.getElementById("gameName").value.trim();
     playerCount = parseInt(document.getElementById('playerCount').value);
 
+    if(gamesListJson.gameCount >= 10) {
+        console.error("Save limit block us from creating a new one.");
+        alert("You have to much saves (10 or more). You can't create a new one. Try after deleting some of them.")
+    }
     if(!gameName || isNaN(playerCount)) {
         console.error("Game infos hasn't been completed corectrly.")
         alert('Please complete the 2 inputs corectely');
         return;
     };
-
-    const gameData = {
-        name: gameName,
-        playerCount: playerCount
-    };
+    const gameStatus = "Just created";
     const newGameNb = gamesListJson.totalGameCount +1;
     const gameCount = gamesListJson.gameCount+1;
     let activeGameCount = gamesListJson.activeGameCount;
@@ -74,6 +74,12 @@ function createGame() {
         activeGameCount: activeGameCount
     };
     const newGameId = "nb_game_" + newGameNb;
+    const gameData = {
+        name: gameName,
+        playerCount: playerCount,
+        gameID: newGameNb,
+        gameStatus: gameStatus
+    };
     localStorage.setItem("gamesList", JSON.stringify(newGamesCount));
     localStorage.setItem(newGameId, JSON.stringify(gameData));
     localStorage.setItem("gameInfo", JSON.stringify(gameData));
@@ -95,12 +101,15 @@ function loadGame(gameNB) {
     };
     const gameName = gameInfosExtr.name;
     const gamePlayerCount = gameInfosExtr.playerCount;
+    const gameStatus = "Loaded";
     const gameInfos = {
         name: gameName,
-        gameID: gameID,
+        gameID: gameNB,
+        gameStatus: gameStatus,
         playerCount : gamePlayerCount
     };
     localStorage.setItem("gameInfo", JSON.stringify(gameInfos));
+    localStorage.setItem(gameID, JSON.stringify(gameInfos));
     console.log("Succefully loaded game with ID " + gameID + ".");
     alert("Game loaded. You will be transfered when you close this popup.");
     switchPage();
