@@ -4,8 +4,8 @@ let playersColor = [null, "red", "green", "blue", "yellow"];
 let gameName = gameInfoJson.name;
 const playerColorList = document.getElementById("players-color");
 const gameID = gameInfoJson.gameID;
-const gameInfoFull = JSON.parse(localStorage.getItem(fullGameID));
 const fullGameID = "nb_game_" + gameID;
+const gameInfoFull = JSON.parse(localStorage.getItem(fullGameID));
 if(gameInfoJson) {
     document.getElementById('gameName').textContent = gameName;
     document.getElementById('playerCount').textContent = playerCount;
