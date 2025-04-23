@@ -7,20 +7,23 @@ document.getElementById('creatingStatus').textContent = "Game Status : Waiting f
 
 if(!gamesListJson) {
     const writeGameLists = {
-        gameCount: 0
-    }
+        gameCount: 0,
+        totalGameCount: 0,
+        activeGameCount: []
+    };
     localStorage.setItem("gamesList", JSON.stringify(writeGameLists))
     gamesListJson = JSON.parse(localStorage.getItem("gamesList"))
-}
+};
 
 function fillGamesList() {
     if(gamesListJson) {
         for(let i=1; i <= gamesListJson.gameCount; i++) {
-            const getGameId = "nb_game_" + i;
+            const getGameNb = gamesListJson.activeGameCount[i];
+            const getGameId = "nb_game_" + getGameNb;
             const gameData = JSON.parse(localStorage.getItem(getGameId));
             const gameItem = document.createElement('div');
             gameItem.innerHTML = `
-                <span>Game ${i} : ${gameData.name} with ${gameData.playerCount} players. <button class="buttons button-red" onclick="deleteGame(${i})">Delete game (permanent)</button></span>
+                <span>Game ${getGameNb} : ${gameData.name} with ${gameData.playerCount} players. <button class="buttons button-red" onclick="deleteGame(${getGameNb})">Delete game (permanent)</button></span>
             `;
             gamesList.prepend(gameItem);
         }
@@ -56,9 +59,14 @@ function createGame() {
         name: gameName,
         playerCount: playerCount
     };
-    const newGameNb = gamesListJson.gameCount +1;
+    const newGameNb = gamesListJson.totalGameCount +1;
+    const gameCount = gamesListJson.gameCount+1;
+    let activeGameCount = gamesListJson.activeGameCount;
+    activeGameCount.push(newGameNb)
     const newGamesCount = {
-        gameCount: newGameNb
+        gameCount: gameCount,
+        totalGameCount: newGameNb,
+        activeGameCount: activeGameCount
     };
     const newGameId = "nb_game_" + newGameNb;
     localStorage.setItem("gamesList", JSON.stringify(newGamesCount));
@@ -73,5 +81,20 @@ function createGame() {
 function deleteGame(gameNb) {
     const deleteGameId = "nb_game_" + gameNb;
     localStorage.removeItem(deleteGameId);
+    const gameCount = gamesListJson.gameCount-1;
+    const totalGameCount = gamesListJson.totalGameCount;
+    let newActiveGameCount = gamesListJson.activeGameCount;
+    const deleteGameIndex = newActiveGameCount.indexOf(gameNb);
+    if(deleteGameIndex == -1) {
+        alert("ERROR : game not found. Try F5 or ctrl + F5, and retry.");
+        return;
+    };
+    newActiveGameCount.splice(deleteGameIndex, 1);
+    const deleteNewGamesCount = {
+        gameCount: gameCount,
+        totalGameCount: totalGameCount,
+        activeGameCount: newActiveGameCount
+    };
+    localStorage.setItem("gamesList", JSON.stringify(deleteNewGamesCount));
     location.reload();
 }
