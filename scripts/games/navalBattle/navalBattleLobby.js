@@ -1,14 +1,23 @@
 let playerNames = [];
 let gameName;
 const gamesList = document.getElementById('games-list');
-const gamesListJson = JSON.parse(localStorage.getItem('gamesList'));
+let gamesListJson = JSON.parse(localStorage.getItem('gamesList'));
 let playerCount;
-document.getElementById('creatingStatus').textContent = "Game Status : Waiting for game info being subited...";
+document.getElementById('creatingStatus').textContent = "Game Status : Waiting for game info being submited...";
+
+if(!gamesListJson) {
+    const writeGameLists = {
+        gameCount: 0
+    }
+    localStorage.setItem("gamesList", JSON.stringify(writeGameLists))
+    gamesListJson = JSON.parse(localStorage.getItem("gamesList"))
+}
 
 function fillGamesList() {
     if(gamesListJson) {
         for(let i=1; i <= gamesListJson.gameCount; i++) {
-            const gameData = gamesListJson[i];
+            const getGameId = "nb_game_" + i;
+            const gameData = JSON.parse(localStorage.getItem(getGameId));
             const gameItem = document.createElement('div');
             gameItem.innerHTML = `
                 <span>Game ${i} : ${gameData.name} with ${gameData.playerCount} players.</span>
@@ -16,7 +25,7 @@ function fillGamesList() {
             gamesList.prepend(gameItem);
         }
     }
-}
+};
 fillGamesList();
 
 function writeStatus(content) {
