@@ -27,29 +27,18 @@ function quiteGame() {
         name: gameName,
         playerCount: playerCount,
         gameID: gameID,
+        playerColor: {
+            player1: playersColor[1],
+            player2: playersColor[2],
+            player3: playersColor[3],
+            player4: playersColor[4]
+        },
         gameStatus: "saved"
     };
     localStorage.setItem(fullGameID, JSON.stringify(savingData));
     // end : return to the corect page
     console.log("Saving acomplished. Going back to lobby...");
     window.location.replace('/TechnoWeb/pages/gameHub/navalBattle/game-lobby');
-};
-function changeGameName() {
-    let newGameName = document.getElementById("newGameName");
-    if(!newGameName) {
-        console.error("Unable to change name, becaue he is not corect.");
-        alert("Unable to change name. Please complete corectly.");
-        return;
-    };
-    gameName = newGameName;
-    console.log("Name changed in " + gameName);
-    alert("Named changed in " + gameName);
-    const gameInfos = {
-        name: gameName,
-        gameStatus: gameInfoFull.gameStatus,
-        playerCount: gameInfoFull.playerCount,
-        gameID: gameID
-    }
 };
 for(let i=1; i <= playerCount; i++) {
     const gameItem = document.createElement('div');
