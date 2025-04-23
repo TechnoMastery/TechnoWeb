@@ -27,10 +27,10 @@ function quiteGame() {
         name: gameName,
         playerCount: playerCount,
         gameID: gameID,
-            player1: playersColor[1],
-            player2: playersColor[2],
-            player3: playersColor[3],
-            player4: playersColor[4],
+        player1: playersColor[1],
+        player2: playersColor[2],
+        player3: playersColor[3],
+        player4: playersColor[4],
         gameStatus: "saved"
     };
     localStorage.setItem(fullGameID, JSON.stringify(savingData));
@@ -60,6 +60,17 @@ function changeColor(playerNb) {
         playersColor[playerNb] = newColor;
         console.log("Change successfull !");
         alert("Your color has been succefully changed with the player " + newColorIndex);
+        const savingData = {
+            name: gameName,
+            playerCount: playerCount,
+            gameID: gameID,
+            player1: playersColor[1],
+            player2: playersColor[2],
+            player3: playersColor[3],
+            player4: playersColor[4],
+            gameStatus: "saved"
+        };
+        localStorage.setItem(fullGameID, JSON.stringify(savingData));
         window.location.reload();
     }
 }
