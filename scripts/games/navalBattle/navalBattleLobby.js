@@ -53,30 +53,16 @@ function createGame() {
     };
 
     const gameData = {
-        gameName: gameName,
-        playerCount: playerCount
-    };
-    localStorage.setItem('gameInfos', JSON.stringify(gameData));
-
-    let newGamesListJson;
-    if(gamesListJson) {
-        newGamesListJson = JSON.parse(localStorage.getItem('gamesList'));
-        newGamesListJson.gameCount = newGamesListJson.gameCount +1;
-        const newGameId = newGamesListJson.gameCount;
-        newGamesListJson[newGameId] = {
         name: gameName,
         playerCount: playerCount
-        };
-    } else {
-        newGamesListJson = {
-            gameCount: 1,
-            "1": {
-                name: gameName,
-                playerCount: playerCount
-            }
-        }
     };
-    localStorage.setItem('gamesList', JSON.stringify(newGamesListJson));
+    const newGameNb = gamesListJson.gameCount +1;
+    const newGamesCount = {
+        gameCount: newGameNb
+    };
+    const newGameId = "nb_game_" + newGameNb;
+    localStorage.setItem("gamesList", JSON.stringify(newGamesCount));
+    localStorage.setItem(newGameId, JSON.stringify(gameData));
 
     console.log("Game saved as 'gameData' JSON : " + gameData);
     document.getElementById('creatingStatus').textContent = "Game Status : Waiting popup from being close...";
