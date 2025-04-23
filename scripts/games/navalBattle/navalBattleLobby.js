@@ -119,4 +119,5 @@ function resetALL() {
         localStorage.removeItem('gameInfo');
     }
     alert("All naval battle data has been deleted. No data about this game is now stored in your browser.");
+    location.reload();
 }
