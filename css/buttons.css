@@ -72,3 +72,13 @@
     background-color: orange;
     color: white;
   }
+
+  .button-darkred {
+    background-color: white; 
+    color: black; 
+    border: 2px solid darkred;
+  }
+  .button-darkred:hover {
+    background-color: darkred;
+    color: white;
+  }
