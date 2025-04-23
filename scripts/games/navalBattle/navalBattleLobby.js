@@ -20,7 +20,7 @@ function fillGamesList() {
             const gameData = JSON.parse(localStorage.getItem(getGameId));
             const gameItem = document.createElement('div');
             gameItem.innerHTML = `
-                <span>Game ${i} : ${gameData.name} with ${gameData.playerCount} players.</span>
+                <span>Game ${i} : ${gameData.name} with ${gameData.playerCount} players. <button class="buttons button-red">Delete game (permanent)</button></span>
             `;
             gamesList.prepend(gameItem);
         }
@@ -68,4 +68,10 @@ function createGame() {
     document.getElementById('creatingStatus').textContent = "Game Status : Waiting popup from being close...";
     alert("Game created and saved ! Your game is being processed, you can close this alert and wait for being trasfered.");
     setTimeout(status2(), 2000);
+}
+
+function deleteGame(gameNb) {
+    const deleteGameId = "nb_game_" + gameNb;
+    localStorage.removeItem(deleteGameId);
+    location.reload();
 }
