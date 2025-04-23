@@ -5,6 +5,7 @@ const gamesList = document.getElementById('games-list');
 let gamesListJson = JSON.parse(localStorage.getItem('gamesList'));
 let playerCount;
 document.getElementById('creatingStatus').textContent = "Game Status : Waiting for game info being submited...";
+localStorage.removeItem("gameInfo")
 
 if(!gamesListJson) {
     console.log("gamesList file not existing. Creating one...")
