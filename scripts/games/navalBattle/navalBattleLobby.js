@@ -18,7 +18,8 @@ if(!gamesListJson) {
 function fillGamesList() {
     if(gamesListJson) {
         for(let i=1; i <= gamesListJson.gameCount; i++) {
-            const getGameNb = gamesListJson.activeGameCount[i];
+            const j = i-1;
+            const getGameNb = gamesListJson.activeGameCount[j];
             const getGameId = "nb_game_" + getGameNb;
             const gameData = JSON.parse(localStorage.getItem(getGameId));
             const gameItem = document.createElement('div');
@@ -62,7 +63,7 @@ function createGame() {
     const newGameNb = gamesListJson.totalGameCount +1;
     const gameCount = gamesListJson.gameCount+1;
     let activeGameCount = gamesListJson.activeGameCount;
-    activeGameCount.push(newGameNb)
+    activeGameCount.push(newGameNb);
     const newGamesCount = {
         gameCount: gameCount,
         totalGameCount: newGameNb,
