@@ -99,3 +99,6 @@ function deleteGame(gameNb) {
     localStorage.setItem("gamesList", JSON.stringify(deleteNewGamesCount));
     location.reload();
 }
+function resetALL() {
+    
+}
