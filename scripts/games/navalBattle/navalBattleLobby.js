@@ -56,7 +56,8 @@ function createGame() {
 
     if(gamesListJson.gameCount >= 10) {
         console.error("Save limit block us from creating a new one.");
-        alert("You have to much saves (10 or more). You can't create a new one. Try after deleting some of them.")
+        alert("You have to much saves (10 or more). You can't create a new one. Try after deleting some of them.");
+        return;
     }
     if(!gameName || isNaN(playerCount)) {
         console.error("Game infos hasn't been completed corectrly.")
