@@ -110,7 +110,6 @@ function loadGame(gameNB) {
         playerCount : gamePlayerCount
     };
     localStorage.setItem("gameInfo", JSON.stringify(gameInfos));
-    localStorage.setItem(gameID, JSON.stringify(gameInfos));
     console.log("Succefully loaded game with ID " + gameID + ".");
     alert("Game loaded. You will be transfered when you close this popup.");
     switchPage();

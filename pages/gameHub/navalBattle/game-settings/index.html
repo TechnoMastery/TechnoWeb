@@ -20,7 +20,14 @@
         <h3>Player count : <span id="playerCount">0 [ERROR]</span></h3>
         <p>Hello ! You are <span id="playerCount2">0 [ERROR]</span> players !</p>
         <p>The game is <b><span id="gameStatus">[ERROR]</span></b>.</p>
-        <p style="color: red;">Please use the buttons to go back, or you will probably corupt your save. This apply to all pages in the game.</p>
+        <p style="color: red;">Please use the buttons to go back, or you will probably corupt your save. This apply to all pages in the game.</p><br><br>
+        <h3>Game settings</h3>
+        <p>Here you can change the game settings. You can change the game name, the color and the fleet of the players (if it's the first loggin of the game).</p>
+        <p>To change the game name, please enter the new name in the input below and click on the button.</p>
+        <input type="text" id="newGameName" placeholder="Enter new game name" maxlength="10" minlength="3"><br>
+        <button class="buttons button-purple" onclick="changeGameName()">Change game name</button><br><br>
+        <p>To change the color of the players, please enter the new color in the input below and click on the button.</p>
+        <div id="players-color"></div>
     </main>
     <footer>
         <p>TechnoMastery - Minecraft modding community</p>

@@ -1,7 +1,10 @@
 const gameInfoJson = JSON.parse(localStorage.getItem('gameInfo'));
 const playerCount = gameInfoJson.playerCount;
-const gameName = gameInfoJson.name;
+let playersColor = [null, "red", "green", "blue", "yellow"];
+let gameName = gameInfoJson.name;
+const playerColorList = document.getElementById("players-color");
 const gameID = gameInfoJson.gameID;
+const gameInfoFull = JSON.parse(localStorage.getItem(fullGameID));
 const fullGameID = "nb_game_" + gameID;
 if(gameInfoJson) {
     document.getElementById('gameName').textContent = gameName;
@@ -30,4 +33,46 @@ function quiteGame() {
     // end : return to the corect page
     console.log("Saving acomplished. Going back to lobby...");
     window.location.replace('/TechnoWeb/pages/gameHub/navalBattle/game-lobby');
+};
+function changeGameName() {
+    let newGameName = document.getElementById("newGameName");
+    if(!newGameName) {
+        console.error("Unable to change name, becaue he is not corect.");
+        alert("Unable to change name. Please complete corectly.");
+        return;
+    };
+    gameName = newGameName;
+    console.log("Name changed in " + gameName);
+    alert("Named changed in " + gameName);
+    const gameInfos = {
+        name: gameName,
+        gameStatus: gameInfoFull.gameStatus,
+        playerCount: gameInfoFull.playerCount,
+        gameID: gameID
+    }
+};
+for(let i=1; i <= playerCount; i++) {
+    const gameItem = document.createElement('div');
+    gameItem.innerHTML = `
+        <span>Player ${i} : color ${playersColor[i]} <button onclick="changeColor(${i})" class="buttons button-${playersColor[i]}">Change</button>
+    `;
+    playerColorList.append(gameItem);
+};
+function changeColor(playerNb) {
+    let newColor = prompt("Your actual color is " + playersColor[playerNb] + ". Chose one of the 3 other color, writting the name here (you can have 'red', 'green', 'yellow' or 'blue').", playersColor[playerNb]);
+    if(newColor == playersColor[playerNb]) {
+        alert("Nothing changed, you selected your own color !");
+        return;
+    } else {
+        const newColorIndex = playersColor.indexOf(newColor);
+        if(newColorIndex == -1 || newColorIndex == null) {
+            alert("This isn't a valid color !");
+            return;
+        };
+        playersColor[newColorIndex] = playersColor[playerNb];
+        playersColor[playerNb] = newColor;
+        console.log("Change successfull !");
+        alert("Your color has been succefully changed with the player " + newColorIndex);
+        window.location.reload();
+    }
 }
