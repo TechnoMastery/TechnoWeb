@@ -1,4 +1,4 @@
-body {
+  body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
     background: #0a0a0a;
@@ -81,4 +81,11 @@ body {
     background: #111;
     border-top: 2px solid #444;
     font-size: 0.9em;
+  }
+
+  #verif-status {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #00ffaa;
   }
