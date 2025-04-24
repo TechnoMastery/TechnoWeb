@@ -48,7 +48,7 @@ for(let i=1; i <= playerCount; i++) {
     playerColorList.append(gameItem);
 };
 function changeColor(playerNb) {
-    let newColor = prompt("Your actual color is " + playersColor[playerNb] + ". Chose one of the 3 other color, writting the name here (you can have 'red', 'green', 'yellow' or 'blue').", playersColor[playerNb]);
+    let newColor = prompt("Your actual color is " + playersColor[playerNb] + ". Chose one of the 3 other color, writting the name here (you can have 'red', 'green', 'purple' or 'blue').", playersColor[playerNb]);
     if(newColor == playersColor[playerNb]) {
         alert("Nothing changed, you selected your own color !");
         return;
