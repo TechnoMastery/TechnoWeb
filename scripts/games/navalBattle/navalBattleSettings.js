@@ -21,7 +21,7 @@ function saveNewDatas(enableGameInfo, enableReloadPage, gameStatus) {
             playersColor[4]
         ],
         gameStatus: gameStatus,
-        allowFleetsChange = allowChangeFleets,
+        allowFleetsChange: allowChangeFleets,
         playerFleets: [null,
             playerFleets[1],
             playerFleets[2],
