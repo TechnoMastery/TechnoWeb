@@ -1,12 +1,12 @@
 const gameInfoJson = JSON.parse(localStorage.getItem('gameInfo'));
 const playerCount = gameInfoJson.playerCount;
-let playersColor = [null, "red", "green", "blue", "yellow"];
 let gameName = gameInfoJson.name;
 const playerColorList = document.getElementById("players-color");
 const gameID = gameInfoJson.gameID;
 const fullGameID = "nb_game_" + gameID;
 const gameInfoFull = JSON.parse(localStorage.getItem(fullGameID));
-if(gameInfoJson) {
+let playersColor = gameInfoFull.playerColors;
+if(gameInfoFull) {
     document.getElementById('gameName').textContent = gameName;
     document.getElementById('playerCount').textContent = playerCount;
     document.getElementById('playerCount2').textContent = playerCount;
@@ -27,10 +27,12 @@ function quiteGame() {
         name: gameName,
         playerCount: playerCount,
         gameID: gameID,
-        player1: playersColor[1],
-        player2: playersColor[2],
-        player3: playersColor[3],
-        player4: playersColor[4],
+        playerColors: [null,
+            playersColor[1],
+            playersColor[2],
+            playersColor[3],
+            playersColor[4]
+        ],
         gameStatus: "saved"
     };
     localStorage.setItem(fullGameID, JSON.stringify(savingData));
@@ -65,10 +67,12 @@ function changeColor(playerNb) {
             name: gameName,
             playerCount: playerCount,
             gameID: gameID,
-            player1: playersColor[1],
-            player2: playersColor[2],
-            player3: playersColor[3],
-            player4: playersColor[4],
+            playerColors: [null,
+                playersColor[1],
+                playersColor[2],
+                playersColor[3],
+                playersColor[4]
+            ],
             gameStatus: "saved"
         };
         localStorage.setItem(fullGameID, JSON.stringify(savingData));

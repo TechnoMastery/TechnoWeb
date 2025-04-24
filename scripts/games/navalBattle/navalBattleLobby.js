@@ -79,6 +79,12 @@ function createGame() {
         name: gameName,
         playerCount: playerCount,
         gameID: newGameNb,
+        playerColors: [null,
+            "red",
+            "green",
+            "blue",
+            "purple"
+        ],
         gameStatus: gameStatus
     };
     localStorage.setItem("gamesList", JSON.stringify(newGamesCount));
