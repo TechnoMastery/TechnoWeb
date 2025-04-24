@@ -1,3 +1,4 @@
+const fleetsIdList = ["default", "ghost", "undead"];
 const gameInfoJson = JSON.parse(localStorage.getItem('gameInfo'));
 const playerCount = gameInfoJson.playerCount;
 let gameName = gameInfoJson.name;
@@ -118,6 +119,16 @@ function changeGameName() {
     }
 };
 function selectFleet(playerID) {
-};
-function changePlayerFleets() {
+    const newFleet = prompt("Please enter you new wanted fleet ID here (name at the end of the description) :");
+    if(newFleet == playerFleets[playerID]) {
+        alert("It's already your fleet ! Nothing changed !");
+        return;
+    };
+    const fleetIndex = fleetsIdList.indexOf(newFleet);
+    if(fleetIndex == -1) {
+        alert("This isn't a valid fleet ID !");
+        return;
+    };
+    playerFleets[playerID] = newFleet;
+    saveNewDatas(false, true, "Loaded");
 };
