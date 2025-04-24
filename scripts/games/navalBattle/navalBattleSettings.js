@@ -82,6 +82,7 @@ function changeColor(playerNb) {
     }
 }
 function changeGameName() {
+    let newGameName =  document.getElementById("newGameName").value.trim();
     if(!newGameName) {
         alert("Unable to change name. Please complete the input corectly.");
         return;
