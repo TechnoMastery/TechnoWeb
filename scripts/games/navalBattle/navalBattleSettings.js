@@ -50,6 +50,21 @@ if(gameInfoFull) {
     alert('ERROR : No game info found. Please create one.');
     window.location.replace('/TechnoWeb/pages/gameHub/navalBattle/game-lobby')
 };
+if(!allowChangeFleets) {
+    document.getElementById("changeFleetsButton").toggleAttribute("disabled", true);
+    document.getElementById("changeFleetsButton").textContent = "Change fleets [game already started]"
+};
+function fillFleetsSection() {
+    for(let i=1; i <= gameInfoJson.playerCount; i++) {
+        const playerFleetList = document.getElementById("players-fleet");
+        const playerFleetItem = document.createElement('div');
+        playerFleetItem.innerHTML = `
+            <span>Actual fleet of player <b>${i}</b> is the <b>${playerFleets[i]}</b> one. <button class="buttons button-${playersColor[i]}" onclick="selectFleet(${i})">Select my new fleet</button></span>
+        `;
+        playerFleetList.append(playerFleetItem);
+    };
+};
+fillFleetsSection();
 if(gameStatus == "Just created") {
     document.getElementById("gameStatus").textContent = "just created and joined"
 };
@@ -100,4 +115,8 @@ function changeGameName() {
         saveNewDatas(true, true, "Loaded")
         alert("Name succefully changed name in " + gameName);
     }
-}
+};
+function selectFleet(playerID) {
+};
+function changePlayerFleets() {
+};

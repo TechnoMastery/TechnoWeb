@@ -25,11 +25,15 @@
         <p>Here you can change the game settings. You can change the game name, the color and the fleet of the players (if it's the first loggin of the game).</p>
         <h4>Game name</h4>
         <p>To change the game name, please enter the new name in the input below and click on the button.</p>
-        <input type="text", id="newGameName" required minlength="3" maxlength="10" size="12" placeholder="Enter the new game name">
+        <input type="text", id="newGameName" required minlength="3" maxlength="10" size="12" placeholder="Enter the new game name"><br>
         <button class="buttons button-blue" onclick="changeGameName()">Change game name</button><br><br>
         <h4>Players color</h4>
         <p>To change the color of the players, please enter the new color in the input below and click on the button.</p>
-        <div id="players-color"></div>
+        <div id="players-color"></div><br><br>
+        <h4>Players fleets</h4>
+        <p>To change the fleet of the players, please enter the new fleet in the input below and click on the button. Note : you won't be able to change fleets after the game begin.</p>
+        <div id="players-fleet"></div><br>
+        <button class="buttons button-blue", onclick="changePlayerFleets()", id="changeFleetsButton">Change fleets</button>
     </main>
     <footer>
         <p>TechnoMastery - Minecraft modding community</p>
