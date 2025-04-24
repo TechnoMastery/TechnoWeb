@@ -11,7 +11,7 @@ const interval = setInterval(() => {
   }
 }, 1000);
 
-// Fireworks animation
+
 setInterval(() => {
   const firework = document.createElement('div');
   firework.className = 'firework';
