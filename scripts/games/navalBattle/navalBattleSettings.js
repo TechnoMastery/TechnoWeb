@@ -3,6 +3,7 @@ const playerCount = gameInfoJson.playerCount;
 let gameName = gameInfoJson.name;
 const playerColorList = document.getElementById("players-color");
 const gameID = gameInfoJson.gameID;
+let allowChangeFleets = true;
 const fullGameID = "nb_game_" + gameID;
 const gameInfoFull = JSON.parse(localStorage.getItem(fullGameID));
 let playersColor = gameInfoFull.playerColors;
@@ -15,11 +16,12 @@ if(gameInfoFull) {
     window.location.replace('/TechnoWeb/pages/gameHub/navalBattle/game-lobby')
 };
 const gameStatus = gameInfoJson.gameStatus;
-if(gameStatus == "Loaded") {
+if(gameStatus == "Just created") {
     document.getElementById("gameStatus").textContent = "just created and joined"
 };
-if(gameStatus == "Just created") {
-    document.getElementById("gameStatus").textContent = "loaded"
+if(gameStatus == "Loaded") {
+    document.getElementById("gameStatus").textContent = "loaded";
+    allowChangeFleets = false;
 };
 function quiteGame() {
     document.getElementById("gameStatus").textContent = "saved";
@@ -76,6 +78,29 @@ function changeColor(playerNb) {
             gameStatus: "saved"
         };
         localStorage.setItem(fullGameID, JSON.stringify(savingData));
+        window.location.reload();
+    }
+}
+function changeGameName() {
+    if(!newGameName) {
+        alert("Unable to change name. Please complete the input corectly.");
+        return;
+    } else {
+        gameName = newGameName;
+        const savingData = {
+            name: gameName,
+            playerCount: playerCount,
+            gameID: gameID,
+            playerColors: [null,
+                playersColor[1],
+                playersColor[2],
+                playersColor[3],
+                playersColor[4]
+            ],
+            gameStatus: "saved"
+        };
+        localStorage.setItem(fullGameID, JSON.stringify(savingData));
+        alert("Name succefully changed name in " + gameName);
         window.location.reload();
     }
 }

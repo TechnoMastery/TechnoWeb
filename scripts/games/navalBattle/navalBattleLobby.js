@@ -19,7 +19,7 @@ if(!gamesListJson) {
 };
 
 function fillGamesList() {
-    if(gamesListJson) {
+    if(gamesListJson && gamesListJson.gameCount >= 1) {
         for(let i=1; i <= gamesListJson.gameCount; i++) {
             const j = i-1;
             const getGameNb = gamesListJson.activeGameCount[j];
@@ -31,6 +31,8 @@ function fillGamesList() {
             `;
             gamesList.prepend(gameItem);
         }
+    } else {
+        document.getElementById('games-list').textContent = "You have no games ! Create one !"
     }
 };
 fillGamesList();
