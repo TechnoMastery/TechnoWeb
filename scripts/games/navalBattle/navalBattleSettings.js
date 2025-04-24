@@ -100,7 +100,14 @@ function changeGameName() {
             ],
             gameStatus: "saved"
         };
+        const gameInfos = {
+            name: gameName,
+            gameID: gameID,
+            gameStatus: gameStatus,
+            playerCount : playerCount
+        };
         localStorage.setItem(fullGameID, JSON.stringify(savingData));
+        localStorage.setItem("gameInfo", JSON.stringify(gameInfos));
         alert("Name succefully changed name in " + gameName);
         window.location.reload();
     }

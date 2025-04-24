@@ -89,9 +89,15 @@ function createGame() {
         ],
         gameStatus: gameStatus
     };
+    const gameInfos = {
+        name: gameName,
+        gameID: gameNB,
+        gameStatus: gameStatus,
+        playerCount : gamePlayerCount
+    };
     localStorage.setItem("gamesList", JSON.stringify(newGamesCount));
     localStorage.setItem(newGameId, JSON.stringify(gameData));
-    localStorage.setItem("gameInfo", JSON.stringify(gameData));
+    localStorage.setItem("gameInfo", JSON.stringify(gameInfos));
 
     console.log("Game saved as 'gameData' JSON : " + gameData);
     document.getElementById('creatingStatus').textContent = "Game Status : Waiting popup from being close...";
