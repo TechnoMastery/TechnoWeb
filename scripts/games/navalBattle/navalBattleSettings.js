@@ -7,24 +7,9 @@ let allowChangeFleets = true;
 const fullGameID = "nb_game_" + gameID;
 const gameInfoFull = JSON.parse(localStorage.getItem(fullGameID));
 let playersColor = gameInfoFull.playerColors;
-if(gameInfoFull) {
-    document.getElementById('gameName').textContent = gameName;
-    document.getElementById('playerCount').textContent = playerCount;
-    document.getElementById('playerCount2').textContent = playerCount;
-} else {
-    alert('ERROR : No game info found. Please create one.');
-    window.location.replace('/TechnoWeb/pages/gameHub/navalBattle/game-lobby')
-};
+let playerFleets = gameInfoFull.playerFleets;
 const gameStatus = gameInfoJson.gameStatus;
-if(gameStatus == "Just created") {
-    document.getElementById("gameStatus").textContent = "just created and joined"
-};
-if(gameStatus == "Loaded") {
-    document.getElementById("gameStatus").textContent = "loaded";
-    allowChangeFleets = false;
-};
-function quiteGame() {
-    document.getElementById("gameStatus").textContent = "saved";
+function saveNewDatas(enableGameInfo, enableReloadPage, gameStatus) {
     const savingData = {
         name: gameName,
         playerCount: playerCount,
@@ -35,9 +20,46 @@ function quiteGame() {
             playersColor[3],
             playersColor[4]
         ],
-        gameStatus: "saved"
+        gameStatus: gameStatus,
+        playerFleets: [null,
+            playerFleets[1],
+            playerFleets[2],
+            playerFleets[3],
+            playerFleets[4]
+        ]
     };
     localStorage.setItem(fullGameID, JSON.stringify(savingData));
+    if(enableGameInfo) {
+        const gameInfos = {
+            name: gameName,
+            gameID: gameID,
+            gameStatus: gameStatus,
+            playerCount : playerCount
+        };
+        localStorage.setItem("gameInfo", JSON.stringify(gameInfos));
+    };
+    if(enableReloadPage) {
+        window.location.reload();
+    };
+};
+if(gameInfoFull) {
+    document.getElementById('gameName').textContent = gameName;
+    document.getElementById('playerCount').textContent = playerCount;
+    document.getElementById('playerCount2').textContent = playerCount;
+} else {
+    alert('ERROR : No game info found. Please create one.');
+    window.location.replace('/TechnoWeb/pages/gameHub/navalBattle/game-lobby')
+};
+if(gameStatus == "Just created") {
+    document.getElementById("gameStatus").textContent = "just created and joined"
+};
+if(gameStatus == "Loaded") {
+    document.getElementById("gameStatus").textContent = "loaded";
+    allowChangeFleets = false;
+};
+function quiteGame() {
+    document.getElementById("gameStatus").textContent = "saved";
+    saveNewDatas(false, false, "saved");
     // end : return to the corect page
     console.log("Saving acomplished. Going back to lobby...");
     window.location.replace('/TechnoWeb/pages/gameHub/navalBattle/game-lobby');
@@ -65,20 +87,7 @@ function changeColor(playerNb) {
         playersColor[playerNb] = newColor;
         console.log("Change successfull !");
         alert("Your color has been succefully changed with the player " + newColorIndex);
-        const savingData = {
-            name: gameName,
-            playerCount: playerCount,
-            gameID: gameID,
-            playerColors: [null,
-                playersColor[1],
-                playersColor[2],
-                playersColor[3],
-                playersColor[4]
-            ],
-            gameStatus: "saved"
-        };
-        localStorage.setItem(fullGameID, JSON.stringify(savingData));
-        window.location.reload();
+        saveNewDatas(false, true, "Loaded");
     }
 }
 function changeGameName() {
@@ -88,27 +97,7 @@ function changeGameName() {
         return;
     } else {
         gameName = newGameName;
-        const savingData = {
-            name: gameName,
-            playerCount: playerCount,
-            gameID: gameID,
-            playerColors: [null,
-                playersColor[1],
-                playersColor[2],
-                playersColor[3],
-                playersColor[4]
-            ],
-            gameStatus: "saved"
-        };
-        const gameInfos = {
-            name: gameName,
-            gameID: gameID,
-            gameStatus: gameStatus,
-            playerCount : playerCount
-        };
-        localStorage.setItem(fullGameID, JSON.stringify(savingData));
-        localStorage.setItem("gameInfo", JSON.stringify(gameInfos));
+        saveNewDatas(true, true, "Loaded")
         alert("Name succefully changed name in " + gameName);
-        window.location.reload();
     }
 }

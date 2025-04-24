@@ -87,7 +87,14 @@ function createGame() {
             "blue",
             "purple"
         ],
-        gameStatus: gameStatus
+        gameStatus: gameStatus,
+        allowFleetsChange = true,
+        playerFleets: [null,
+            "default",
+            "default",
+            "default",
+            "default"
+        ]
     };
     const gameInfos = {
         name: gameName,
