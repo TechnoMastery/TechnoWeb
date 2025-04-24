@@ -98,9 +98,9 @@ function createGame() {
     };
     const gameInfos = {
         name: gameName,
-        gameID: gameNB,
+        gameID: newGameNb,
         gameStatus: gameStatus,
-        playerCount : gamePlayerCount
+        playerCount : playerCount
     };
     localStorage.setItem("gamesList", JSON.stringify(newGamesCount));
     localStorage.setItem(newGameId, JSON.stringify(gameData));
