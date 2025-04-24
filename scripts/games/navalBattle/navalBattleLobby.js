@@ -27,7 +27,7 @@ function fillGamesList() {
             const gameData = JSON.parse(localStorage.getItem(getGameId));
             const gameItem = document.createElement('div');
             gameItem.innerHTML = `
-                <span>Game ${getGameNb} : ${gameData.name} with ${gameData.playerCount} players. <button class="buttons button-green" onclick="loadGame(${getGameNb})">Load game</button> <button class="buttons button-red" onclick="deleteGame(${getGameNb})">Delete game (permanent)</button></span>
+                <span>Game ${getGameNb} : <b>${gameData.name}</b> with <b>${gameData.playerCount}</b> players. <button class="buttons button-green" onclick="loadGame(${getGameNb})">Load game</button> <button class="buttons button-red" onclick="deleteGame(${getGameNb})">Delete game (permanent)</button></span>
             `;
             gamesList.prepend(gameItem);
         }
