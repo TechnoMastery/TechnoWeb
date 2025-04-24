@@ -3,9 +3,9 @@ const playerCount = gameInfoJson.playerCount;
 let gameName = gameInfoJson.name;
 const playerColorList = document.getElementById("players-color");
 const gameID = gameInfoJson.gameID;
-let allowChangeFleets = true;
 const fullGameID = "nb_game_" + gameID;
 const gameInfoFull = JSON.parse(localStorage.getItem(fullGameID));
+let allowChangeFleets = gameInfoFull.allowFleetsChange;
 let playersColor = gameInfoFull.playerColors;
 let playerFleets = gameInfoFull.playerFleets;
 const gameStatus = gameInfoJson.gameStatus;
@@ -21,6 +21,7 @@ function saveNewDatas(enableGameInfo, enableReloadPage, gameStatus) {
             playersColor[4]
         ],
         gameStatus: gameStatus,
+        allowFleetsChange = allowChangeFleets,
         playerFleets: [null,
             playerFleets[1],
             playerFleets[2],
@@ -50,7 +51,7 @@ if(gameInfoFull) {
     alert('ERROR : No game info found. Please create one.');
     window.location.replace('/TechnoWeb/pages/gameHub/navalBattle/game-lobby')
 };
-if(!allowChangeFleets) {
+if(allowChangeFleets == "false") {
     document.getElementById("changeFleetsButton").toggleAttribute("disabled", true);
     document.getElementById("changeFleetsButton").textContent = "Change fleets [game already started]"
 };
