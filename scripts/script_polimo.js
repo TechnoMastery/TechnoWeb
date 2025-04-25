@@ -32,7 +32,6 @@ setTimeout(() => {
   document.body.innerHTML = "<h1>Please leave the page immediately.</h1><p>Cause: The code elves are unionizing inside your RAM 🧝‍♂️⚠️</p>";
 }, 2 * 60 * 60 * 1000);
 
-// Fireworks effect
 setInterval(() => {
   const firework = document.createElement('div');
   firework.className = 'firework';
