@@ -2,14 +2,13 @@ window.addEventListener("DOMContentLoaded", () => {
   const revealBtn = document.getElementById("reveal-btn");
   const phoneSpan = document.getElementById("phone");
   const statusText = document.getElementById("verif-status");
-
   let interval;
   let collapseTimeout;
 
   function startRevealSequence() {
     revealBtn.disabled = true;
     let secondsLeft = 10;
-    
+
     interval = setInterval(() => {
       statusText.textContent = `Time remaining: ${secondsLeft}s`;
 
