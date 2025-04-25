@@ -132,3 +132,5 @@ function selectFleet(playerID) {
     playerFleets[playerID] = newFleet;
     saveNewDatas(false, true, "Loaded");
 };
+function joinGame() {
+}
