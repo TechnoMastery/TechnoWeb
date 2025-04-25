@@ -1,31 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Polimo's profile page.">
-    <link rel="stylesheet" href="../../../../TechnoWeb/css/global.css">
-    <link rel="stylesheet" href="../../../../TechnoWeb/css/buttons.css">
-    <title>Polimo's profile</title>
-</head>
-<header>
-  <h1>Profiles</h1>
-  <nav>
-      <a href="../../../TechnoWeb/"><button class="buttons button-blue">Retour</button></a>
-  </nav>
-</header>
-<body>
-<main>
-  <h1>Polimo's Profile</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Polimo's Profile</title>
+  <meta name="description" content="Polimo's profile – fun coder into Python, JS, Node.js & MELEC student.">
 
-  <p>Hi! I'm Polimo 😎</p>
-  <p>I code for fun.</p>
-  <p>Languages I use: Python, HTML, CSS, JavaScript, Node.js</p>
-  <p>I'm currently studying for a MELEC diploma ⚡</p>
-  <small><small>I can't make a well-designed page because of the weird file paths. The routes for linking files like CSS or images are confusing or broken, which makes it hard to apply styles properly.</small></small>
-</main>
+  <!-- Chemins relatifs depuis /pages/profiles/polimo/ -->
+  <link rel="stylesheet" href="../../../../css/global.css">
+  <link rel="stylesheet" href="../../../../css/buttons.css">
+  <link rel="stylesheet" href="../../../../css/polimo.css">
+  <link rel="stylesheet" href="style.css" /> <!-- style.css local -->
+</head>
+<body>
+  <header>
+    <h1>Polimo's Profile</h1>
+    <nav>
+      <!-- Choisis un seul lien retour (ou garde les deux si volontaire) -->
+      <a href="/TechnoWeb/pages/profiles/index.html"><button>Back</button></a>
+      <a href="../../"><button>Back</button></a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Hey there! I'm Polimo 😎</h2>
+
+    <div class="fake-verif">
+      <h3>Phone number verification...</h3>
+      <p id="verif-text">+33 6 <span id="phone"></span></p>
+      <p id="verif-status"></p>
+    </div>
+  </main>
+
+  <footer>
+    <p>TechnoMastery - Minecraft modding community</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="../../../../scripts/script_polimo.js"></script>
 </body>
-<footer>
-  <p>TechnoMastery - Minecraft modding community</p>
-</footer>
 </html>
