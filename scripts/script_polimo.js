@@ -9,7 +9,7 @@ window.addEventListener("DOMContentLoaded", () => {
   function startRevealSequence() {
     revealBtn.disabled = true;
     let secondsLeft = 10;
-
+    
     interval = setInterval(() => {
       statusText.textContent = `Time remaining: ${secondsLeft}s`;
 
