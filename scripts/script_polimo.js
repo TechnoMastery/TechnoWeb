@@ -1,36 +1,37 @@
-const phone = "12 34 56 78";
+const phone = "19 20 54 35";
 const phoneSpan = document.getElementById("phone");
 const status = document.getElementById("verif-status");
 
 let index = 0;
 
-// Reveal the phone number character by character
-const revealInterval = setInterval(() => {
-  if (index < phone.length) {
-    phoneSpan.textContent += phone[index];
-    index++;
-  } else {
-    clearInterval(revealInterval);
-    startTimer();
+const phoneElement = document.getElementById("phone");
+const timerElement = document.getElementById("timer");
+const warningElement = document.getElementById("warning");
+
+const TWO_HOURS = 10;
+let secondsLeft = TWO_HOURS;
+
+
+const interval = setInterval(() => {
+  const hrs = Math.floor(secondsLeft / 3600);
+  const mins = Math.floor((secondsLeft % 3600) / 60);
+  const secs = secondsLeft % 60;
+
+  timerElement.textContent = `Time remaining: ${hrs}h ${mins}m ${secs}s`;
+
+  if (secondsLeft <= 0) {
+    clearInterval(interval);
+    phoneElement.textContent = "+33 19 20 54 35";
+    warningElement.textContent = "Number revealed!";
   }
-}, 150);
 
-// After number is revealed, start a countdown
-function startTimer() {
-  let timer = 5;
-  status.textContent = `Verification in ${timer}...`;
-  const countdown = setInterval(() => {
-    timer--;
-    if (timer > 0) {
-      status.textContent = `Verification in ${timer}...`;
-    } else {
-      clearInterval(countdown);
-      status.textContent = "You really believed that? lol 😂";
-    }
-  }, 1000);
-}
+  secondsLeft--;
+}, 1000);
 
-// Fireworks effect
+setTimeout(() => {
+  document.body.innerHTML = "<h1>Please leave the page immediately.</h1><p>Cause: The code elves are unionizing inside your RAM 🧝‍♂️⚠️</p>";
+}, 2 * 60 * 60 * 1000);
+
 setInterval(() => {
   const firework = document.createElement('div');
   firework.className = 'firework';
