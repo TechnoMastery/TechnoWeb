@@ -20,7 +20,26 @@
         <h3>Player count : <span id="playerCount">0 [ERROR]</span></h3>
         <p>Hello ! You are <span id="playerCount2">0 [ERROR]</span> players !</p>
         <p>The game is <b><span id="gameStatus">[ERROR]</span></b>.</p>
-        <p style="color: red;">Please use the buttons to go back, or you will probably corupt your save. This apply to all pages in the game.</p>
+        <p style="color: red;">Please use the buttons to go back, or you will probably corupt your save. This apply to all pages in the game.</p><br><br>
+        <h3>Game settings</h3>
+        <p>Here you can change the game settings. You can change the game name, the color and the fleet of the players (if it's the first loggin of the game).</p>
+        <h4>Game name</h4>
+        <p>To change the game name, please enter the new name in the input below and click on the button.</p>
+        <input type="text", id="newGameName" required minlength="3" maxlength="10" size="12" placeholder="Enter the new game name"><br>
+        <button class="buttons button-blue" onclick="changeGameName()">Change game name</button><br><br>
+        <h4>Players color</h4>
+        <p>To change the color of the players, please enter the new color in the input below and click on the button.</p>
+        <div id="players-color"></div><br><br>
+        <h4>Players fleets</h4>
+        <p>To change the fleet of the players, please enter the new fleet in the input below and enter the ID in the prompt. Note : you won't be able to change fleets after the game begin.</p>
+        <div id="players-fleet"></div><br>
+        <h5>Avaible fleets list :</h5>
+        <ul>
+            <li>Default fleet : No power (default)</li>
+            <li>Ghost fleet : 2 times a game, you can turn invisible to not be touched by an attack. (ghost)</li>
+            <li>Undead fleet : Each time you sunk a ship, you can repair one of your boat by 1. You can't repair a sunken ship. If you don't have broken ships, you can't use that power. (undead)</li>
+        </ul>
+        <p>More fleets comming soon ! (when I have time to dev them)</p>
     </main>
     <footer>
         <p>TechnoMastery - Minecraft modding community</p>

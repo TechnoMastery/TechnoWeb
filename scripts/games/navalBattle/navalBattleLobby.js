@@ -19,7 +19,7 @@ if(!gamesListJson) {
 };
 
 function fillGamesList() {
-    if(gamesListJson) {
+    if(gamesListJson && gamesListJson.gameCount >= 1) {
         for(let i=1; i <= gamesListJson.gameCount; i++) {
             const j = i-1;
             const getGameNb = gamesListJson.activeGameCount[j];
@@ -27,10 +27,12 @@ function fillGamesList() {
             const gameData = JSON.parse(localStorage.getItem(getGameId));
             const gameItem = document.createElement('div');
             gameItem.innerHTML = `
-                <span>Game ${getGameNb} : ${gameData.name} with ${gameData.playerCount} players. <button class="buttons button-green" onclick="loadGame(${getGameNb})">Load game</button> <button class="buttons button-red" onclick="deleteGame(${getGameNb})">Delete game (permanent)</button></span>
+                <span>Game ${getGameNb} : <b>${gameData.name}</b> with <b>${gameData.playerCount}</b> players. <button class="buttons button-green" onclick="loadGame(${getGameNb})">Load game</button> <button class="buttons button-red" onclick="deleteGame(${getGameNb})">Delete game (permanent)</button></span>
             `;
             gamesList.prepend(gameItem);
         }
+    } else {
+        document.getElementById('games-list').textContent = "You have no games ! Create one !"
     }
 };
 fillGamesList();
@@ -79,11 +81,30 @@ function createGame() {
         name: gameName,
         playerCount: playerCount,
         gameID: newGameNb,
-        gameStatus: gameStatus
+        playerColors: [null,
+            "red",
+            "green",
+            "blue",
+            "purple"
+        ],
+        gameStatus: gameStatus,
+        allowFleetsChange: "true",
+        playerFleets: [null,
+            "default",
+            "default",
+            "default",
+            "default"
+        ]
+    };
+    const gameInfos = {
+        name: gameName,
+        gameID: newGameNb,
+        gameStatus: gameStatus,
+        playerCount : playerCount
     };
     localStorage.setItem("gamesList", JSON.stringify(newGamesCount));
     localStorage.setItem(newGameId, JSON.stringify(gameData));
-    localStorage.setItem("gameInfo", JSON.stringify(gameData));
+    localStorage.setItem("gameInfo", JSON.stringify(gameInfos));
 
     console.log("Game saved as 'gameData' JSON : " + gameData);
     document.getElementById('creatingStatus').textContent = "Game Status : Waiting popup from being close...";
@@ -110,7 +131,6 @@ function loadGame(gameNB) {
         playerCount : gamePlayerCount
     };
     localStorage.setItem("gameInfo", JSON.stringify(gameInfos));
-    localStorage.setItem(gameID, JSON.stringify(gameInfos));
     console.log("Succefully loaded game with ID " + gameID + ".");
     alert("Game loaded. You will be transfered when you close this popup.");
     switchPage();

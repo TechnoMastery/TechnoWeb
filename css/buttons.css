@@ -82,3 +82,13 @@
     background-color: darkred;
     color: white;
   }
+
+  .button-yellow {
+    background-color: white; 
+    color: black; 
+    border: 2px solid yellow;
+  }
+  .button-yellow:hover {
+    background-color: yellow;
+    color: white;
+  }
