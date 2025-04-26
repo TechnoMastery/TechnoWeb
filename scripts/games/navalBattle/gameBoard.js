@@ -10,7 +10,9 @@ const playerPlay = fullGameInfoJson.playerPlay;
 const extraGameID = fullGameID + "_game_grid";
 const gameGridJson = JSON.parse(localStorage.getItem(extraGameID));
 const seaBoard = document.getElementById("seaBoard");
+const buttonDiv = document.getElementById("button-reaveal");
 
+let gameState = gameGridJson.gameState;
 let notEmptyTiles = gameGridJson.notEmptyTiles;
 // blue states
 let blueStates = gameGridJson.blueStates;
@@ -77,6 +79,7 @@ function saveNewDatas(enableReloadPage, gameStatus) {
 };
 function saveGameGrid(enableReloadPage) {
     const gameGridDatas = {
+        gameState: gameState,
         notEmptyTiles: notEmptyTiles,
         blueStates: blueStates,
         blueState1: blueState1,
@@ -153,6 +156,18 @@ function calculateTileState(tileID) {
     };
 };
 document.getElementById("gameName").textContent = gameName;
+document.getElementById("playerPlay").textContent = playerPlay;
+function createButton(buttonIndex) {
+    const gameButton = document.createElement("div");
+    if(buttonIndex == "reaveal") {
+        gameButton.innerHTML = `
+            <button onclick="reavealGame()" class="buttons button-${playerColors[playerPlay]}">Reaveal game</button>
+        `;
+        gameState = ("reavealed-player_" + playerPlay);
+    };
+    buttonDiv.append(gameButton);
+};
+if(gameState == "created") {createButton("reaveal"); gameState == ("reavealing_player_" + playerPlay);};
 function fillSeaGrid() {
     // empty grid
     seaBoard.innerHTML = "";
@@ -176,3 +191,5 @@ function fillSeaGrid() {
     }
 };
 fillSeaGrid();
+function reavealGame() {
+};

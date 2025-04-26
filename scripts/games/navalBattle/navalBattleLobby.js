@@ -105,6 +105,7 @@ function createGame() {
         playerCount : playerCount
     };
     const gameGridDatas = {
+        gameState: "created",
         notEmptyTiles: [],
         blueStates: [],
         blueState1: [],
