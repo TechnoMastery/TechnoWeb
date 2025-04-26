@@ -89,6 +89,7 @@ function createGame() {
         ],
         gameStatus: gameStatus,
         playerPlay: 1,
+        isGameGrid: false,
         allowFleetsChange: "true",
         playerFleets: [null,
             "default",

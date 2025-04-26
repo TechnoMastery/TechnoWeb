@@ -11,6 +11,7 @@ let playersColor = gameInfoFull.playerColors;
 let playerFleets = gameInfoFull.playerFleets;
 const gameStatus = gameInfoJson.gameStatus;
 const playerPlay = gameInfoFull.playerPlay;
+const isGameGrid = gameInfoFull.isGameGrid;
 function saveNewDatas(enableGameInfo, enableReloadPage, gameStatus) {
     const savingData = {
         name: gameName,
@@ -24,6 +25,7 @@ function saveNewDatas(enableGameInfo, enableReloadPage, gameStatus) {
         ],
         gameStatus: gameStatus,
         playerPlay: playerPlay,
+        isGameGrid: isGameGrid,
         allowFleetsChange: allowChangeFleets,
         playerFleets: [null,
             playerFleets[1],

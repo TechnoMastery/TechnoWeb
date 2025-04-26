@@ -7,7 +7,10 @@ const fullGameInfoJson = JSON.parse(localStorage.getItem(fullGameID));
 const playerColors = fullGameInfoJson.playerColors;
 const playerFleets = fullGameInfoJson.playerFleets;
 const playerPlay = fullGameInfoJson.playerPlay;
+const isGameGrid = fullGameInfoJson.isGameGrid;
 const seaBoard = document.getElementById("seaBoard");
+if(!isGameGrid) {
+};
 function saveNewDatas(enableReloadPage, gameStatus) {
     const savingData = {
         name: gameName,
@@ -32,6 +35,8 @@ function saveNewDatas(enableReloadPage, gameStatus) {
     if(enableReloadPage) {
         window.location.reload();
     };
+};
+function saveGameGrid() {
 };
 document.getElementById("gameName").textContent = gameName;
 function fillSeaGrid() {
