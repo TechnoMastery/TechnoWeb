@@ -56,33 +56,19 @@ if(gameInfoFull) {
     alert('ERROR : No game info found. Please create one.');
     window.location.replace('/TechnoWeb/pages/gameHub/navalBattle/game-lobby')
 };
-if(allowChangeFleets == "false") {
-    document.getElementById("changeFleetsButton(1)").textContent = "Change fleets [game already started]";
-    document.getElementById("changeFleetsButton(2)").textContent = "Change fleets [game already started]";
-    document.getElementById("changeFleetsButton(3)").textContent = "Change fleets [game already started]";
-    document.getElementById("changeFleetsButton(4)").textContent = "Change fleets [game already started]";
-    document.getElementById("changeFleetsButton(1)").toggleAttribute("disabled", true);
-    document.getElementById("changeFleetsButton(2)").toggleAttribute("disabled", true);
-    document.getElementById("changeFleetsButton(3)").toggleAttribute("disabled", true);
-    document.getElementById("changeFleetsButton(4)").toggleAttribute("disabled", true);
-};
-if(!allowColorChange) {
-    document.getElementById("changePlayerColor(1)").textContent = "Change [game already started]";
-    document.getElementById("changePlayerColor(2)").textContent = "Change [game already started]";
-    document.getElementById("changePlayerColor(3)").textContent = "Change [game already started]";
-    document.getElementById("changePlayerColor(4)").textContent = "Change [game already started]";
-    document.getElementById("changePlayerColor(1)").toggleAttribute("disabled", true);
-    document.getElementById("changePlayerColor(2)").toggleAttribute("disabled", true);
-    document.getElementById("changePlayerColor(3)").toggleAttribute("disabled", true);
-    document.getElementById("changePlayerColor(4)").toggleAttribute("disabled", true);
-}
 function fillFleetsSection() {
     for(let i=1; i <= gameInfoJson.playerCount; i++) {
         const playerFleetList = document.getElementById("players-fleet");
         const playerFleetItem = document.createElement('div');
-        playerFleetItem.innerHTML = `
-            <span>Actual fleet of player <b>${i}</b> is the <b>${playerFleets[i]}</b> one. <button class="buttons button-${playersColor[i]}" id="changeFleetsButton" onclick="selectFleet(${i})">Select my new fleet</button></span>
-        `;
+        if(allowChangeFleets) {
+            playerFleetItem.innerHTML = `
+                <span>Actual fleet of player <b>${i}</b> is the <b>${playerFleets[i]}</b> one. <button class="buttons button-${playersColor[i]}" onclick="selectFleet(${i})">Select my new fleet</button></span>
+            `;
+        } else {
+            playerFleetItem.innerHTML = `
+                <span>Actual fleet of player <b>${i}</b> is the <b>${playerFleets[i]}</b> one. <button disabled class="buttons button-${playersColor[i]}">Select my new fleet [game started]</button></span>
+            `;
+        }
         playerFleetList.append(playerFleetItem);
     };
 };
@@ -104,9 +90,15 @@ function quiteGame() {
 // fill players section
 for(let i=1; i <= playerCount; i++) {
     const gameItem = document.createElement('div');
-    gameItem.innerHTML = `
-        <span>Player ${i} : color ${playersColor[i]} <button onclick="changeColor(${i})" id="changePlayerColor" class="buttons button-${playersColor[i]}">Change</button>
-    `;
+    if(allowColorChange) {
+        gameItem.innerHTML = `
+            <span>Player ${i} : color ${playersColor[i]} <button onclick="changeColor(${i})" class="buttons button-${playersColor[i]}">Change</button>
+        `;
+    } else {
+        gameItem.innerHTML = `
+            <span>Player ${i} : color ${playersColor[i]} <button class="buttons button-${playersColor[i]}">Change [game started]</button>
+        `;
+    };
     playerColorList.append(gameItem);
 };
 function changeColor(playerNb) {
