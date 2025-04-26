@@ -4,7 +4,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const finalMessage = document.getElementById("final-message");
 
   clickableCard.addEventListener("click", () => {
-
+    let timer = 10;
     timerStatus.textContent = `Timer started! Time remaining: ${timer}s`;
 
     const interval = setInterval(() => {
