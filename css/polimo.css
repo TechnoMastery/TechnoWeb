@@ -1,94 +1,46 @@
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: #0a0a0a;
-    color: white;
-    overflow: hidden;
-  }
-  
-  header {
-    background: #111;
-    padding: 1em;
-    text-align: center;
-    border-bottom: 2px solid #444;
-  }
-  
-  h1 {
-    margin: 0;
-    font-size: 2.5em;
-  }
-  
-  nav {
-    margin-top: 10px;
-  }
-  
-  button {
-    padding: 10px 20px;
-    background: #007bff;
-    border: none;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1em;
-  }
-  
-  main {
-    padding: 2em;
-    text-align: center;
-    color: #fff;
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-    font-size: 1.2em;
-  }
-  
-  li {
-    margin: 10px 0;
-  }
-  
-  .fake-verif {
-    margin-top: 30px;
-  }
-  
-  .firework {
-    position: absolute;
-    bottom: 0;
-    width: 4px;
-    height: 4px;
-    background: #fff;
-    border-radius: 50%;
-    animation: shoot 2s linear forwards;
-  }
-  
-  @keyframes shoot {
-    0% {
-      bottom: 0;
-      opacity: 1;
+    /* Animations et petits effets */
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
     }
-    100% {
-      bottom: 90vh;
-      opacity: 0;
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
-  }
-  
-  footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    padding: 1em;
-    background: #111;
-    border-top: 2px solid #444;
-    font-size: 0.9em;
-    color: white;
-  }
-  
-  #verif-status {
-    margin-top: 10px;
-    font-weight: bold;
-    font-size: 1.1em;
-    color: #00ffaa;
-  }
-  
+    h1, h2, p {
+      text-align: center;
+      animation: fadeIn 2s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .cool-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 15px;
+      max-width: 500px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      text-align: center;
+    }
+    .easter-egg {
+      margin-top: 20px;
+      cursor: pointer;
+      color: #00ffd5;
+      transition: color 0.3s;
+    }
+    .easter-egg:hover {
+      color: #00ffa1;
+    }
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      opacity: 0.6;
+    }
