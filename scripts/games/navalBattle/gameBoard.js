@@ -7,10 +7,7 @@ const fullGameInfoJson = JSON.parse(localStorage.getItem(fullGameID));
 const playerColors = fullGameInfoJson.playerColors;
 const playerFleets = fullGameInfoJson.playerFleets;
 const playerPlay = fullGameInfoJson.playerPlay;
-const isGameGrid = fullGameInfoJson.isGameGrid;
 const seaBoard = document.getElementById("seaBoard");
-if(!isGameGrid) {
-};
 function saveNewDatas(enableReloadPage, gameStatus) {
     const savingData = {
         name: gameName,
@@ -36,8 +33,18 @@ function saveNewDatas(enableReloadPage, gameStatus) {
         window.location.reload();
     };
 };
-function saveGameGrid() {
+function saveGameGrid(enableReloadPage) {
+    const gameGridDatas = {
+        player1boats: {
+            aircraftCarrier: [1, 5],
+            aircraftCarrier: [],
+            aircraftCarrier: [],
+            aircraftCarrier: [],
+            aircraftCarrier: []
+        }
+    }
 };
+
 document.getElementById("gameName").textContent = gameName;
 function fillSeaGrid() {
     // empty grid
@@ -51,6 +58,7 @@ function fillSeaGrid() {
         seaTile.alt = "sea";
         seaTile.style.width = "64px";
         seaTile.style.height = "64px";
+        seaTile.title = "sea";
         seaBoard.append(seaTile);
     }
 };
