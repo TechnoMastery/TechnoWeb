@@ -39,7 +39,7 @@ function fillSeaGrid() {
     seaBoard.style.display = "grid";
     seaBoard.style.gridTemplateColumns = "repeat(10, 32px)";
     seaBoard.style.width = "fit-content";
-    for (let i = 1; i <= (playerCount * 10 * 10); i++) {
+    for (let i = 1; i <= (10 * (playerCount * 10)); i++) {
         const seaTile = document.createElement('img');
         seaTile.src = "/TechnoWeb/ressources/pictures/navalBattle/sea/sea.png";
         seaTile.alt = "sea";
