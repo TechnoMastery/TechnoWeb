@@ -20,6 +20,7 @@ let blueState3 = gameGridJson.blueState3;
 let blueState4 = gameGridJson.blueState4;
 let blueState5 = gameGridJson.blueState5;
 let blueState6 = gameGridJson.blueState6;
+let blueShips = gameGridJson.blueShips;
 // green states
 let greenStates = gameGridJson.greenStates;
 let greenState1 = gameGridJson.greenState1;
@@ -28,6 +29,7 @@ let greenState3 = gameGridJson.greenState3;
 let greenState4 = gameGridJson.greenState4;
 let greenState5 = gameGridJson.greenState5;
 let greenState6 = gameGridJson.greenState6;
+let greenShips = gameGridJson.greenShips;
 // purple states
 let purpleStates = gameGridJson.purpleStates;
 let purpleState1 = gameGridJson.purpleState1;
@@ -36,6 +38,7 @@ let purpleState3 = gameGridJson.purpleState3;
 let purpleState4 = gameGridJson.purpleState4;
 let purpleState5 = gameGridJson.purpleState5;
 let purpleState6 = gameGridJson.purpleState6;
+let purpleShips = gameGridJson.purpleShips;
 // red states
 let redStates = gameGridJson.redStates;
 let redState1 = gameGridJson.redState1;
@@ -44,6 +47,7 @@ let redState3 = gameGridJson.redState3;
 let redState4 = gameGridJson.redState4;
 let redState5 = gameGridJson.redState5;
 let redState6 = gameGridJson.redState6;
+let redShips = gameGridJson.redShips;
 
 function saveNewDatas(enableReloadPage, gameStatus) {
     const savingData = {
@@ -73,35 +77,39 @@ function saveNewDatas(enableReloadPage, gameStatus) {
 };
 function saveGameGrid(enableReloadPage) {
     const gameGridDatas = {
-        notEmptyTiles: [],
-        blueStates: [],
-        blueState1: [],
-        blueState2: [],
-        blueState3: [],
-        blueState4: [],
-        blueState5: [],
-        blueState6: [],
-        greenStates: [],
-        greenState1: [],
-        greenState2: [],
-        greenState3: [],
-        greenState4: [],
-        greenState5: [],
-        greenState6: [],
-        purpleStates: [],
-        purpleState1: [],
-        purpleState2: [],
-        purpleState3: [],
-        purpleState4: [],
-        purpleState5: [],
-        purpleState6: [],
-        redStates: [],
-        redState1: [],
-        redState2: [],
-        redState3: [],
-        redState4: [],
-        redState5: [],
-        redState6: [],
+        notEmptyTiles: notEmptyTiles,
+        blueStates: blueStates,
+        blueState1: blueState1,
+        blueState2: blueState2,
+        blueState3: blueState3,
+        blueState4: blueState4,
+        blueState5: blueState5,
+        blueState6: blueState6,
+        blueShips: blueShips,
+        greenStates: greenStates,
+        greenState1: greenState1,
+        greenState2: greenState2,
+        greenState3: greenState3,
+        greenState4: greenState4,
+        greenState5: greenState5,
+        greenState6: greenState6,
+        greenShips: greenShips,
+        purpleStates: purpleStates,
+        purpleState1: purpleState1,
+        purpleState2: purpleState2,
+        purpleState3: purpleState3,
+        purpleState4: purpleState4,
+        purpleState5: purpleState5,
+        purpleState6: purpleState6,
+        purpleShips: purpleShips,
+        redStates: redStates,
+        redState1: redState1,
+        redState2: redState2,
+        redState3: redState3,
+        redState4: redState4,
+        redState5: redState5,
+        redState6: redState6,
+        redShips: redShips
     };
     localStorage.setItem(extraGameID, JSON.stringify(gameGridDatas));
     if(enableReloadPage) {window.location.reload()};
