@@ -6,6 +6,7 @@ const fullGameID = "nb_game_" + gameID;
 const fullGameInfoJson = JSON.parse(localStorage.getItem(fullGameID));
 const playerColors = fullGameInfoJson.playerColors;
 const playerFleets = fullGameInfoJson.playerFleets;
+const playerPlay = fullGameInfoJson.playerPlay;
 const seaBoard = document.getElementById("seaBoard");
 function saveNewDatas(enableReloadPage, gameStatus) {
     const savingData = {
@@ -32,7 +33,7 @@ function saveNewDatas(enableReloadPage, gameStatus) {
         window.location.reload();
     };
 };
-document.getElementById("gameName").textContent = gameName
+document.getElementById("gameName").textContent = gameName;
 function fillSeaGrid() {
     // empty grid
     seaBoard.innerHTML = "";

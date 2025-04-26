@@ -88,6 +88,7 @@ function createGame() {
             "purple"
         ],
         gameStatus: gameStatus,
+        playerPlay: 1,
         allowFleetsChange: "true",
         playerFleets: [null,
             "default",
