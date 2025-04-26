@@ -1,42 +1,49 @@
-const phone = "19 20 54 35";
-const phoneSpan = document.getElementById("phone");
-const status = document.getElementById("verif-status");
+window.addEventListener("DOMContentLoaded", () => {
+  const revealBtn = document.getElementById("reveal-btn");
+  const phoneSpan = document.getElementById("phone");
+  const statusText = document.getElementById("verif-status");
+  let interval;
+  let collapseTimeout;
 
-let index = 0;
+  function startRevealSequence() {
+    revealBtn.disabled = true;
+    let secondsLeft = 10;
 
-const phoneElement = document.getElementById("phone");
-const timerElement = document.getElementById("timer");
-const warningElement = document.getElementById("warning");
+    interval = setInterval(() => {
+      statusText.textContent = `Time remaining: ${secondsLeft}s`;
 
-const TWO_HOURS = 10;
-let secondsLeft = TWO_HOURS;
+      if (secondsLeft <= 0) {
+        clearInterval(interval);
+        phoneSpan.textContent = "12 34 56 78";
+        statusText.textContent = "You really believed that? lol 😂";
+      }
 
+      secondsLeft--;
+    }, 1000);
 
-const interval = setInterval(() => {
-  const hrs = Math.floor(secondsLeft / 3600);
-  const mins = Math.floor((secondsLeft % 3600) / 60);
-  const secs = secondsLeft % 60;
-
-  timerElement.textContent = `Time remaining: ${hrs}h ${mins}m ${secs}s`;
-
-  if (secondsLeft <= 0) {
-    clearInterval(interval);
-    phoneElement.textContent = "+33 19 20 54 35";
-    warningElement.textContent = "Number revealed!";
+    collapseTimeout = setTimeout(() => {
+      collapsePage("The cosmic ducks sabotaged the CSS. 🦆💥");
+    }, 10000);
   }
 
-  secondsLeft--;
-}, 1000);
+  function collapsePage(cause) {
+    const body = document.body;
+    let scale = 1;
 
-setTimeout(() => {
-  document.body.innerHTML = "<h1>Please leave the page immediately.</h1><p>Cause: The code elves are unionizing inside your RAM 🧝‍♂️⚠️</p>";
-}, 2 * 60 * 60 * 1000);
+    const collapseInterval = setInterval(() => {
+      scale -= 0.05;
+      body.style.transform = `scaleY(${Math.max(0, scale)})`;
 
-setInterval(() => {
-  const firework = document.createElement('div');
-  firework.className = 'firework';
-  firework.style.left = `${Math.random() * 100}%`;
-  firework.style.background = `hsl(${Math.random() * 360}, 100%, 70%)`;
-  document.body.appendChild(firework);
-  setTimeout(() => firework.remove(), 2000);
-}, 300);
+      if (scale <= 0.1) {
+        clearInterval(collapseInterval);
+        body.innerHTML = `
+          <h1>Please leave the page immediately.</h1>
+          <p>Cause: ${cause}</p>
+        `;
+        body.style.transform = 'scaleY(1)';
+      }
+    }, 50);
+  }
+
+  revealBtn.addEventListener("click", startRevealSequence);
+});
