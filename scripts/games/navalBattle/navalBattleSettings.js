@@ -58,11 +58,17 @@ if(gameInfoFull) {
 };
 if(allowChangeFleets == "false") {
     document.getElementById("changeFleetsButton").toggleAttribute("disabled", true);
-    document.getElementById("changeFleetsButton").textContent = "Change fleets [game already started]";
+    document.getElementById("changeFleetsButton(1)").textContent = "Change fleets [game already started]";
+    document.getElementById("changeFleetsButton(2)").textContent = "Change fleets [game already started]";
+    document.getElementById("changeFleetsButton(3)").textContent = "Change fleets [game already started]";
+    document.getElementById("changeFleetsButton(4)").textContent = "Change fleets [game already started]";
 };
 if(!allowColorChange) {
     document.getElementById("changePlayerColor").toggleAttribute("disabled", true);
-    document.getElementById("changePlayerColor").textContent = "Change [game already started]";
+    document.getElementById("changePlayerColor(1)").textContent = "Change [game already started]";
+    document.getElementById("changePlayerColor(2)").textContent = "Change [game already started]";
+    document.getElementById("changePlayerColor(3)").textContent = "Change [game already started]";
+    document.getElementById("changePlayerColor(4)").textContent = "Change [game already started]";
 }
 function fillFleetsSection() {
     for(let i=1; i <= gameInfoJson.playerCount; i++) {
