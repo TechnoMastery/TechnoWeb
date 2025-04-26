@@ -66,7 +66,7 @@ function fillFleetsSection() {
             `;
         } else {
             playerFleetItem.innerHTML = `
-                <span>Actual fleet of player <b>${i}</b> is the <b>${playerFleets[i]}</b> one. <button disabled class="buttons button-${playersColor[i]}">Select my new fleet [game started]</button></span>
+                <span>Actual fleet of player <b>${i}</b> is the <b>${playerFleets[i]}</b> one.</span>
             `;
         }
         playerFleetList.append(playerFleetItem);
@@ -92,11 +92,11 @@ for(let i=1; i <= playerCount; i++) {
     const gameItem = document.createElement('div');
     if(allowColorChange) {
         gameItem.innerHTML = `
-            <span>Player ${i} : color ${playersColor[i]} <button onclick="changeColor(${i})" class="buttons button-${playersColor[i]}">Change</button>
+            <span>Player ${i} : color ${playersColor[i]} <button onclick="changeColor(${i})" class="buttons button-${playersColor[i]}">Change</button></span>
         `;
     } else {
         gameItem.innerHTML = `
-            <span>Player ${i} : color ${playersColor[i]} <button class="buttons button-${playersColor[i]}">Change [game started]</button>
+            <span>Player ${i} : color ${playersColor[i]}</span>
         `;
     };
     playerColorList.append(gameItem);
