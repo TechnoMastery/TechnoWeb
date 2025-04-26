@@ -1,46 +1,17 @@
-    /* Animations et petits effets */
-    body {
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-      color: #fff;
-      font-family: 'Poppins', sans-serif;
-    }
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    h1, h2, p {
-      text-align: center;
-      animation: fadeIn 2s ease;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .cool-card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 20px;
-      margin: 20px auto;
-      border-radius: 15px;
-      max-width: 500px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-      text-align: center;
-    }
-    .easter-egg {
-      margin-top: 20px;
-      cursor: pointer;
-      color: #00ffd5;
-      transition: color 0.3s;
-    }
-    .easter-egg:hover {
-      color: #00ffa1;
-    }
-    footer {
-      margin-top: 50px;
-      text-align: center;
-      opacity: 0.6;
-    }
+body {
+  background-color: #f9f9f9; /* Couleur claire */
+  color: #333; /* Texte foncé */
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 50px;
+}
+#phone {
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+}
+#verif-status {
+  margin-top: 20px;
+  font-weight: bold;
+  color: red;
+}
