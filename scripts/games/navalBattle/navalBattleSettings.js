@@ -134,5 +134,5 @@ function selectFleet(playerID) {
 };
 function joinGame() {
     saveNewDatas(false, false, "opened");
-    window.location.replace("/TechnoWeb/pages/gameHub/navalBattle/gameBoard")
+    window.location.replace("/TechnoWeb/pages/gameHub/navalBattle/game-board")
 }
