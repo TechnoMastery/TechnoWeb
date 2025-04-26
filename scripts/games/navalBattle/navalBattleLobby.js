@@ -135,6 +135,7 @@ function createGame() {
         redState5: [],
         redState6: [],
     };
+    const extraGameID = newGameId +"_game_grid";
     localStorage.setItem(extraGameID, JSON.stringify(gameGridDatas));
     const gameGrid = { // todo
     };
