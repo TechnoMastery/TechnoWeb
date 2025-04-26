@@ -23,6 +23,7 @@ let blueState4 = gameGridJson.blueState4;
 let blueState5 = gameGridJson.blueState5;
 let blueState6 = gameGridJson.blueState6;
 let blueShips = gameGridJson.blueShips;
+let blueKnown = gameGridJson.blueKnown;
 // green states
 let greenStates = gameGridJson.greenStates;
 let greenState1 = gameGridJson.greenState1;
@@ -32,6 +33,7 @@ let greenState4 = gameGridJson.greenState4;
 let greenState5 = gameGridJson.greenState5;
 let greenState6 = gameGridJson.greenState6;
 let greenShips = gameGridJson.greenShips;
+let greenKnown = gameGridJson.greenKnown;
 // purple states
 let purpleStates = gameGridJson.purpleStates;
 let purpleState1 = gameGridJson.purpleState1;
@@ -41,6 +43,7 @@ let purpleState4 = gameGridJson.purpleState4;
 let purpleState5 = gameGridJson.purpleState5;
 let purpleState6 = gameGridJson.purpleState6;
 let purpleShips = gameGridJson.purpleShips;
+let purpleKnown = gameGridJson.purpleKnown;
 // red states
 let redStates = gameGridJson.redStates;
 let redState1 = gameGridJson.redState1;
@@ -50,6 +53,7 @@ let redState4 = gameGridJson.redState4;
 let redState5 = gameGridJson.redState5;
 let redState6 = gameGridJson.redState6;
 let redShips = gameGridJson.redShips;
+let redKnown = gameGridJson.redKnown;
 
 function saveNewDatas(enableReloadPage, gameStatus) {
     const savingData = {
@@ -89,6 +93,7 @@ function saveGameGrid(enableReloadPage) {
         blueState5: blueState5,
         blueState6: blueState6,
         blueShips: blueShips,
+        blueKnown: blueKnown,
         greenStates: greenStates,
         greenState1: greenState1,
         greenState2: greenState2,
@@ -97,6 +102,7 @@ function saveGameGrid(enableReloadPage) {
         greenState5: greenState5,
         greenState6: greenState6,
         greenShips: greenShips,
+        greenKnown: greenKnown,
         purpleStates: purpleStates,
         purpleState1: purpleState1,
         purpleState2: purpleState2,
@@ -105,6 +111,7 @@ function saveGameGrid(enableReloadPage) {
         purpleState5: purpleState5,
         purpleState6: purpleState6,
         purpleShips: purpleShips,
+        purpleKnown: purpleKnown,
         redStates: redStates,
         redState1: redState1,
         redState2: redState2,
@@ -112,7 +119,8 @@ function saveGameGrid(enableReloadPage) {
         redState4: redState4,
         redState5: redState5,
         redState6: redState6,
-        redShips: redShips
+        redShips: redShips,
+        redKnown: redKnown
     };
     localStorage.setItem(extraGameID, JSON.stringify(gameGridDatas));
     if(enableReloadPage) {window.location.reload()};
@@ -120,12 +128,21 @@ function saveGameGrid(enableReloadPage) {
 function calculateTileState(tileID) {
     if(notEmptyTiles.includes(tileID)) {
         if(blueStates.includes(tileID)) {
-            if(blueState1.includes(tileID)) {return "ships/blue-end-hor-left";};
-            if(blueState2.includes(tileID)) {return "ships/blue-end-hor-right";};
-            if(blueState3.includes(tileID)) {return "ships/blue-end-ver-down";};
-            if(blueState4.includes(tileID)) {return "ships/blue-end-hor-up";};
-            if(blueState5.includes(tileID)) {return "ships/blue-mid-hor";};
-            if(blueState6.includes(tileID)) {return "ships/blue-mid-ver";};
+            if(playerColors[playerPlay] == "blue") {
+                if(blueState1.includes(tileID)) {return "ships/blue-end-hor-left";};
+                if(blueState2.includes(tileID)) {return "ships/blue-end-hor-right";};
+                if(blueState3.includes(tileID)) {return "ships/blue-end-ver-down";};
+                if(blueState4.includes(tileID)) {return "ships/blue-end-hor-up";};
+                if(blueState5.includes(tileID)) {return "ships/blue-mid-hor";};
+                if(blueState6.includes(tileID)) {return "ships/blue-mid-ver";};
+            } else {
+                if(blueState1.includes(tileID)) {return "ships/blue-end-hor-left";};
+                if(blueState2.includes(tileID)) {return "ships/blue-end-hor-right";};
+                if(blueState3.includes(tileID)) {return "ships/blue-end-ver-down";};
+                if(blueState4.includes(tileID)) {return "ships/blue-end-hor-up";};
+                if(blueState5.includes(tileID)) {return "ships/blue-mid-hor";};
+                if(blueState6.includes(tileID)) {return "ships/blue-mid-ver";};
+            }
         };
         if(greenStates.includes(tileID)) {
             if(greenState1.includes(tileID)) {return "ships/green-end-hor-left";};
@@ -164,11 +181,12 @@ function createButton(buttonIndex) {
             <button onclick="reavealGame()" class="buttons button-${playerColors[playerPlay]}">Reaveal game</button>
         `;
         gameState = ("reavealed-player_" + playerPlay);
+        document.getElementById("info1").textContent = "Hello ! Game will be reavealed when you will click this button. Make sure other players aren't watching !";
     };
     buttonDiv.append(gameButton);
 };
-if(gameState == "created") {createButton("reaveal"); gameState == ("reavealing_player_" + playerPlay);};
-function fillSeaGrid() {
+if(gameState == "created") {createButton("reaveal"); gameState == "first_reavealing_player";};
+function fillSeaGrid(reaveal) {
     // empty grid
     seaBoard.innerHTML = "";
     seaBoard.style.display = "grid";
@@ -179,7 +197,8 @@ function fillSeaGrid() {
         // j is the colomn nb
         for(let j=1; j<=10; j++) {
             const tileID = [j, i];
-            const tileType = calculateTileState(tileID);
+            let tileType = "sea";
+            if(reaveal) {tileType = calculateTileState(tileID);};
             const seaTile = document.createElement('img');
             seaTile.src = "/TechnoWeb/ressources/pictures/navalBattle/sea/" + tileType + ".png";
             seaTile.alt = tileType;
@@ -190,6 +209,11 @@ function fillSeaGrid() {
         }
     }
 };
-fillSeaGrid();
+fillSeaGrid(false);
 function reavealGame() {
+    fillSeaGrid(true);
+    if(gameState == "first_reavealing_player") {
+        alert("Welcome ! You will have to place your boats, in the inputs. Get your mouse over sea tiles to see their coords.");
+        // to continue
+    };
 };
