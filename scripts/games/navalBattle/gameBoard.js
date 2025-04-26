@@ -40,7 +40,7 @@ function fillSeaGrid() {
     for(let i=1; i <= (playerCount * 10); i++) {
         // this "for" is creating 10 pictures per line
         for(let j=1; j <= 10; j++) {
-            const seaLineItem = document.createElement('span');
+            const seaLineItem;
             seaLineItem.innerHTML = `
                 <img src="/TechnoWeb/ressources/pictures/navalBattle/sea/sea.png" alt="sea">
             `;
