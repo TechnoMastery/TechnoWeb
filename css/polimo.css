@@ -1,16 +1,38 @@
 body {
-  background-color: #f9f9f9; /* Couleur claire */
-  color: #333; /* Texte foncé */
+  background-color: #f9f9f9;
+  color: #555;
   font-family: Arial, sans-serif;
   text-align: center;
   padding: 50px;
 }
-#phone {
-  color: blue;
-  cursor: pointer;
-  text-decoration: underline;
+
+h1, h2 {
+  color: #333;
 }
-#verif-status {
+
+.card {
+  background-color: #fff;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px auto;
+  width: 300px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+#timer-status {
+  margin-top: 20px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+#final-message {
   margin-top: 20px;
   font-weight: bold;
   color: red;
