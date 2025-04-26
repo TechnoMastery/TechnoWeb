@@ -11,6 +11,7 @@ let playersColor = gameInfoFull.playerColors;
 let playerFleets = gameInfoFull.playerFleets;
 const gameStatus = gameInfoJson.gameStatus;
 const playerPlay = gameInfoFull.playerPlay;
+let allowColorChange = gameInfoFull.allowColorChange;
 function saveNewDatas(enableGameInfo, enableReloadPage, gameStatus) {
     const savingData = {
         name: gameName,
@@ -25,6 +26,7 @@ function saveNewDatas(enableGameInfo, enableReloadPage, gameStatus) {
         gameStatus: gameStatus,
         playerPlay: playerPlay,
         allowFleetsChange: allowChangeFleets,
+        allowColorChange: allowColorChange,
         playerFleets: [null,
             playerFleets[1],
             playerFleets[2],
@@ -56,14 +58,18 @@ if(gameInfoFull) {
 };
 if(allowChangeFleets == "false") {
     document.getElementById("changeFleetsButton").toggleAttribute("disabled", true);
-    document.getElementById("changeFleetsButton").textContent = "Change fleets [game already started]"
+    document.getElementById("changeFleetsButton").textContent = "Change fleets [game already started]";
 };
+if(!allowColorChange) {
+    document.getElementById("changePlayerColor").toggleAttribute("disabled", true);
+    document.getElementById("changePlayerColor").textContent = "Change [game already started]";
+}
 function fillFleetsSection() {
     for(let i=1; i <= gameInfoJson.playerCount; i++) {
         const playerFleetList = document.getElementById("players-fleet");
         const playerFleetItem = document.createElement('div');
         playerFleetItem.innerHTML = `
-            <span>Actual fleet of player <b>${i}</b> is the <b>${playerFleets[i]}</b> one. <button class="buttons button-${playersColor[i]}" onclick="selectFleet(${i})">Select my new fleet</button></span>
+            <span>Actual fleet of player <b>${i}</b> is the <b>${playerFleets[i]}</b> one. <button class="buttons button-${playersColor[i]}" id="changeFleetsButton" onclick="selectFleet(${i})">Select my new fleet</button></span>
         `;
         playerFleetList.append(playerFleetItem);
     };
@@ -83,10 +89,11 @@ function quiteGame() {
     console.log("Saving acomplished. Going back to lobby...");
     window.location.replace('/TechnoWeb/pages/gameHub/navalBattle/game-lobby');
 };
+// fill players section
 for(let i=1; i <= playerCount; i++) {
     const gameItem = document.createElement('div');
     gameItem.innerHTML = `
-        <span>Player ${i} : color ${playersColor[i]} <button onclick="changeColor(${i})" class="buttons button-${playersColor[i]}">Change</button>
+        <span>Player ${i} : color ${playersColor[i]} <button onclick="changeColor(${i})" id="changePlayerColor" class="buttons button-${playersColor[i]}">Change</button>
     `;
     playerColorList.append(gameItem);
 };

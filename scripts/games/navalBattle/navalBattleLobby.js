@@ -89,8 +89,8 @@ function createGame() {
         ],
         gameStatus: gameStatus,
         playerPlay: 1,
-        isGameGrid: false,
         allowFleetsChange: "true",
+        allowColorChange: true,
         playerFleets: [null,
             "default",
             "default",
@@ -103,6 +103,40 @@ function createGame() {
         gameID: newGameNb,
         gameStatus: gameStatus,
         playerCount : playerCount
+    };
+    const gameGridDatas = {
+        notEmptyTiles: [],
+        blueStates: [],
+        blueState1: [],
+        blueState2: [],
+        blueState3: [],
+        blueState4: [],
+        blueState5: [],
+        blueState6: [],
+        greenStates: [],
+        greenState1: [],
+        greenState2: [],
+        greenState3: [],
+        greenState4: [],
+        greenState5: [],
+        greenState6: [],
+        purpleStates: [],
+        purpleState1: [],
+        purpleState2: [],
+        purpleState3: [],
+        purpleState4: [],
+        purpleState5: [],
+        purpleState6: [],
+        redStates: [],
+        redState1: [],
+        redState2: [],
+        redState3: [],
+        redState4: [],
+        redState5: [],
+        redState6: [],
+    };
+    localStorage.setItem(extraGameID, JSON.stringify(gameGridDatas));
+    const gameGrid = { // todo
     };
     localStorage.setItem("gamesList", JSON.stringify(newGamesCount));
     localStorage.setItem(newGameId, JSON.stringify(gameData));
