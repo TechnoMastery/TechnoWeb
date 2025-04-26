@@ -175,7 +175,9 @@ function loadGame(gameNB) {
 
 function deleteGame(gameNb) {
     const deleteGameId = "nb_game_" + gameNb;
+    const extraGameID = deleteGameId + "_game_grid";
     localStorage.removeItem(deleteGameId);
+    localStorage.removeItem(extraGameID);
     const gameCount = gamesListJson.gameCount-1;
     const totalGameCount = gamesListJson.totalGameCount;
     let newActiveGameCount = gamesListJson.activeGameCount;
@@ -206,7 +208,9 @@ function resetALL() {
             const j = i-1;
             const gameID = gamesListJson.activeGameCount[j];
             const fullGameID = "nb_game_" + gameID;
+            const extraGameID = fullGameID + "_game_grid";
             localStorage.removeItem(fullGameID);
+            localStorage.removeItem(extraGameID);
         };
         localStorage.removeItem('gamesList');
     };
