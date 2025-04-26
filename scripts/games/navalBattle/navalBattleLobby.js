@@ -106,6 +106,10 @@ function createGame() {
     };
     const gameGridDatas = {
         gameState: "created",
+        p1Known: [],
+        p2Known: [],
+        p3Known: [],
+        p4Known: [],
         notEmptyTiles: [],
         blueStates: [],
         blueState1: [],
@@ -115,7 +119,6 @@ function createGame() {
         blueState5: [],
         blueState6: [],
         blueShips: [1, 3, 4, 5, 6],
-        blueKnown: [],
         greenStates: [],
         greenState1: [],
         greenState2: [],
@@ -124,7 +127,6 @@ function createGame() {
         greenState5: [],
         greenState6: [],
         greenShips: [1, 3, 4, 5, 6],
-        greenKnown: [],
         purpleStates: [],
         purpleState1: [],
         purpleState2: [],
@@ -133,7 +135,6 @@ function createGame() {
         purpleState5: [],
         purpleState6: [],
         purpleShips: [1, 3, 4, 5, 6],
-        purpleKnown: [],
         redStates: [],
         redState1: [],
         redState2: [],
@@ -141,8 +142,7 @@ function createGame() {
         redState4: [],
         redState5: [],
         redState6: [],
-        redShips: [1, 3, 4, 5, 6],
-        redKnown: []
+        redShips: [1, 3, 4, 5, 6]
     };
     const extraGameID = newGameId +"_game_grid";
     localStorage.setItem(extraGameID, JSON.stringify(gameGridDatas));

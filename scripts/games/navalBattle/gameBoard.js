@@ -14,6 +14,15 @@ const buttonDiv = document.getElementById("button-reaveal");
 
 let gameState = gameGridJson.gameState;
 let notEmptyTiles = gameGridJson.notEmptyTiles;
+let p1Known = gameGridJson.p1Known;
+let p2Known = gameGridJson.p2Known;
+let p3Known = gameGridJson.p3Known;
+let p4Known = gameGridJson.p4Known;
+let pKnown;
+if(playerPlay == 1) {pKnown = p1Known};
+if(playerPlay == 2) {pKnown = p2Known};
+if(playerPlay == 3) {pKnown = p3Known};
+if(playerPlay == 4) {pKnown = p4Known};
 // blue states
 let blueStates = gameGridJson.blueStates;
 let blueState1 = gameGridJson.blueState1;
@@ -23,7 +32,6 @@ let blueState4 = gameGridJson.blueState4;
 let blueState5 = gameGridJson.blueState5;
 let blueState6 = gameGridJson.blueState6;
 let blueShips = gameGridJson.blueShips;
-let blueKnown = gameGridJson.blueKnown;
 // green states
 let greenStates = gameGridJson.greenStates;
 let greenState1 = gameGridJson.greenState1;
@@ -33,7 +41,6 @@ let greenState4 = gameGridJson.greenState4;
 let greenState5 = gameGridJson.greenState5;
 let greenState6 = gameGridJson.greenState6;
 let greenShips = gameGridJson.greenShips;
-let greenKnown = gameGridJson.greenKnown;
 // purple states
 let purpleStates = gameGridJson.purpleStates;
 let purpleState1 = gameGridJson.purpleState1;
@@ -43,7 +50,6 @@ let purpleState4 = gameGridJson.purpleState4;
 let purpleState5 = gameGridJson.purpleState5;
 let purpleState6 = gameGridJson.purpleState6;
 let purpleShips = gameGridJson.purpleShips;
-let purpleKnown = gameGridJson.purpleKnown;
 // red states
 let redStates = gameGridJson.redStates;
 let redState1 = gameGridJson.redState1;
@@ -53,7 +59,6 @@ let redState4 = gameGridJson.redState4;
 let redState5 = gameGridJson.redState5;
 let redState6 = gameGridJson.redState6;
 let redShips = gameGridJson.redShips;
-let redKnown = gameGridJson.redKnown;
 
 function saveNewDatas(enableReloadPage, gameStatus) {
     const savingData = {
@@ -84,6 +89,10 @@ function saveNewDatas(enableReloadPage, gameStatus) {
 function saveGameGrid(enableReloadPage) {
     const gameGridDatas = {
         gameState: gameState,
+        p1Known: p1Known,
+        p2Known: p2Known,
+        p3Known: p3Known,
+        p4Known: p4Known,
         notEmptyTiles: notEmptyTiles,
         blueStates: blueStates,
         blueState1: blueState1,
@@ -93,7 +102,6 @@ function saveGameGrid(enableReloadPage) {
         blueState5: blueState5,
         blueState6: blueState6,
         blueShips: blueShips,
-        blueKnown: blueKnown,
         greenStates: greenStates,
         greenState1: greenState1,
         greenState2: greenState2,
@@ -102,7 +110,6 @@ function saveGameGrid(enableReloadPage) {
         greenState5: greenState5,
         greenState6: greenState6,
         greenShips: greenShips,
-        greenKnown: greenKnown,
         purpleStates: purpleStates,
         purpleState1: purpleState1,
         purpleState2: purpleState2,
@@ -111,7 +118,6 @@ function saveGameGrid(enableReloadPage) {
         purpleState5: purpleState5,
         purpleState6: purpleState6,
         purpleShips: purpleShips,
-        purpleKnown: purpleKnown,
         redStates: redStates,
         redState1: redState1,
         redState2: redState2,
@@ -119,8 +125,7 @@ function saveGameGrid(enableReloadPage) {
         redState4: redState4,
         redState5: redState5,
         redState6: redState6,
-        redShips: redShips,
-        redKnown: redKnown
+        redShips: redShips
     };
     localStorage.setItem(extraGameID, JSON.stringify(gameGridDatas));
     if(enableReloadPage) {window.location.reload()};
@@ -128,29 +133,24 @@ function saveGameGrid(enableReloadPage) {
 function calculateTileState(tileID) {
     if(notEmptyTiles.includes(tileID)) {
         if(blueStates.includes(tileID)) {
-            if(playerColors[playerPlay] == "blue") {
+            if((playerColors[playerPlay] == "blue") || (pKnown.includes(tileID))) {
                 if(blueState1.includes(tileID)) {return "ships/blue-end-hor-left";};
                 if(blueState2.includes(tileID)) {return "ships/blue-end-hor-right";};
                 if(blueState3.includes(tileID)) {return "ships/blue-end-ver-down";};
                 if(blueState4.includes(tileID)) {return "ships/blue-end-hor-up";};
                 if(blueState5.includes(tileID)) {return "ships/blue-mid-hor";};
                 if(blueState6.includes(tileID)) {return "ships/blue-mid-ver";};
-            } else {
-                if(blueState1.includes(tileID)) {return "ships/blue-end-hor-left";};
-                if(blueState2.includes(tileID)) {return "ships/blue-end-hor-right";};
-                if(blueState3.includes(tileID)) {return "ships/blue-end-ver-down";};
-                if(blueState4.includes(tileID)) {return "ships/blue-end-hor-up";};
-                if(blueState5.includes(tileID)) {return "ships/blue-mid-hor";};
-                if(blueState6.includes(tileID)) {return "ships/blue-mid-ver";};
-            }
+            };
         };
         if(greenStates.includes(tileID)) {
-            if(greenState1.includes(tileID)) {return "ships/green-end-hor-left";};
-            if(greenState2.includes(tileID)) {return "ships/green-end-hor-right";};
-            if(greenState3.includes(tileID)) {return "ships/green-end-ver-down";};
-            if(greenState4.includes(tileID)) {return "ships/green-end-hor-up";};
-            if(greenState5.includes(tileID)) {return "ships/green-mid-hor";};
-            if(greenState6.includes(tileID)) {return "ships/green-mid-ver";};
+            if((playerColors[playerPlay] == "green") || (pKnown.includes(tileID))) {
+                if(greenState1.includes(tileID)) {return "ships/green-end-hor-left";};
+                if(greenState2.includes(tileID)) {return "ships/green-end-hor-right";};
+                if(greenState3.includes(tileID)) {return "ships/green-end-ver-down";};
+                if(greenState4.includes(tileID)) {return "ships/green-end-hor-up";};
+                if(greenState5.includes(tileID)) {return "ships/green-mid-hor";};
+                if(greenState6.includes(tileID)) {return "ships/green-mid-ver";};
+            };
         };
         if(purpleStates.includes(tileID)) {
             if(purpleState1.includes(tileID)) {return "ships/purple-end-hor-left";};
