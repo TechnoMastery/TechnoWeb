@@ -32,6 +32,7 @@ function saveNewDatas(enableReloadPage, gameStatus) {
         window.location.reload();
     };
 };
+document.getElementById("gameName").textContent = gameName;
 function fillSeaGrid() {
     // empty grid
     seaBoard.innerHTML = "";

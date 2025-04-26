@@ -133,4 +133,6 @@ function selectFleet(playerID) {
     saveNewDatas(false, true, "Loaded");
 };
 function joinGame() {
+    saveNewDatas(false, false, "opened");
+    window.location.replace("/TechnoWeb/pages/gameHub/navalBattle/gameBoard")
 }
