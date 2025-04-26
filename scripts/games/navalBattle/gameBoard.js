@@ -37,7 +37,7 @@ function fillSeaGrid() {
     // empty grid
     seaBoard.innerHTML = "";
     seaBoard.style.display = "grid";
-    seaBoard.style.gridTemplateColumns = "repeat(10, 32px)";
+    seaBoard.style.gridTemplateColumns = "repeat(10, 64px)";
     seaBoard.style.width = "fit-content";
     for (let i = 1; i <= (10 * (playerCount * 10)); i++) {
         const seaTile = document.createElement('img');
