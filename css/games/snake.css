@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f2f2f2;
+    flex-direction: column;
+}
+
+.screen {
+    text-align: center;
+    display: none;
+}
+
+#gameCanvas {
+    border: 2px solid #000;
+    margin-bottom: 20px;
+    background: #e0e0e0;
+}
+
+button {
+    padding: 15px 30px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #218838;
+    transform: translateY(-5px);
+}
+
+button:active {
+    transform: translateY(2px);
+}
+
+button:focus {
+    outline: none;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+#scoreboard {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+#scoreboard span {
+    margin-right: 20px;
+}
+
+.colorSelector {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.colorSelector button {
+    background-color: transparent;
+    border: 2px solid black;
+    margin: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.colorSelector button.red { background-color: red; }
+.colorSelector button.green { background-color: green; }
+.colorSelector button.blue { background-color: blue; }
+.colorSelector button.yellow { background-color: yellow; }
+.colorSelector button.purple { background-color: purple; }
+.colorSelector button.orange { background-color: orange; }
+.colorSelector button.pink { background-color: pink; }
+
+#selectedColorText {
+    margin-top: 10px;
+    font-size: 16px;
+    color: black;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu Snake</title>
+    <link rel="stylesheet" href="snake.css">
+</head>
+<body>
+    <!-- Menu de début -->
+    <div id="menu" class="screen">
+        <h1>Jeu Snake</h1>
+        <p>Veuillez sélectionner une couleur pour le corps du serpent</p>
+        <div class="colorSelector">
+            <button class="red" onclick="selectSnakeColor('red')"></button>
+            <button class="green" onclick="selectSnakeColor('green')"></button>
+            <button class="blue" onclick="selectSnakeColor('blue')"></button>
+            <button class="yellow" onclick="selectSnakeColor('yellow')"></button>
+            <button class="purple" onclick="selectSnakeColor('purple')"></button>
+            <button class="orange" onclick="selectSnakeColor('orange')"></button>
+            <button class="pink" onclick="selectSnakeColor('pink')"></button>
+        </div>
+        <p id="colorMessage" style="color: red; display: none;">Veuillez sélectionner une couleur avant de commencer !</p>
+        <p id="selectedColorText">Couleur sélectionnée : Aucune</p>
+        <button onclick="startGame()">Commencer le jeu</button>
+    </div>
+
+    <!-- Zone de jeu -->
+    <div id="gameScreen" class="screen" style="display: none;">
+        <canvas id="gameCanvas" width="400" height="400"></canvas>
+        <div id="scoreboard">
+            <span>Score: <span id="currentScore">0</span></span>
+            <span>Score le plus haut: <span id="highScore">0</span></span>
+        </div>
+        <p>Contrôles : Flèches directionnelles ou Z (haut), S (bas), Q (gauche), D (droite)</p>
+    </div>
+
+    <!-- Ecran de fin -->
+    <div id="endScreen" class="screen" style="display: none;">
+        <h1>Game Over</h1>
+        <p>Votre score: <span id="finalScore"></span></p>
+        <button onclick="restartGame()">Recommencer</button>
+        <button onclick="backToMenu()">Retour au menu</button>
+    </div>
+
+    <script src="snake.js"></script>
+</body>
+</html>
