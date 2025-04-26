@@ -12,6 +12,9 @@ const gameGridJson = JSON.parse(localStorage.getItem(extraGameID));
 const seaBoard = document.getElementById("seaBoard");
 const buttonDiv = document.getElementById("button-reaveal");
 
+let placeBoatState = "null";
+let allTiles = [];
+
 let gameState = gameGridJson.gameState;
 let notEmptyTiles = gameGridJson.notEmptyTiles;
 let p1Known = gameGridJson.p1Known;
@@ -153,20 +156,24 @@ function calculateTileState(tileID) {
             };
         };
         if(purpleStates.includes(tileID)) {
-            if(purpleState1.includes(tileID)) {return "ships/purple-end-hor-left";};
-            if(purpleState2.includes(tileID)) {return "ships/purple-end-hor-right";};
-            if(purpleState3.includes(tileID)) {return "ships/purple-end-ver-down";};
-            if(purpleState4.includes(tileID)) {return "ships/purple-end-hor-up";};
-            if(purpleState5.includes(tileID)) {return "ships/purple-mid-hor";};
-            if(purpleState6.includes(tileID)) {return "ships/purple-mid-ver";};
+            if((playerColors[playerPlay] == "purple") || (pKnown.includes(tileID))) {
+                if(purpleState1.includes(tileID)) {return "ships/purple-end-hor-left";};
+                if(purpleState2.includes(tileID)) {return "ships/purple-end-hor-right";};
+                if(purpleState3.includes(tileID)) {return "ships/purple-end-ver-down";};
+                if(purpleState4.includes(tileID)) {return "ships/purple-end-hor-up";};
+                if(purpleState5.includes(tileID)) {return "ships/purple-mid-hor";};
+                if(purpleState6.includes(tileID)) {return "ships/purple-mid-ver";};
+            };
         };
         if(redStates.includes(tileID)) {
-            if(redState1.includes(tileID)) {return "ships/red-end-hor-left";};
-            if(redState2.includes(tileID)) {return "ships/red-end-hor-right";};
-            if(redState3.includes(tileID)) {return "ships/red-end-ver-down";};
-            if(redState4.includes(tileID)) {return "ships/red-end-hor-up";};
-            if(redState5.includes(tileID)) {return "ships/red-mid-hor";};
-            if(redState6.includes(tileID)) {return "ships/red-mid-ver";};
+            if((playerColors[playerPlay] == "red") || (pKnown.includes(tileID))) {
+                if(redState1.includes(tileID)) {return "ships/red-end-hor-left";};
+                if(redState2.includes(tileID)) {return "ships/red-end-hor-right";};
+                if(redState3.includes(tileID)) {return "ships/red-end-ver-down";};
+                if(redState4.includes(tileID)) {return "ships/red-end-hor-up";};
+                    if(redState5.includes(tileID)) {return "ships/red-mid-hor";};
+                if(redState6.includes(tileID)) {return "ships/red-mid-ver";};
+            };
         };
     } else {
         return "sea";
@@ -183,12 +190,19 @@ function createButton(buttonIndex) {
         gameState = ("reavealed-player_" + playerPlay);
         document.getElementById("info1").textContent = "Hello ! Game will be reavealed when you will click this button. Make sure other players aren't watching !";
     };
+    if(buttonIndex == "place_boat") {
+        gameButton.innerHTML = `
+        <button class="buttons button-${playerColors[playerPlay]}" onclick="placeBoat()">Place the boat "${placeBoatState}"</button>
+        `;
+        document.getElementById("info1").textContent = "You have to place you boats. patrol boat is 2 tile, the submarine and destroyer are 3, the battleship is 4 and the aicraft carrier is 5.";
+    }
     buttonDiv.append(gameButton);
 };
 if(gameState == "created") {createButton("reaveal"); gameState == "first_reavealing_player";};
 function fillSeaGrid(reaveal) {
     // empty grid
     seaBoard.innerHTML = "";
+    allTiles = [];
     seaBoard.style.display = "grid";
     seaBoard.style.gridTemplateColumns = "repeat(10, 64px)";
     seaBoard.style.width = "fit-content";
@@ -206,6 +220,7 @@ function fillSeaGrid(reaveal) {
             seaTile.style.height = "64px";
             seaTile.title = ("coords : " +j+ ", " +i);
             seaBoard.append(seaTile);
+            allTiles.push(tileID);
         }
     }
 };
@@ -214,6 +229,127 @@ function reavealGame() {
     fillSeaGrid(true);
     if(gameState == "first_reavealing_player") {
         alert("Welcome ! You will have to place your boats, in the inputs. Get your mouse over sea tiles to see their coords.");
-        // to continue
+        gameState = "placing_boats";
+        placeBoatState = "patrol_boat";
+        createButton("place_boat");
+    };
+};
+function pushToRightTab(tabId, tileId) {
+    notEmptyTiles.push([tileId]);
+    if(playerColors[playerPlay] == "blue") {
+        blueStates.push(tileId);
+        if(tabId == 1) {blueState1.push(tileId);};
+        if(tabId == 2) {blueState2.push(tileId);};
+        if(tabId == 3) {blueState3.push(tileId);};
+        if(tabId == 4) {blueState4.push(tileId);};
+        if(tabId == 5) {blueState5.push(tileId);};
+        if(tabId == 6) {blueState6.push(tileId);};
+    };
+    if(playerColors[playerPlay] == "green") {
+        greenStates.push(tileId);
+        if(tabId == 1) {greenState1.push(tileId);};
+        if(tabId == 2) {greenState2.push(tileId);};
+        if(tabId == 3) {greenState3.push(tileId);};
+        if(tabId == 4) {greenState4.push(tileId);};
+        if(tabId == 5) {greenState5.push(tileId);};
+        if(tabId == 6) {greenState6.push(tileId);};
+    };
+    if(playerColors[playerPlay] == "purple") {
+        purpleStates.push(tileId);
+        if(tabId == 1) {purpleState1.push(tileId);};
+        if(tabId == 2) {purpleState2.push(tileId);};
+        if(tabId == 3) {purpleState3.push(tileId);};
+        if(tabId == 4) {purpleState4.push(tileId);};
+        if(tabId == 5) {purpleState5.push(tileId);};
+        if(tabId == 6) {purpleState6.push(tileId);};
+    };
+    if(playerColors[playerPlay] == "red") {
+        redStates.push(tileId);
+        if(tabId == 1) {redState1.push(tileId);};
+        if(tabId == 2) {redState2.push(tileId);};
+        if(tabId == 3) {redState3.push(tileId);};
+        if(tabId == 4) {redState4.push(tileId);};
+        if(tabId == 5) {redState5.push(tileId);};
+        if(tabId == 6) {redState6.push(tileId);};
+    };
+};
+function placeBoat() {
+    let boatShape;
+    let isCorrect = false;
+    alert("We are going to ask you values. You can find them by hovering tiles. To cancel, use 'null' as answer. The start tile have to be the left one or the top one. The end one have to be the right one or the bottom one. You can have vertical & horizontal ships.");
+    alert("The boat you have to place is the " + placeBoatState +".");
+    let coord1 = prompt("Hello ! Please enter the first number of the begin tile of your boat. Keep null to cancel", "null");
+    if(coord1 == "null") {return;};
+    let coord2 = prompt("Hello ! Please enter the second number of the begin tile of your boat. Keep null to cancel", "null");
+    if(coord2 == "null") {return;};
+    let startTile = [coord1, coord2];
+    if(!(allTiles.includes(startTile))) {alert("Your values arn't correct ! Try again."); return;};
+    let coord3 = prompt("Hello ! Please enter the first number of the end tile of your boat. Keep null to cancel", "null");
+    if(coord3 == "null") {return;};
+    let coord4 = prompt("Hello ! Please enter the second number of the end tile of your boat. Keep null to cancel", "null");
+    if(coord4 == "null") {return;};
+    let endTile = [coord3, coord4];
+    if(!(allTiles.includes(endTile))) {alert("Your values arn't correct ! Try again."); return;};
+    if(placeBoatState == "patrol_boat") {
+        if([(coord1+1), coord2] == endTile) {
+            boatShape = "hor";
+            isCorrect = true;
+        };
+        if([coord1, (coord2+1)] == endTile) {
+            boatShape = "ver";
+            isCorrect = true;
+        };
+    };
+    if(placeBoatState == "submarine" || placeBoatState == "destroyer") {
+        if([(coord1+3), coord2] == endTile) {
+            boatShape = "hor";
+            isCorrect = true;
+        };
+        if([coord1, (coord2+3)] == endTile) {
+            boatShape = "ver";
+            isCorrect = true;
+        };
+    };
+    if(placeBoatState == "battleship") {
+        if([(coord1+4), coord2] == endTile) {
+            boatShape = "hor";
+            isCorrect = true;
+        };
+        if([coord1, (coord2+4)] == endTile) {
+            boatShape = "ver";
+            isCorrect = true;
+        };
+    };
+    if(placeBoatState == "aircraft_carrier") {
+        if([(coord1+5), coord2] == endTile) {
+            boatShape = "hor";
+            isCorrect = true;
+        };
+        if([coord1, (coord2+5)] == endTile) {
+            boatShape = "ver";
+            isCorrect = true;
+        };
+    };
+    if(!isCorrect) {
+        alert("Something went wrong... It look like your coordinates arn't matching anything. Try another !");
+        return;
+    };
+    if(boatShape = "hor") {
+        for(let i=coord1; i <= coord3; i++) {
+            let tabID;
+            if(i==coord1) {tabID = 2}
+            else if(i==coord3) {tabID = 1}
+            else {tabID = 5};
+            pushToRightTab(tabID, [i, coord2]);
+        };
+    };
+    if(boatShape = "ver") {
+        for(let i=coord2; i <= coord4; i++) {
+            let tabID;
+            if(i==coord2) {tabID = 3}
+            else if(i==coord4) {tabID = 4}
+            else {tabID = 6};
+            pushToRightTab(tabID, [coord1, i]);
+        };
     };
 };
