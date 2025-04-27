@@ -228,5 +228,5 @@ function resetALL() {
     };
     console.log("ALL NAVAL BATTLE DATA DELETED")
     alert("All naval battle data has been deleted. No data about this game is now stored in your browser.");
-    location.reload();
+    window.location.replace("/TechnoWeb/pages/gameHub/navalBattle/")
 }

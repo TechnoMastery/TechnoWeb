@@ -14,6 +14,7 @@ const buttonDiv = document.getElementById("button-reaveal");
 
 let placeBoatState = "null";
 let allTiles = [];
+let nextBoatState = "null";
 
 let gameState = gameGridJson.gameState;
 let notEmptyTiles = gameGridJson.notEmptyTiles;
@@ -183,6 +184,7 @@ document.getElementById("gameName").textContent = gameName;
 document.getElementById("playerPlay").textContent = playerPlay;
 function createButton(buttonIndex) {
     const gameButton = document.createElement("div");
+    buttonDiv.innerHTML = "";
     if(buttonIndex == "reaveal") {
         gameButton.innerHTML = `
             <button onclick="reavealGame()" class="buttons button-${playerColors[playerPlay]}">Reaveal game</button>
@@ -194,11 +196,11 @@ function createButton(buttonIndex) {
         gameButton.innerHTML = `
         <button class="buttons button-${playerColors[playerPlay]}" onclick="placeBoat()">Place the boat "${placeBoatState}"</button>
         `;
-        document.getElementById("info1").textContent = "You have to place you boats. patrol boat is 2 tile, the submarine and destroyer are 3, the battleship is 4 and the aicraft carrier is 5.";
+        document.getElementById("info1").textContent = "You have to place your boats. patrol boat is 2 tile, the submarine and destroyer are 3, the battleship is 4 and the aicraft carrier is 5.";
     }
     buttonDiv.append(gameButton);
 };
-if(gameState == "created") {createButton("reaveal"); gameState == "first_reavealing_player";};
+if(gameState == "created") {createButton("reaveal"); gameState = "first_reavealing_player";};
 function fillSeaGrid(reaveal) {
     // empty grid
     seaBoard.innerHTML = "";
@@ -224,7 +226,6 @@ function fillSeaGrid(reaveal) {
         }
     }
 };
-fillSeaGrid(false);
 function reavealGame() {
     fillSeaGrid(true);
     if(gameState == "first_reavealing_player") {
@@ -273,6 +274,11 @@ function pushToRightTab(tabId, tileId) {
         if(tabId == 6) {redState6.push(tileId);};
     };
 };
+function nextPlayer() {
+    if(playerPlay < playerCount) {playerPlay = playerPlay+1;}
+    else if(playerPlay == playrecount) {playerPlay = 1;}
+    else alert("An error appended. This game can be corupted. Please make a bug report.");
+};
 function placeBoat() {
     let boatShape;
     let isCorrect = false;
@@ -299,6 +305,7 @@ function placeBoat() {
             boatShape = "ver";
             isCorrect = true;
         };
+        nextBoatState = "submarine";
     };
     if(placeBoatState == "submarine" || placeBoatState == "destroyer") {
         if([(coord1+3), coord2] == endTile) {
@@ -309,6 +316,8 @@ function placeBoat() {
             boatShape = "ver";
             isCorrect = true;
         };
+        if(placeBoatState == "submarine") {nextBoatState = "destroyer"}
+        else {nextBoatState = "battleship"};
     };
     if(placeBoatState == "battleship") {
         if([(coord1+4), coord2] == endTile) {
@@ -319,6 +328,7 @@ function placeBoat() {
             boatShape = "ver";
             isCorrect = true;
         };
+        nextBoatState = "aircraft_carrier";
     };
     if(placeBoatState == "aircraft_carrier") {
         if([(coord1+5), coord2] == endTile) {
@@ -329,6 +339,7 @@ function placeBoat() {
             boatShape = "ver";
             isCorrect = true;
         };
+        nextBoatState = "end";
     };
     if(!isCorrect) {
         alert("Something went wrong... It look like your coordinates arn't matching anything. Try another !");
@@ -351,5 +362,11 @@ function placeBoat() {
             else {tabID = 6};
             pushToRightTab(tabID, [coord1, i]);
         };
+    };
+    fillSeaGrid(true);
+    if(nextBoatState !== "end") {placeBoatState = nextBoatState; createButton("place_boat");}
+    else {
+        alert("You placed all your boats ! Your turn is ended.");
+        nextPlayer();
     };
 };
