@@ -289,30 +289,34 @@ function placeBoat() {
     let coord2 = prompt("Hello ! Please enter the second number of the begin tile of your boat. Keep null to cancel", "null");
     if(coord2 == "null") {return;};
     let startTile = [coord1, coord2];
-    if(!(allTiles.includes(startTile))) {alert("Your values arn't correct ! Try again."); return;};
+    if(!(allTiles.some(t => t[0] === startTile[0] && t[1] === startTile[1]))) {alert("Your values arn't correct ! Try again."); return;};
     let coord3 = prompt("Hello ! Please enter the first number of the end tile of your boat. Keep null to cancel", "null");
     if(coord3 == "null") {return;};
     let coord4 = prompt("Hello ! Please enter the second number of the end tile of your boat. Keep null to cancel", "null");
     if(coord4 == "null") {return;};
     let endTile = [coord3, coord4];
-    if(!(allTiles.includes(endTile))) {alert("Your values arn't correct ! Try again."); return;};
+    if(!(allTiles.some(t => t[0] === endTile[0] && t[1] === endTile[1]))) {alert("Your values arn't correct ! Try again."); return;};
     if(placeBoatState == "patrol_boat") {
-        if([(coord1+1), coord2] == endTile) {
+        const newCoord1 = coord1+1;
+        const newCoord2 = coord2+1;
+        if([newCoord1, coord2] == endTile) {
             boatShape = "hor";
             isCorrect = true;
         };
-        if([coord1, (coord2+1)] == endTile) {
+        if([coord1, newCoord2] == endTile) {
             boatShape = "ver";
             isCorrect = true;
         };
         nextBoatState = "submarine";
     };
     if(placeBoatState == "submarine" || placeBoatState == "destroyer") {
-        if([(coord1+3), coord2] == endTile) {
+        const newCoord1 = coord1+3;
+        const newCoord2 = coord2+3;
+        if([newCoord1, coord2] == endTile) {
             boatShape = "hor";
             isCorrect = true;
         };
-        if([coord1, (coord2+3)] == endTile) {
+        if([coord1, newCoord2] == endTile) {
             boatShape = "ver";
             isCorrect = true;
         };
@@ -320,22 +324,26 @@ function placeBoat() {
         else {nextBoatState = "battleship"};
     };
     if(placeBoatState == "battleship") {
-        if([(coord1+4), coord2] == endTile) {
+        const newCoord1 = coord1+4;
+        const newCoord2 = coord2+4;
+        if([newCoord1, coord2] == endTile) {
             boatShape = "hor";
             isCorrect = true;
         };
-        if([coord1, (coord2+4)] == endTile) {
+        if([coord1, newCoord2] == endTile) {
             boatShape = "ver";
             isCorrect = true;
         };
         nextBoatState = "aircraft_carrier";
     };
     if(placeBoatState == "aircraft_carrier") {
-        if([(coord1+5), coord2] == endTile) {
+        const newCoord1 = coord1+5;
+        const newCoord2 = coord2+5;
+        if([newCoord1, coord2] == endTile) {
             boatShape = "hor";
             isCorrect = true;
         };
-        if([coord1, (coord2+5)] == endTile) {
+        if([coord1, newCoord2] == endTile) {
             boatShape = "ver";
             isCorrect = true;
         };
