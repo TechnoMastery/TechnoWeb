@@ -375,6 +375,7 @@ function placeBoat() {
             pushToRightTab(tabID, [coord1, i]);
         };
     };
+    saveGameGrid(false);
     fillSeaGrid(true);
     if(nextBoatState !== "end") {placeBoatState = nextBoatState; createButton("place_boat");}
     else {
