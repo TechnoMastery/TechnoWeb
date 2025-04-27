@@ -288,12 +288,16 @@ function placeBoat() {
     if(coord1 == "null") {return;};
     let coord2 = prompt("Hello ! Please enter the second number of the begin tile of your boat. Keep null to cancel", "null");
     if(coord2 == "null") {return;};
+    coord1 = Number(coord1);
+    coord2 = Number(coord2);
     let startTile = [coord1, coord2];
     if(!(allTiles.some(t => t[0] === startTile[0] && t[1] === startTile[1]))) {alert("Your values arn't correct ! Try again."); return;};
     let coord3 = prompt("Hello ! Please enter the first number of the end tile of your boat. Keep null to cancel", "null");
     if(coord3 == "null") {return;};
     let coord4 = prompt("Hello ! Please enter the second number of the end tile of your boat. Keep null to cancel", "null");
     if(coord4 == "null") {return;};
+    coord3 = Number(coord3);
+    coord4 = Number(coord4);
     let endTile = [coord3, coord4];
     if(!(allTiles.some(t => t[0] === endTile[0] && t[1] === endTile[1]))) {alert("Your values arn't correct ! Try again."); return;};
     if(placeBoatState == "patrol_boat") {
