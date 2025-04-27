@@ -299,11 +299,11 @@ function placeBoat() {
     if(placeBoatState == "patrol_boat") {
         const newCoord1 = coord1+1;
         const newCoord2 = coord2+1;
-        if([newCoord1, coord2] == endTile) {
+        if((newCoord1 === endTile[0]) && (coord2 === endTile[1])) {
             boatShape = "hor";
             isCorrect = true;
         };
-        if([coord1, newCoord2] == endTile) {
+        if((coord1 === endTile[0]) && (newCoord2 === endTile[1])) {
             boatShape = "ver";
             isCorrect = true;
         };
@@ -312,11 +312,11 @@ function placeBoat() {
     if(placeBoatState == "submarine" || placeBoatState == "destroyer") {
         const newCoord1 = coord1+3;
         const newCoord2 = coord2+3;
-        if([newCoord1, coord2] == endTile) {
+        if((newCoord1 === endTile[0]) && (coord2 === endTile[1])) {
             boatShape = "hor";
             isCorrect = true;
         };
-        if([coord1, newCoord2] == endTile) {
+        if((coord1 === endTile[0]) && (newCoord2 === endTile[1])) {
             boatShape = "ver";
             isCorrect = true;
         };
@@ -326,11 +326,11 @@ function placeBoat() {
     if(placeBoatState == "battleship") {
         const newCoord1 = coord1+4;
         const newCoord2 = coord2+4;
-        if([newCoord1, coord2] == endTile) {
+        if((newCoord1 === endTile[0]) && (coord2 === endTile[1])) {
             boatShape = "hor";
             isCorrect = true;
         };
-        if([coord1, newCoord2] == endTile) {
+        if((coord1 === endTile[0]) && (newCoord2 === endTile[1])) {
             boatShape = "ver";
             isCorrect = true;
         };
@@ -339,11 +339,11 @@ function placeBoat() {
     if(placeBoatState == "aircraft_carrier") {
         const newCoord1 = coord1+5;
         const newCoord2 = coord2+5;
-        if([newCoord1, coord2] == endTile) {
+        if((newCoord1 === endTile[0]) && (coord2 === endTile[1])) {
             boatShape = "hor";
             isCorrect = true;
         };
-        if([coord1, newCoord2] == endTile) {
+        if((coord1 === endTile[0]) && (newCoord2 === endTile[1])) {
             boatShape = "ver";
             isCorrect = true;
         };
