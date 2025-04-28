@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../../../css/global.css">
   <link rel="stylesheet" href="../../../css/buttons.css">
   <link rel="stylesheet" href="../../../css/polimo.css">
+  <link rel="stylesheet" href="../../../css/polimo_simon.css">
 </head>
 <body>
   <header>
@@ -22,17 +23,24 @@
     <p>I code for fun using Python, HTML, CSS, JavaScript, and Node.js.</p>
     <p>Currently studying for a MELEC diploma ⚡</p>
 
-    <div class="card" id="clickable-card">
-      <h3>Click here to start the timer!</h3>
-      <p id="timer-status">Timer not started yet.</p>
+    <div class="card">
+      <h3>Play my Simon Game!</h3>
+      <div id="game">
+        <div id="green" class="tile">A</div>
+        <div id="red" class="tile">Z</div>
+        <div id="yellow" class="tile">Q</div>
+        <div id="blue" class="tile">S</div>
+      </div>
+      <div id="message">Press A, Z, Q, S or click to start!</div>
+      <div id="level">Level: 0</div>
     </div>
-
-    <div id="final-message"></div>
 
   </main>
   <footer>
     <p>TechnoMastery - Minecraft modding community</p>
   </footer>
+
   <script src="../../../scripts/script_polimo.js"></script>
+  <script src="../../../scripts/script_polimo_simon.js"></script>
 </body>
 </html>
