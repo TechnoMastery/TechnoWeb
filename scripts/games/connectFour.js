@@ -1,4 +1,4 @@
-const gameContainer = document.getElementById("game-container");
+// const gameContainer = document.getElementById("game-container");
 
 // function findTileType(tileID) {
 // };
