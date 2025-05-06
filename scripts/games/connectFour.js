@@ -1,6 +1,7 @@
 const gameContainer = document.getElementById("gameContainer");
 
 function findTileType(tileID) {
+    return "empty";
 };
 function fillGrid() {
     gameContainer.innerHTML = "";
