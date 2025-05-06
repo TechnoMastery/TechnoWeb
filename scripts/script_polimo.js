@@ -14,7 +14,6 @@ window.addEventListener("DOMContentLoaded", () => {
       timer--;
       timerStatus.textContent = `Time remaining: ${timer}s`;
 
-      // Petit effet visuel CHAOS
       document.body.style.backgroundColor = `hsl(${Math.random() * 360}, 80%, 90%)`;
       document.body.style.transform = `rotate(${(Math.random() - 0.5) * 10}deg) scale(${1 + (Math.random() * 0.05)})`;
 
@@ -34,3 +33,24 @@ window.addEventListener("DOMContentLoaded", () => {
     }, 1000);
   });
 });
+
+  function updateClock() {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    let timeString;
+    
+    if (timezone.includes('Europe')) {
+      timeString = `${hours}:${minutes}:${seconds}`;
+    } else {
+      const ampm = hours >= 12 ? 'PM' : 'AM';
+      const hours12 = hours % 12;
+      const displayHours = hours12 === 0 ? 12 : hours12;
+      timeString = `${displayHours}:${minutes}:${seconds} ${ampm}`;
+    }
+    document.getElementById('time').textContent = timeString;
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
