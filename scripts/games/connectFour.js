@@ -1,5 +1,7 @@
 const gameContainer = document.getElementById("game-container");
 
+// function findTileType(tileID) {
+// };
 function fillGrid() {
     gameContainer.innerHTML = "";
     gameContainer.style.display = "grid";
@@ -8,7 +10,7 @@ function fillGrid() {
     for(let i=1; 1 <= 42; i++) {
         const tileItem = document.createElement("img");
         const tileID = null; // todo
-        const tileType = "empty"; // todo
+        const tileType = findTileType(tileID);
         tileItem.src = "/TechnoWeb/ressources/pictures/connectFour/" + tileType + ".png";
         tileItem.alt = tileType;
         tileItem.style.width = "16px";
@@ -17,4 +19,4 @@ function fillGrid() {
         gameContainer.append(tileItem);
     };
 };
-fillGrid();
+// fillGrid();
