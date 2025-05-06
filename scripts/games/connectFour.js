@@ -2,7 +2,7 @@ const gameContainer = document.getElementById("game-container");
 
 // function findTileType(tileID) {
 // };
-function fillGrid() {
+/* function fillGrid() {
     gameContainer.innerHTML = "";
     gameContainer.style.display = "grid";
     gameContainer.style.gridTemplateColumns = "repeat(6, 16px)";
@@ -18,5 +18,5 @@ function fillGrid() {
         tileItem.title = tileType;
         gameContainer.append(tileItem);
     };
-};
+}; */
 // fillGrid();
