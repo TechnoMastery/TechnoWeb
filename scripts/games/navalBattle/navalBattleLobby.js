@@ -88,7 +88,9 @@ function createGame() {
             "purple"
         ],
         gameStatus: gameStatus,
+        playerPlay: 1,
         allowFleetsChange: "true",
+        allowColorChange: true,
         playerFleets: [null,
             "default",
             "default",
@@ -101,6 +103,50 @@ function createGame() {
         gameID: newGameNb,
         gameStatus: gameStatus,
         playerCount : playerCount
+    };
+    const gameGridDatas = {
+        gameState: "created",
+        p1Known: [],
+        p2Known: [],
+        p3Known: [],
+        p4Known: [],
+        notEmptyTiles: [],
+        blueStates: [],
+        blueState1: [],
+        blueState2: [],
+        blueState3: [],
+        blueState4: [],
+        blueState5: [],
+        blueState6: [],
+        blueShips: [1, 2, 3, 4, 5],
+        greenStates: [],
+        greenState1: [],
+        greenState2: [],
+        greenState3: [],
+        greenState4: [],
+        greenState5: [],
+        greenState6: [],
+        greenShips: [1, 2, 3, 4, 5],
+        purpleStates: [],
+        purpleState1: [],
+        purpleState2: [],
+        purpleState3: [],
+        purpleState4: [],
+        purpleState5: [],
+        purpleState6: [],
+        purpleShips: [1, 2, 3, 4, 5],
+        redStates: [],
+        redState1: [],
+        redState2: [],
+        redState3: [],
+        redState4: [],
+        redState5: [],
+        redState6: [],
+        redShips: [1, 2, 3, 4, 5]
+    };
+    const extraGameID = newGameId +"_game_grid";
+    localStorage.setItem(extraGameID, JSON.stringify(gameGridDatas));
+    const gameGrid = { // todo
     };
     localStorage.setItem("gamesList", JSON.stringify(newGamesCount));
     localStorage.setItem(newGameId, JSON.stringify(gameData));
@@ -138,7 +184,9 @@ function loadGame(gameNB) {
 
 function deleteGame(gameNb) {
     const deleteGameId = "nb_game_" + gameNb;
+    const extraGameID = deleteGameId + "_game_grid";
     localStorage.removeItem(deleteGameId);
+    localStorage.removeItem(extraGameID);
     const gameCount = gamesListJson.gameCount-1;
     const totalGameCount = gamesListJson.totalGameCount;
     let newActiveGameCount = gamesListJson.activeGameCount;
@@ -169,7 +217,9 @@ function resetALL() {
             const j = i-1;
             const gameID = gamesListJson.activeGameCount[j];
             const fullGameID = "nb_game_" + gameID;
+            const extraGameID = fullGameID + "_game_grid";
             localStorage.removeItem(fullGameID);
+            localStorage.removeItem(extraGameID);
         };
         localStorage.removeItem('gamesList');
     };
@@ -178,5 +228,5 @@ function resetALL() {
     };
     console.log("ALL NAVAL BATTLE DATA DELETED")
     alert("All naval battle data has been deleted. No data about this game is now stored in your browser.");
-    location.reload();
+    window.location.replace("/TechnoWeb/pages/gameHub/navalBattle/")
 }
