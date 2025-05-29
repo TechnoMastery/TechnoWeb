@@ -1,0 +1,187 @@
+/* Styles généraux */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f0f0f0;
+}
+
+.screen {
+    display: none;
+    padding: 2em;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.screen.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Écran d'accueil */
+#menu-screen {
+    background: #f0f0f0;
+}
+
+#menu-screen h1 {
+    font-size: 2em;
+    margin-bottom: 1em;
+    color: #333;
+    max-width: 600px;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto 1em;
+    max-width: 200px;
+    filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.2));
+}
+
+.start-button {
+    padding: 1em 2em;
+    font-size: 1.2em;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.start-button:hover {
+    background: #0056b3;
+}
+
+/* Écran de jeu */
+#game-screen {
+    background: #f4f4f4;
+    position: relative;
+}
+
+#question-text {
+    font-size: 1.5em;
+    margin: 1em 0;
+    color: #333;
+    max-width: 600px;
+}
+
+.comment {
+    font-style: italic;
+    color: #444;
+    margin-bottom: 1em;
+    padding: 1em;
+    background: #e9ecef;
+    border-left: 4px solid #007bff;
+    border-radius: 4px;
+    max-width: 500px;
+    width: 90%;
+}
+
+#choices-container {
+    margin: 2em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.choice-button {
+    display: block;
+    width: 90%;
+    max-width: 400px;
+    margin: 0.5em 0;
+    padding: 1em;
+    font-size: 1.1em;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.choice-button:hover {
+    background: #1e7e34;
+}
+
+.quit-button {
+    margin-top: 2em;
+    padding: 0.8em 1.5em;
+    font-size: 1em;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.quit-button:hover {
+    background: #c82333;
+}
+
+.timer {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    font-size: 0.9em;
+    color: #666;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 0.5em;
+    border-radius: 5px;
+}
+
+/* Écran de fin */
+#end-screen {
+    background: #fafafa;
+}
+
+#end-screen h1 {
+    color: #333;
+    margin-bottom: 1em;
+    max-width: 600px;
+}
+
+.result {
+    font-size: 1.5em;
+    margin: 2em 0;
+    color: #444;
+    padding: 1em;
+    background: #e9ecef;
+    border-radius: 5px;
+}
+
+.restart-button {
+    margin-top: 2em;
+    padding: 0.8em 1.5em;
+    font-size: 1em;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.restart-button:hover {
+    background: #0056b3;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .screen {
+        padding: 1em;
+    }
+    
+    #menu-screen h1 {
+        font-size: 1.5em;
+    }
+    
+    .choice-button {
+        font-size: 1em;
+        padding: 0.8em;
+    }
+}
