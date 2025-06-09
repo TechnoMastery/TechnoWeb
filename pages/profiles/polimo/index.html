@@ -67,6 +67,7 @@
     <div class="clock-container" id="clock">
       <span id="time"></span>
     </div>
+    <canvas id="fluid-canvas"></canvas>
   </main>
   <footer>
     <p>TechnoMastery - Minecraft modding community</p>
@@ -76,4 +77,36 @@
   <script src="../../../scripts/script_polimo_simon.js"></script>
   <script src="../../../scripts/terminal.js"></script>
 </body>
+<script>
+  fetch("https://cdn.jsdelivr.net/gh/PavelDoGreat/WebGL-Fluid-Simulation@master/script.js")
+    .then(res => res.text())
+    .then(code => {
+      const fluidScript = document.createElement("script");
+      fluidScript.textContent = code;
+      document.body.appendChild(fluidScript);
+    });
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const fluidCanvas = document.getElementById("fluid-canvas");
+    fluidCanvas.width = window.innerWidth;
+    fluidCanvas.height = window.innerHeight;
+    const fluid = new Fluid(fluidCanvas);
+    fluid.start();
+  });
+</script>
+</body>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const clock = document.getElementById("clock");
+    const timeSpan = document.getElementById("time");
+
+    function updateClock() {
+      const now = new Date();
+      timeSpan.textContent = now.toLocaleTimeString();
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  });
+</script>
 </html>
