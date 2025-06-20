@@ -14,7 +14,7 @@
   <header>
     <h1>Polimo's Profile</h1>
     <nav>
-      <a href="../../profiles/"><button class="buttons button_darkblue">Back</button></a>
+      <button class="buttons button_darkblue" onclick="history.back()">Back</button>
     </nav>
   </header>
   <main>
@@ -84,15 +84,16 @@
       const fluidScript = document.createElement("script");
       fluidScript.textContent = code;
       document.body.appendChild(fluidScript);
-    });
 
-  document.addEventListener("DOMContentLoaded", function() {
-    const fluidCanvas = document.getElementById("fluid-canvas");
-    fluidCanvas.width = window.innerWidth;
-    fluidCanvas.height = window.innerHeight;
-    const fluid = new Fluid(fluidCanvas);
-    fluid.start();
-  });
+      fluidScript.onload = () => {
+        const fluidCanvas = document.getElementById("fluid-canvas");
+        fluidCanvas.width = window.innerWidth;
+        fluidCanvas.height = window.innerHeight;
+
+        const fluid = new Fluid(fluidCanvas);
+        fluid.start();
+      };
+    });
 </script>
 </body>
 <script>
