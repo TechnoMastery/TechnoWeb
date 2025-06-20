@@ -1,0 +1,99 @@
+#terminal-container {
+  position: fixed;
+  top: 100px;
+  left: 100px;
+  width: 600px;
+  height: 400px;
+  background: rgba(0, 0, 0, 0.95);
+  border: 2px solid #00ff00;
+  border-radius: 8px;
+  color: #00ff00;
+  font-family: 'Share Tech Mono', monospace;
+  display: flex;
+  flex-direction: column;
+  z-index: 9999;
+  box-shadow: 0 0 20px #00ff00;
+  resize: both;
+  overflow: hidden;
+}
+
+#terminal-header {
+  background: #111;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  cursor: grab;
+  user-select: none;
+}
+
+#terminal-header .window-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+#terminal-header .window-buttons span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+#terminal-header .close { background: #ff5f56; }
+#terminal-header .minimize { background: #ffbd2e; }
+#terminal-header .maximize { background: #27c93f; }
+
+#terminal-header .title {
+  flex: 1;
+  text-align: center;
+  color: #00ff00;
+}
+
+#terminal-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+#terminal-output {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.ascii-image {
+  font-family: monospace;
+  font-size: 8px; /* ou la taille que tu veux plus petite */
+  line-height: 6px; /* pour compresser verticalement aussi */
+  white-space: pre;
+  max-width: 600px; /* optionnel : limite largeur */
+  overflow-x: auto; /* si trop large, scroll horizontal */
+  margin: 5px 0;
+  display: block;
+}
+
+
+#terminal-input-line {
+  display: flex;
+  align-items: center;
+}
+
+#terminal-input {
+  width: 100%;         /* largeur du conteneur */
+  box-sizing: border-box;
+  font-family: monospace;
+  font-size: 14px;     /* taille lisible, pas trop grande */
+  height: 24px;        /* hauteur fixe raisonnable */
+  padding: 4px 8px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #0f0;         /* couleur style terminal */
+  resize: none;        /* si textarea, désactive resize */
+  overflow-x: auto;    /* scroll horizontal si besoin */
+}
+
+
+.prompt {
+  margin-right: 5px;
+}

@@ -1,23 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Polimo's profile page.">
-    <link rel="stylesheet" href="../../../../TechnoWeb/css/global.css">
-    <link rel="stylesheet" href="../../../../TechnoWeb/css/buttons.css">
-    <title>Polimo's profile</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polimo's Profile</title>
+  <meta name="description" content="Polimo's profile – fun coder into Python, JS, Node.js & MELEC student.">
+  <link rel="stylesheet" href="../../../css/global.css">
+  <link rel="stylesheet" href="../../../css/buttons.css">
+  <link rel="stylesheet" href="../../../css/polimo.css">
+  <link rel="stylesheet" href="../../../css/terminal.css">
 </head>
 <body>
-    <header>
-        <h1>Polimo's Profile</h1>
-        <a href="../../profiles/"><button class="buttons button-darkblue">Back</button></a>
-    </header>
-    <p>Welcome to Polimo's profile page!</p>
-    <p>Here you can find information about Polimo.</p>
-    <ul>
-        <li>Name: Polimo</li>
-        <li>Occupation: Developer</li>
-    </ul>
+  <header>
+    <h1>Polimo's Profile</h1>
+    <nav>
+      <a href="../../profiles/"><button class="buttons button_darkblue">Back</button></a>
+    </nav>
+  </header>
+  <main>
+    <h1>Polimo's Profile</h1>
+    <h2>Hey there! I'm Polimo 😎</h2>
+    <p>I code for fun using Python, HTML, CSS, JavaScript, and Node.js.</p>
+    <p>Currently studying for a MELEC diploma ⚡</p>
+
+    <div class="card" id="simon-card">
+      <h3>Simon Game 🎮</h3>
+      <div id="game">
+        <div id="green" class="tile">A</div>
+        <div id="red" class="tile">Z</div>
+        <div id="yellow" class="tile">Q</div>
+        <div id="blue" class="tile">S</div>
+      </div>
+      <div id="message">Appuie sur A, Z, Q, S ou clique pour commencer</div>
+      <div id="level">Niveau : 0</div>
+    </div>
+<div id="terminal-container" style="position:fixed;top:100px;left:100px;width:600px;height:400px;background:#000;box-shadow:0 0 20px #0f0;overflow:hidden;color:#0f0;font-family:'Share Tech Mono', monospace;display:flex;flex-direction:column;">
+  <div id="terminal-header" style="background:#050; padding:5px; display:flex; justify-content:space-between; align-items:center; user-select:none;">
+    <div>Terminal</div>
+    <div>
+      <button id="btn-minimize" style="background:#060; border:none; color:#0f0; cursor:pointer;">_</button>
+      <button id="btn-maximize" style="background:#060; border:none; color:#0f0; cursor:pointer;">▢</button>
+      <button id="btn-close" style="background:#060; border:none; color:#0f0; cursor:pointer;">×</button>
+    </div>
+  </div>
+  <pre id="terminal-output" style="flex:1; overflow:auto; padding:10px; margin:0;"></pre>
+  <input id="terminal-input" type="text" autocomplete="off" spellcheck="false" style="background:#000; color:#0f0; border:none; padding:10px; font-family:'Share Tech Mono', monospace; font-size:14px; outline:none;">
+  
+</div>
+<div id="image-popup" style="
+  display:none;
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  background: #222;
+  border: 2px solid #555;
+  padding: 10px;
+  z-index: 1000;
+  max-width: 80vw;
+  max-height: 80vh;
+  overflow: auto;
+  box-shadow: 0 0 10px #000;
+">
+  <button id="close-popup" style="float:right; background:#900; color:#fff; border:none; padding:5px 10px; cursor:pointer;">X</button>
+  <img id="popup-image" src="" alt="Image" style="max-width:100%; max-height:70vh; display:block; margin: auto;" />
+</div>
+    <div class="clock-container" id="clock">
+      <span id="time"></span>
+    </div>
+    <canvas id="fluid-canvas"></canvas>
+  </main>
+  <footer>
+    <p>TechnoMastery - Minecraft modding community</p>
+  </footer>
+
+  <script src="../../../scripts/script_polimo.js"></script>
+  <script src="../../../scripts/script_polimo_simon.js"></script>
+  <script src="../../../scripts/terminal.js"></script>
 </body>
+<script>
+  fetch("https://cdn.jsdelivr.net/gh/PavelDoGreat/WebGL-Fluid-Simulation@master/script.js")
+    .then(res => res.text())
+    .then(code => {
+      const fluidScript = document.createElement("script");
+      fluidScript.textContent = code;
+      document.body.appendChild(fluidScript);
+    });
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const fluidCanvas = document.getElementById("fluid-canvas");
+    fluidCanvas.width = window.innerWidth;
+    fluidCanvas.height = window.innerHeight;
+    const fluid = new Fluid(fluidCanvas);
+    fluid.start();
+  });
+</script>
+</body>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const clock = document.getElementById("clock");
+    const timeSpan = document.getElementById("time");
+
+    function updateClock() {
+      const now = new Date();
+      timeSpan.textContent = now.toLocaleTimeString();
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  });
+</script>
 </html>

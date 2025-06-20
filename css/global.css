@@ -8,12 +8,12 @@ footer {
     border-radius: 0;
 }
 header h1 {
-    font-size: 3em;
-    margin-bottom: 20px;
-    color: linear-gradient(to right, #ff8a00, #e52e71) !important;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: 3em !important;
+    margin-bottom: 20px !important;
+    background: linear-gradient(to right, #ff8a00, #e52e71) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
 }
 footer p {
     margin: 10px;
