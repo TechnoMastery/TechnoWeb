@@ -92,3 +92,13 @@
     background-color: yellow;
     color: white;
   }
+
+  .button-darkslategray {
+    background-color: white; 
+    color: black; 
+    border: 2px solid darkslategray;
+  }
+  .button-darkslategray:hover {
+    background-color: darkslategray;
+    color: white;
+  }
