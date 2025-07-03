@@ -23,7 +23,7 @@
     box-sizing: border-box;
 }
 
-body {
+main {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 50%, #0F0F23 100%);
     color: var(--text-primary);
@@ -33,7 +33,7 @@ body {
     overflow-x: hidden;
 }
 
-body::before {
+main::before {
     content: '';
     position: fixed;
     top: 0;
@@ -99,73 +99,6 @@ header nav a {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
-}
-
-nav {
-    position: relative;
-    z-index: 2;
-}
-
-.buttons {
-    display: inline-block;
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-decoration: none;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-.buttons::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s ease;
-}
-
-.buttons:hover::before {
-    left: 100%;
-}
-
-.button-purple {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
-    color: white;
-    border: 2px solid transparent;
-    box-shadow: 
-        0 4px 15px rgba(139, 92, 246, 0.4),
-        0 0 0 0 rgba(139, 92, 246, 0.7);
-    animation: pulse-border 2s ease-in-out infinite;
-}
-
-@keyframes pulse-border {
-    0% { box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4), 0 0 0 0 rgba(139, 92, 246, 0.7); }
-    50% { box-shadow: 0 8px 25px rgba(139, 92, 246, 0.6), 0 0 0 10px rgba(139, 92, 246, 0); }
-    100% { box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4), 0 0 0 0 rgba(139, 92, 246, 0.7); }
-}
-
-.button-purple:hover {
-    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
-    transform: translateY(-3px);
-    box-shadow: 
-        0 8px 25px rgba(139, 92, 246, 0.6),
-        0 0 20px rgba(139, 92, 246, 0.8);
-}
-
-.button-purple::after {
-    content: '← ';
-    font-size: 1.2rem;
-    margin-right: 0.5rem;
 }
 
 main {
@@ -265,42 +198,6 @@ h3::before {
     content: '⚡';
     margin-right: 0.5rem;
     color: var(--neon-color);
-}
-
-p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-    color: var(--text-secondary);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-a {
-    color: var(--neon-color);
-    text-decoration: none;
-    font-weight: 600;
-    position: relative;
-    transition: all 0.3s ease;
-}
-
-a::before {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--neon-color), var(--secondary-color));
-    transition: width 0.3s ease;
-}
-
-a:hover {
-    color: var(--secondary-color);
-    text-shadow: 0 0 10px rgba(139, 92, 246, 0.8);
-}
-
-a:hover::before {
-    width: 100%;
 }
 
 ul {
@@ -426,14 +323,6 @@ footer a {
 }
 
 @media (max-width: 768px) {
-    .header-content {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .logo-section h1 {
-        font-size: 2.5rem;
-    }
     
     section {
         padding: 2rem;
@@ -460,10 +349,6 @@ footer a {
         padding: 1rem;
     }
     
-    .buttons {
-        padding: 0.8rem 1.5rem;
-        font-size: 1rem;
-    }
 }
 
 @keyframes pulse {
