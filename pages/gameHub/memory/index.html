@@ -1,11 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Memory</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechnoMastery - Games - Memory</title>
+    <link rel="stylesheet" href="../../../css/games/memory.css">
+    <link rel="stylesheet" href="../../../css/buttons.css">
+    <link rel="stylesheet" href="../../../css/global.css">
 </head>
 <body>
-  <main>
+    <header>
+        <h1>Memory game</h1>
+        <p>Test your memory with this fun game! Try to find all the pairs of cards in the shortest time possible.</p>
+        <nav>
+            <a href="../../gameHub/"><button class="buttons button-blue">Back</button></a><br>
+            <a href="../../../../TechnoWeb/"><button class="buttons button-blue">Home</button></a>
+        </nav>
+    </header>
+    <main>
     <!-- Écran d'accueil -->
     <div id="startScreen" class="screen">
         <h1>Memory</h1>
@@ -51,11 +63,11 @@
         <div id="endMessage"></div>
         <button class="btn play-again-btn" id="playAgainBtn">Rejouer</button>
         <button class="btn return-btn" id="returnFromEnd">Menu Principal</button>
-  </div>
-  </main>
-  <footer>
+    </div>
+    </main>
+    <footer>
         <p>&copy; TechnoMastery - Minecraft modding community</p>
-  </footer>
-  <script src="script.js"></script>
+    </footer>
+  <script src="../../../scripts/games/memory.js"></script>
 </body>
 </html>
