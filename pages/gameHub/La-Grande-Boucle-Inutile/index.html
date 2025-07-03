@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Grande Boucle Inutile</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <!-- Écran d'accueil -->
+<div id="menu-screen" class="screen active">
+    <img src="logo.png" alt="Logo La Grande Boucle Inutile" class="logo" style="max-width: 150px; margin-bottom: 1em;">
+    <h1>La Grande Boucle Inutile</h1>
+    <p style="margin-top: 1em;">
+        <h2>Bienvenue dans La Grande Boucle Inutile de perte de temps.</h2>
+    </p>
+    <button id="start-btn" class="start-button" style="margin-top: 2em;">START</button>
+</div>
+
+
+    <!-- Écran de jeu -->
+    <div id="game-screen" class="screen">
+        <div id="comment" class="comment" style="display: none;"></div>
+        <h2 id="question-text"></h2>
+        <div id="choices-container"></div>
+        <button id="quit-btn" class="quit-button">Quitter cette absurdité</button>
+        <div id="timer" class="timer">Temps perdu : 0s</div>
+    </div>
+
+    <!-- Écran de fin -->
+    <div id="end-screen" class="screen">
+        <h1>👏 Bravo. Tu as dépensé ton temps volontairement, mais au moins tu as gagné une bonne dose d'humiliation.</h1>
+        <div id="final-time" class="result"></div>
+        <button id="restart-btn" class="restart-button">Revenir au menu</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
