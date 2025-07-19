@@ -1,5 +1,5 @@
 const devDiv = document.getElementById('dev');
-const devData = JSON.parse(localStorage.getElementById('devData'));
+const devData = JSON.parse(localStorage.getItem('devData'));
 if(devData.devMod == true) {
 
 console.log("dev mod enabled !")
