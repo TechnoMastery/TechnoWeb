@@ -46,30 +46,30 @@ if(user == "Exio2fk") {
 if(user == "Polimo") {
     userDiv.innerHTML = `
         <a href="pages/profiles/polimo"><button class="buttons button-darkblue">Your profile</button></a><br>
-        <a href="pages/techno-smp/teams/"><button class="buttons button-darkslategray" disabled>No TechnoSMP team</button></a><br>
+        <button class="buttons button-darkslategray" disabled>No TechnoSMP team</button><br>
     `
 }
 if(user == "Catoutou") {
     userDiv.innerHTML = `
         <a href="pages/profiles/catoutou"><button class="buttons button-purple">Your profile</button></a><br>
-        <a href="pages/techno-smp/teams/"><button class="buttons button-darkslategray" disabled>No TechnoSMP team</button></a><br>
+        <button class="buttons button-darkslategray" disabled>No TechnoSMP team</button><br>
     `
 }
 if(user == "Loulougaim") {
     userDiv.innerHTML = `
         <a href="pages/profiles/loulou"><button class="buttons button-purple">Your profile</button></a><br>
-        <a href="pages/techno-smp/teams/"><button class="buttons button-darkslategray" disabled>No TechnoSMP team</button></a><br>
+        <button class="buttons button-darkslategray" disabled>No TechnoSMP team</button><br>
     `
 }
 if(user == "Ezinox") {
     userDiv.innerHTML = `
         <a href="pages/profiles/Ezinox"><button class="buttons button-purple">Your profile</button></a><br>
-        <a href="pages/techno-smp/teams/"><button class="buttons button-darkslategray" disabled>No TechnoSMP team</button></a><br>
+        <button class="buttons button-darkslategray" disabled>No TechnoSMP team</button><br>
     `
 }
 if(user == "Benny232") {
     userDiv.innerHTML = `
         <a href="pages/profiles/benny232"><button class="buttons button-purple">Your profile</button></a><br>
-        <a href="pages/techno-smp/teams/"><button class="buttons button-darkslategray" disabled>No TechnoSMP team</button></a><br>
+        <button class="buttons button-darkslategray" disabled>No TechnoSMP team</button><br>
     `
 }
