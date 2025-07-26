@@ -52,7 +52,7 @@ if(user == "Polimo") {
 if(user == "Catoutou") {
     userDiv.innerHTML = `
         <a href="pages/profiles/catoutou"><button class="buttons button-purple">Your profile</button></a><br>
-        <button class="buttons button-darkslategray" disabled>No TechnoSMP team</button><br>
+        <a href="pages/techno-smp/teams/no-benny-le-retour"><button class="buttons button-blue">Your TechnoSMP team</button></a><br>
     `
 }
 if(user == "Loulougaim") {
@@ -71,5 +71,11 @@ if(user == "Benny232") {
     userDiv.innerHTML = `
         <a href="pages/profiles/benny232"><button class="buttons button-purple">Your profile</button></a><br>
         <button class="buttons button-darkslategray" disabled>No TechnoSMP team</button><br>
+    `
+}
+if(user == "Pro__Craft") {
+    userDiv.innerHTML = `
+        <button class="buttons button-darkslategray" disabled>No profile</button><br>
+        <a href="pages/techno-smp/teams/no-benny-le-retour"><button class="buttons button-blue">Your TechnoSMP team</button></a><br>
     `
 }
